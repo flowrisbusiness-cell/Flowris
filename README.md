@@ -1,33 +1,27 @@
-# 🌸 Flowris — Handcrafted Gifts, Made with Love
+# 🌸 Flowris — Handcrafted Gifts, Made with Love (Dhaka, Bangladesh)
 
-> **A 100% Client-Side, Static, Zero-Cost E-Commerce Platform for Handcrafted & Personalized Gifts.**  
-> Crafted specifically for modern artisanal brands, boutique gift studios, and makers in Bangladesh.
-
----
-
-## 🌟 Overview & Key Highlights
-
-**Flowris** is an ultra-fast, zero-maintenance static e-commerce website designed to run **100% free forever** on platforms like **GitHub Pages, Netlify, Vercel, or Cloudflare Pages**.
-
-- **Zero Custom Backend Required:** No Node.js, Python, Java, Docker, or SQL databases to maintain.
-- **Zero Hosting Cost:** Runs entirely client-side using pure HTML5, Tailwind CSS, and Vanilla JavaScript.
-- **Easy Product Management:** All products, prices, images, stock badges, and descriptions live in a clean `data/products.json` file.
-- **Serverless Checkout & Notifications:** Customer orders and custom requests are sent directly to the store owner's email using free serverless endpoints (**Web3Forms** or **Formspree**).
-- **Instant WhatsApp Ordering:** Every product and cart has a built-in one-click WhatsApp order generator with pre-filled items, customer name, and BDT totals.
-- **Bangladesh-Tailored Checkout:**
-  - Dynamic shipping calculation: Inside Dhaka (৳80, or FREE on orders ৳1,500+) / Outside Dhaka (৳150 across all 64 districts).
-  - Cash on Delivery (COD) & bKash / Nagad Send-Money flow with reference & TrxID capture.
+> **A 100% Client-Side, Static, Zero-Cost E-Commerce Website for Handcrafted & Personalized Gifts in Dhaka.**  
+> Built for zero-cost hosting (GitHub Pages, Netlify, Vercel, Cloudflare Pages).
 
 ---
 
-## 🎨 Design System & Aesthetics
+## 🌟 Key Updates & Features
 
-- **Primary Colors:** Deep Violet (`#7C3AED`), Rosebud Pink (`#EC4899`), Soft Purple (`#8B5CF6`).
-- **Surfaces:** Pure White (`#FFFFFF`) with Glassmorphic blur (`backdrop-filter: blur(16px)`).
-- **Typography:**
-  - Headings: `Playfair Display` (Luxury, editorial serif).
-  - Body & UI: `Plus Jakarta Sans` / `Inter` (Ultra-crisp modern sans-serif).
-- **Micro-interactions:** Smooth slide-over drawers, real-time toast notifications, live coupon discount calculation, and hover zoom effects.
+- **Dedicated Shareable Product Page (`product.html`):** Perfect for Facebook posts, Instagram bio links, and WhatsApp sharing (e.g. `product.html?id=flow-01`). Includes dynamic Open Graph tags, multi-photo gallery, custom text input, instant COD checkout, and WhatsApp order generator.
+- **Fixed & Seamless Slide-Over Cart:** Fully functional cart drawer with local storage persistence across all pages and tabs, quantity controls, and free shipping progress.
+- **Official Web3Forms Key Configured:** Form token `29722476-0beb-4700-8231-9bf14fa69367` is active — all customer orders and custom inquiries go straight to your email without needing a custom server!
+- **Store Contact Info:**
+  - 📞 Phone: **`01886338064`**
+  - 💬 WhatsApp: **`01886338064`** (direct click-to-chat links)
+  - ✉️ Email: **`flowris.business@gmail.com`**
+  - 📱 bKash / Nagad: **`01886338064 (Personal)`**
+  - 📍 Address: **Dhaka, Bangladesh**
+- **Focused Dhaka City Delivery:**
+  - Standard Delivery (24-48h): ৳80 (Free on orders above ৳1,500).
+  - Express Delivery (Same Day / Urgent Priority): ৳130.
+- **Bespoke Vector Logo:** Custom artisanal logo created and integrated at `images/flowris-logo.svg` and `images/flowris-icon.svg`.
+- **Streamlined 6 Bestselling Products:** Clean, high-converting catalog of signature items in `data/products.json`.
+- **Accessibility & Focus States:** Clear, tactile `:focus-visible` outline rings for keyboard navigation and user feedback.
 
 ---
 
@@ -35,118 +29,43 @@
 
 ```text
 Flowris/
-├── index.html              # Main single-page storefront & modal containers
-├── css/
-│   └── styles.css          # Custom animations, glassmorphism, scrollbars
-├── js/
-│   └── app.js              # State manager, LocalStorage cart/wishlist, checkout & API
+├── index.html              # Main storefront, Hero, Catalog, Custom Gift Form
+├── product.html            # Dedicated Shareable Product Detail Page (for Facebook posts)
 ├── data/
-│   └── products.json       # Single source of truth for all products & pricing
-├── images/                 # Local assets & image storage
-├── README.md               # Project guide and customization
+│   └── products.json       # Streamlined 6 signature products & pricing
+├── js/
+│   └── app.js              # State manager, LocalStorage cart/wishlist, Web3Forms handler
+├── css/
+│   └── styles.css          # Custom animations, focus states, glassmorphism, scrollbars
+├── images/
+│   ├── flowris-logo.svg    # Official brand vector logo
+│   └── flowris-icon.svg    # Favicon and square emblem
+├── README.md               # Overview and configuration reference
 └── DEPLOYMENT.md           # Step-by-step 1-click free deployment guide
 ```
 
 ---
 
-## 🛠️ How to Customize Your Store
+## 🔗 Sharing Products on Facebook & Social Media
 
-### 1. Adding or Editing Products (`data/products.json`)
-Open `data/products.json` in any text editor. Each product contains:
+To share a specific product on a Facebook post or Instagram story, copy the link with its product ID:
 
-```json
-{
-  "id": "flow-01",
-  "title": "Eternal Floral Botanical Resin Letter Lamp",
-  "category": "Resin Art",
-  "categorySlug": "resin-art",
-  "price": 1450,
-  "originalPrice": 1850,
-  "discountPercent": 22,
-  "rating": 4.9,
-  "reviewCount": 84,
-  "image": "https://images.unsplash.com/photo-...",
-  "gallery": [ "img1.jpg", "img2.jpg" ],
-  "badge": "Bestseller",
-  "inStock": true,
-  "shortDescription": "Personalized LED warm glowing monogram lamp...",
-  "description": "Each letter is handcrafted individually in Dhaka...",
-  "customizable": true,
-  "customizationLabel": "Enter Initial / Letter (A-Z) & LED Base Name Text",
-  "materials": "Crystal Resin, Real Preserved Flowers, 24K Gold Leaf",
-  "dimensions": "15cm x 15cm x 4.5cm",
-  "tags": ["bestseller", "resin", "lamp"]
-}
+```text
+https://your-site.netlify.app/product.html?id=flow-01   # Resin Letter Lamp
+https://your-site.netlify.app/product.html?id=flow-02   # Rose Bouquet
+https://your-site.netlify.app/product.html?id=flow-03   # Spotify Plaque
+https://your-site.netlify.app/product.html?id=flow-04   # Lavender Soy Candle
+https://your-site.netlify.app/product.html?id=flow-05   # Luxury Hamper Box
+https://your-site.netlify.app/product.html?id=flow-06   # Resin Initial Keychain
 ```
 
-- To **add a new product**, duplicate any block, assign a unique `id`, and enter your details.
-- To **mark as sold out**, set `"inStock": false`.
-- If an item doesn't require custom text (like a candle), set `"customizable": false`.
-
----
-
-### 2. Setting Up Your Free Email Notification Endpoint
-
-Flowris uses **Web3Forms** (completely free, 250 submissions/month, zero setup, no backend required):
-
-1. Go to **[https://web3forms.com](https://web3forms.com)**.
-2. Enter your email where you want to receive orders.
-3. Click **"Create Access Key"** and copy the key received in your email.
-4. Open `js/app.js` and paste your key on line 19:
-
-```javascript
-const CONFIG = {
-  storeName: "Flowris",
-  phone: "+880 1712-345678",
-  whatsappNumber: "8801712345678",
-  bKashNumber: "01712-345678 (Personal)",
-  insideDhakaShipping: 80,
-  outsideDhakaShipping: 150,
-  freeShippingThreshold: 1500,
-
-  // Paste your key here:
-  web3FormsKey: "YOUR_WEB3FORMS_ACCESS_KEY_HERE"
-};
-```
-
-*(Alternatively, you can provide a Formspree endpoint URL in `formspreeEndpoint`)*.
-
----
-
-### 3. Updating Phone, WhatsApp, and bKash Numbers
-In `js/app.js`, edit the `CONFIG` object:
-- `phone`: Displayed on header & footer.
-- `whatsappNumber`: Phone number with country code (e.g. `8801712345678` - no `+` or spaces).
-- `bKashNumber`: Displayed during bKash checkout step.
-
----
-
-### 4. Promo Codes & Discounts
-Promo codes are configured inside `AppState.availablePromos` in `js/app.js`:
-- `FLOWRISLOVE`: 10% off entire order.
-- `WELCOME50`: ৳50 flat discount.
-- `EIDGIFT`: 15% off festive promo.
-
-You can add more codes or adjust discount rates anytime!
-
----
-
-## ⚡ Local Testing
-
-You can preview Flowris immediately:
-1. Simply double-click `index.html` to open in any web browser.
-2. Alternatively, run a lightweight local static server:
-   ```bash
-   # Using Python 3:
-   python -m http.server 8000
-
-   # Or using Node.js:
-   npx serve .
-   ```
-3. Open `http://localhost:8000` in your browser.
+When customers click the link:
+1. They see the full product showcase, reviews, pricing, and details.
+2. They can type in their custom engraving / note.
+3. They can order directly via **Instant Checkout (COD)**, **Add to Bag**, or **One-Click WhatsApp**.
 
 ---
 
 ## 🚀 Free Deployment
 
-See **[`DEPLOYMENT.md`](./DEPLOYMENT.md)** for a 3-minute step-by-step guide to hosting Flowris on **Netlify, Vercel, or GitHub Pages** with a free custom domain and automated SSL certificate.
+See **[`DEPLOYMENT.md`](./DEPLOYMENT.md)** for a 1-minute guide to hosting Flowris on **Netlify Drag & Drop**, **GitHub Pages**, or **Vercel** with free HTTPS/SSL!
