@@ -1,0 +1,1631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flowris | Handcrafted Gifts, Made with Love</title>
+  <meta name="description" content="Flowris is Bangladesh's premier handcrafted gift boutique. Shop personalized botanical resin art, preserved rose bouquets, custom Spotify plaques, and luxury hampers." />
+  <meta name="keywords" content="handmade gifts bangladesh, resin art dhaka, preserved flower bouquet, personalized gift box, flowris gifts, wedding anniversary gift bd" />
+  
+  <!-- Open Graph / Social Sharing Meta -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Flowris - Handcrafted Gifts, Made with Love" />
+  <meta property="og:description" content="Discover Bangladesh's favorite handcrafted botanical resin art, preserved flowers, and bespoke personalized gifts." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=1200&q=80" />
+  <meta name="theme-color" content="#7C3AED" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌸</text></svg>">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN with Custom Configuration -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#F5F3FF',
+              100: '#EDE9FE',
+              200: '#DDD6FE',
+              300: '#C4B5FD',
+              400: '#A78BFA',
+              500: '#8B5CF6',
+              600: '#7C3AED',
+              700: '#6D28D9',
+              800: '#5B21B6',
+              900: '#4C1D95',
+            },
+            rosebud: {
+              50: '#FDF2F8',
+              100: '#FCE7F3',
+              200: '#FBCFE8',
+              300: '#F9A8D4',
+              400: '#F472B6',
+              500: '#EC4899',
+              600: '#DB2777',
+              700: '#BE185D',
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="bg-[#FAFAFA] text-gray-800 antialiased selection:bg-purple-100 selection:text-purple-900">
+
+  <!-- ==========================================
+       TOP ANNOUNCEMENT BAR
+  =========================================== -->
+  <aside aria-label="Announcement" class="bg-gradient-to-r from-purple-900 via-brand-700 to-rosebud-600 text-white text-[11px] sm:text-xs py-2 px-4 text-center font-medium tracking-wide flex items-center justify-center gap-2 relative z-50">
+    <span class="inline-block animate-soft-pulse">🌸</span>
+    <span>
+      <strong>Free Delivery inside Dhaka</strong> on orders over ৳1,500! Use code <span class="bg-white/20 px-2 py-0.5 rounded font-mono font-bold">FLOWRISLOVE</span> for 10% OFF
+    </span>
+    <span class="hidden md:inline text-purple-200">|</span>
+    <span class="hidden md:inline text-purple-100">
+      WhatsApp Hotline: <strong>+880 1712-345678</strong>
+    </span>
+  </aside>
+
+  <!-- ==========================================
+       STICKY NAVIGATION HEADER
+  =========================================== -->
+  <header class="sticky top-0 z-40 glass-nav transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Mobile Menu Toggle Button -->
+        <div class="flex items-center lg:hidden">
+          <button 
+            type="button" 
+            id="mobile-menu-toggle"
+            class="p-2 rounded-xl text-gray-600 hover:text-purple-600 hover:bg-purple-50 focus:outline-none transition-colors"
+            aria-label="Open Navigation Menu"
+          >
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Brand Logo -->
+        <a href="index.html" class="flex items-center gap-2.5 group">
+          <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-gradient-to-tr from-brand-600 to-rosebud-500 flex items-center justify-center text-white shadow-md shadow-purple-500/20 group-hover:scale-105 transition-transform">
+            <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+            </svg>
+          </div>
+          <div>
+            <span class="font-serif text-2xl sm:text-2xl font-bold tracking-tight text-gray-900 group-hover:text-purple-700 transition-colors">
+              Flowris
+            </span>
+            <span class="hidden sm:block text-[9px] uppercase tracking-widest text-purple-600 font-semibold -mt-1">
+              Handcrafted Gifts
+            </span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-gray-600">
+          <a href="#home" class="text-purple-700 font-semibold hover:text-purple-600 transition-colors">Home</a>
+          <a href="#shop" class="hover:text-purple-600 transition-colors">Catalog</a>
+          <a href="#categories" class="hover:text-purple-600 transition-colors">Categories</a>
+          <a href="#custom-order" class="hover:text-purple-600 transition-colors">Custom Gifts</a>
+          <a href="#why-us" class="hover:text-purple-600 transition-colors">Why Flowris</a>
+          <a href="#reviews" class="hover:text-purple-600 transition-colors">Reviews</a>
+          <a href="#faq" class="hover:text-purple-600 transition-colors">FAQ</a>
+        </nav>
+
+        <!-- Right Action Icons (Search, Wishlist, Cart) -->
+        <div class="flex items-center gap-2 sm:gap-3">
+          
+          <!-- Search Shortcut Button -->
+          <a 
+            href="#shop" 
+            onclick="document.getElementById('search-input')?.focus();"
+            class="p-2 sm:p-2.5 rounded-full text-gray-500 hover:text-purple-700 hover:bg-purple-50 transition-colors"
+            title="Search Catalog"
+            aria-label="Search Catalog"
+          >
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </a>
+
+          <!-- Wishlist Trigger -->
+          <button 
+            type="button" 
+            onclick="openWishlistDrawer()"
+            class="relative p-2 sm:p-2.5 rounded-full text-gray-500 hover:text-rosebud-600 hover:bg-pink-50 transition-colors"
+            title="View Wishlist"
+            aria-label="View Wishlist"
+          >
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+            </svg>
+            <span class="wishlist-badge-count hidden absolute top-0.5 right-0.5 w-4 h-4 rounded-full bg-rosebud-500 text-white text-[10px] font-bold flex items-center justify-center shadow">
+              0
+            </span>
+          </button>
+
+          <!-- Shopping Cart Trigger -->
+          <button 
+            type="button" 
+            onclick="openCartDrawer()"
+            class="relative flex items-center gap-2 px-3.5 py-2 rounded-full bg-purple-50 hover:bg-purple-100 text-purple-800 font-semibold text-xs transition-all shadow-sm"
+            aria-label="View Shopping Cart"
+          >
+            <svg class="w-5 h-5 text-purple-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+            </svg>
+            <span class="hidden sm:inline">Cart</span>
+            <span class="cart-badge-count hidden px-1.5 py-0.2 rounded-full bg-brand-600 text-white text-[10px] font-bold">
+              0
+            </span>
+          </button>
+
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================
+       MOBILE NAVIGATION DRAWER
+  =========================================== -->
+  <div id="mobile-nav-drawer" class="drawer-backdrop fixed inset-0 z-50 bg-black/40 backdrop-blur-sm lg:hidden" onclick="this.classList.remove('active')">
+    <div class="drawer-panel fixed inset-y-0 left-0 w-72 bg-white p-6 shadow-2xl flex flex-col justify-between" onclick="event.stopPropagation()">
+      <div>
+        <div class="flex items-center justify-between pb-6 border-b border-purple-100">
+          <div class="flex items-center gap-2">
+            <span class="text-2xl">🌸</span>
+            <span class="font-serif text-xl font-bold text-gray-900">Flowris</span>
+          </div>
+          <button onclick="document.getElementById('mobile-nav-drawer').classList.remove('active')" class="p-1 rounded-lg text-gray-400 hover:text-gray-700">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+
+        <nav class="flex flex-col gap-4 mt-6 text-base font-medium text-gray-700">
+          <a href="#home" onclick="document.getElementById('mobile-nav-drawer').classList.remove('active')" class="hover:text-purple-600 py-1">Home</a>
+          <a href="#shop" onclick="document.getElementById('mobile-nav-drawer').classList.remove('active')" class="hover:text-purple-600 py-1">Catalog & Gifts</a>
+          <a href="#categories" onclick="document.getElementById('mobile-nav-drawer').classList.remove('active')" class="hover:text-purple-600 py-1">Categories</a>
+          <a href="#custom-order" onclick="document.getElementById('mobile-nav-drawer').classList.remove('active')" class="hover:text-purple-600 py-1">Custom Orders</a>
+          <a href="#why-us" onclick="document.getElementById('mobile-nav-drawer').classList.remove('active')" class="hover:text-purple-600 py-1">Why Choose Us</a>
+          <a href="#reviews" onclick="document.getElementById('mobile-nav-drawer').classList.remove('active')" class="hover:text-purple-600 py-1">Customer Reviews</a>
+          <a href="#faq" onclick="document.getElementById('mobile-nav-drawer').classList.remove('active')" class="hover:text-purple-600 py-1">Delivery & FAQ</a>
+        </nav>
+      </div>
+
+      <div class="pt-6 border-t border-purple-100 space-y-3">
+        <a 
+          href="https://wa.me/8801712345678" 
+          target="_blank" 
+          rel="noopener"
+          class="w-full py-2.5 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl text-xs font-semibold flex items-center justify-center gap-2 shadow"
+        >
+          <span>Chat on WhatsApp</span>
+        </a>
+        <p class="text-[11px] text-gray-400 text-center">
+          Dhaka, Bangladesh • 64 Districts Courier
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       HERO SECTION
+  =========================================== -->
+  <section id="home" class="relative pt-6 pb-16 lg:pt-14 lg:pb-24 overflow-hidden">
+    <!-- Soft Decorative Ambient Glows -->
+    <div class="absolute top-10 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-tr from-purple-200/40 via-pink-200/30 to-purple-100/20 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        
+        <!-- Left Hero Copy -->
+        <div class="lg:col-span-7 text-center lg:text-left">
+          
+          <!-- Eyebrow Badge -->
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-100/70 border border-purple-200 text-purple-800 text-xs font-semibold mb-6 shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-purple-600 animate-ping"></span>
+            <span>✨ Bangladesh's Artisanal Gift Studio</span>
+          </div>
+
+          <!-- Headline -->
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-gray-900 tracking-tight leading-[1.15] mb-6">
+            Handcrafted Gifts, <br class="hidden sm:inline" />
+            <span class="gradient-text italic font-normal">Made with Eternal Love.</span>
+          </h1>
+
+          <!-- Subheadline -->
+          <p class="text-base sm:text-lg text-gray-600 leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0">
+            From preserved botanical resin letter lamps to bespoke acrylic song plaques and luxury memory hampers — we turn your deepest emotions into timeless keepsakes. Handcrafted in Dhaka, safely delivered across all 64 districts.
+          </p>
+
+          <!-- Dual CTAs -->
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 mb-10">
+            <a 
+              href="#shop" 
+              class="w-full sm:w-auto px-8 py-4 gradient-btn text-white font-semibold rounded-2xl shadow-lg text-sm sm:text-base text-center transition-all flex items-center justify-center gap-2"
+            >
+              <span>Explore Collection</span>
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+            <a 
+              href="#custom-order" 
+              class="w-full sm:w-auto px-7 py-4 bg-white hover:bg-purple-50 text-purple-800 font-semibold rounded-2xl border border-purple-200 shadow-sm text-sm sm:text-base text-center transition-all"
+            >
+              Request Custom Gift
+            </a>
+          </div>
+
+          <!-- Social Proof / Metrics -->
+          <div class="grid grid-cols-3 gap-4 pt-6 border-t border-purple-100/80 max-w-lg mx-auto lg:mx-0 text-center lg:text-left">
+            <div>
+              <div class="text-xl sm:text-2xl font-bold font-serif text-gray-900">1,200+</div>
+              <div class="text-xs text-gray-500 font-medium">Happy Givers</div>
+            </div>
+            <div>
+              <div class="text-xl sm:text-2xl font-bold font-serif text-purple-700">4.9 ★</div>
+              <div class="text-xs text-gray-500 font-medium">Customer Rating</div>
+            </div>
+            <div>
+              <div class="text-xl sm:text-2xl font-bold font-serif text-gray-900">64</div>
+              <div class="text-xs text-gray-500 font-medium">Districts Covered</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Hero Visual Showcase -->
+        <div class="lg:col-span-5 relative">
+          <div class="relative mx-auto max-w-md lg:max-w-none">
+            
+            <!-- Main Hero Featured Card -->
+            <div class="relative rounded-3xl overflow-hidden bg-white shadow-2xl border-4 border-white/80 group">
+              <img 
+                src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=1000&q=80" 
+                alt="Botanical Resin Lamp Handcrafted Gift" 
+                class="w-full h-80 sm:h-96 object-cover object-center group-hover:scale-105 transition-transform duration-700"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-gray-950/20 to-transparent"></div>
+              
+              <div class="absolute bottom-6 left-6 right-6 text-white">
+                <span class="inline-block px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-rose-500/90 backdrop-blur-md mb-2">
+                  Featured Artisanal Piece
+                </span>
+                <h3 class="text-xl sm:text-2xl font-serif font-bold text-white mb-1">
+                  Eternal Floral Resin Monogram
+                </h3>
+                <p class="text-xs text-gray-200 line-clamp-1 mb-3">
+                  Preserved botanicals, 24k gold leaf foil & warm beechwood LED base
+                </p>
+                <div class="flex items-center justify-between">
+                  <span class="text-lg font-bold font-serif text-amber-300">৳1,450 <span class="text-xs text-gray-300 line-through">৳1,850</span></span>
+                  <button 
+                    onclick="openProductModal('flow-01')"
+                    class="px-4 py-1.5 bg-white text-purple-900 hover:bg-purple-100 rounded-full text-xs font-semibold shadow transition-all"
+                  >
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Floating Top-Right Mini Badge -->
+            <div class="absolute -top-4 -right-4 sm:-right-6 bg-white/95 backdrop-blur-md p-3.5 rounded-2xl shadow-xl border border-purple-100 flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center text-xl">
+                🌸
+              </div>
+              <div class="text-left">
+                <div class="text-xs font-bold text-gray-900">100% Real Flora</div>
+                <div class="text-[10px] text-gray-500">Everlasting 3-Year Life</div>
+              </div>
+            </div>
+
+            <!-- Floating Bottom-Left Guarantee Pill -->
+            <div class="absolute -bottom-5 -left-4 sm:-left-6 bg-white/95 backdrop-blur-md px-4 py-3 rounded-2xl shadow-xl border border-purple-100 flex items-center gap-2.5">
+              <div class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></div>
+              <span class="text-xs font-semibold text-gray-800">
+                Safe Doorstep Courier Delivery
+              </span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SHOP BY CATEGORY GRID
+  =========================================== -->
+  <section id="categories" class="py-12 bg-white border-y border-purple-100/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <span class="text-xs font-bold uppercase tracking-widest text-purple-600">Curated Collections</span>
+        <h2 class="text-3xl font-serif font-bold text-gray-900 mt-1">Shop By Occasion & Artform</h2>
+        <p class="text-sm text-gray-500 mt-2">Choose from our signature handmade collections designed for birthdays, anniversaries, and personal milestones.</p>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5 sm:gap-6">
+        
+        <!-- Category Card 1: Resin Art -->
+        <button 
+          type="button" 
+          onclick="filterByCategory('resin-art')"
+          class="group text-left p-4 rounded-2xl bg-purple-50/50 hover:bg-purple-100/70 border border-purple-100/80 transition-all duration-300 hover:-translate-y-1"
+        >
+          <div class="w-12 h-12 rounded-xl bg-purple-600 text-white flex items-center justify-center text-2xl mb-3 shadow-md group-hover:scale-110 transition-transform">
+            ✨
+          </div>
+          <h4 class="font-bold text-sm sm:text-base text-gray-900 group-hover:text-purple-700 transition-colors">Resin Art</h4>
+          <p class="text-[11px] text-gray-500 mt-0.5">Lamps, Coasters & Letters</p>
+        </button>
+
+        <!-- Category Card 2: Flowers -->
+        <button 
+          type="button" 
+          onclick="filterByCategory('flowers')"
+          class="group text-left p-4 rounded-2xl bg-pink-50/50 hover:bg-pink-100/70 border border-pink-100/80 transition-all duration-300 hover:-translate-y-1"
+        >
+          <div class="w-12 h-12 rounded-xl bg-pink-500 text-white flex items-center justify-center text-2xl mb-3 shadow-md group-hover:scale-110 transition-transform">
+            🌸
+          </div>
+          <h4 class="font-bold text-sm sm:text-base text-gray-900 group-hover:text-pink-600 transition-colors">Flowers & Bouquets</h4>
+          <p class="text-[11px] text-gray-500 mt-0.5">Preserved Roses & Posies</p>
+        </button>
+
+        <!-- Category Card 3: Personalized -->
+        <button 
+          type="button" 
+          onclick="filterByCategory('personalized')"
+          class="group text-left p-4 rounded-2xl bg-indigo-50/50 hover:bg-indigo-100/70 border border-indigo-100/80 transition-all duration-300 hover:-translate-y-1"
+        >
+          <div class="w-12 h-12 rounded-xl bg-indigo-600 text-white flex items-center justify-center text-2xl mb-3 shadow-md group-hover:scale-110 transition-transform">
+            🎵
+          </div>
+          <h4 class="font-bold text-sm sm:text-base text-gray-900 group-hover:text-indigo-700 transition-colors">Personalized Gifts</h4>
+          <p class="text-[11px] text-gray-500 mt-0.5">Spotify Plaques & Jars</p>
+        </button>
+
+        <!-- Category Card 4: Gift Boxes -->
+        <button 
+          type="button" 
+          onclick="filterByCategory('gift-boxes')"
+          class="group text-left p-4 rounded-2xl bg-amber-50/50 hover:bg-amber-100/70 border border-amber-100/80 transition-all duration-300 hover:-translate-y-1"
+        >
+          <div class="w-12 h-12 rounded-xl bg-amber-600 text-white flex items-center justify-center text-2xl mb-3 shadow-md group-hover:scale-110 transition-transform">
+            🎁
+          </div>
+          <h4 class="font-bold text-sm sm:text-base text-gray-900 group-hover:text-amber-700 transition-colors">Luxury Hampers</h4>
+          <p class="text-[11px] text-gray-500 mt-0.5">Wedding & Birthday Boxes</p>
+        </button>
+
+        <!-- Category Card 5: Decor & Candles -->
+        <button 
+          type="button" 
+          onclick="filterByCategory('decor')"
+          class="group text-left p-4 rounded-2xl bg-emerald-50/50 hover:bg-emerald-100/70 border border-emerald-100/80 transition-all duration-300 hover:-translate-y-1 col-span-2 sm:col-span-1"
+        >
+          <div class="w-12 h-12 rounded-xl bg-emerald-600 text-white flex items-center justify-center text-2xl mb-3 shadow-md group-hover:scale-110 transition-transform">
+            🕯️
+          </div>
+          <h4 class="font-bold text-sm sm:text-base text-gray-900 group-hover:text-emerald-700 transition-colors">Candles & Decor</h4>
+          <p class="text-[11px] text-gray-500 mt-0.5">Soy Candles, Pampas & Frames</p>
+        </button>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       MAIN PRODUCT CATALOG & SHOP SECTION
+  =========================================== -->
+  <section id="shop" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Title & Filters Bar -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+      <div>
+        <span class="text-xs font-bold uppercase tracking-widest text-purple-600">Explore Catalog</span>
+        <h2 class="text-3xl sm:text-4xl font-serif font-bold text-gray-900 mt-1">Handcrafted Treasures</h2>
+        <p class="text-sm text-gray-500 mt-1" id="product-count-badge">Loading available handcrafted gifts...</p>
+      </div>
+
+      <!-- Live Search & Sort Toolbar -->
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+        
+        <!-- Search Input -->
+        <div class="relative min-w-[240px]">
+          <input 
+            type="text" 
+            id="search-input" 
+            placeholder="Search gifts, resin, bouquet..." 
+            class="w-full pl-9 pr-4 py-2.5 rounded-full border border-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-500 text-xs sm:text-sm bg-white shadow-sm"
+          />
+          <svg class="w-4 h-4 text-gray-400 absolute left-3 top-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+        </div>
+
+        <!-- Sort Select -->
+        <div class="relative">
+          <select 
+            id="sort-select" 
+            class="w-full sm:w-auto appearance-none bg-white border border-purple-200 text-gray-700 py-2.5 pl-4 pr-9 rounded-full text-xs sm:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-purple-500 shadow-sm cursor-pointer"
+          >
+            <option value="featured">Featured Picks</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="rating">Highest Rated</option>
+            <option value="discount">Biggest Discount</option>
+          </select>
+          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-400">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Category Filter Pills Bar -->
+    <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-8 no-scrollbar scroll-smooth">
+      <button 
+        type="button" 
+        data-category="all"
+        class="filter-pill active whitespace-nowrap px-4 py-2 rounded-full text-xs sm:text-sm font-semibold border border-purple-200 bg-white text-gray-700 hover:bg-purple-50 transition-all"
+      >
+        All Collections
+      </button>
+      <button 
+        type="button" 
+        data-category="resin-art"
+        class="filter-pill whitespace-nowrap px-4 py-2 rounded-full text-xs sm:text-sm font-semibold border border-purple-200 bg-white text-gray-700 hover:bg-purple-50 transition-all"
+      >
+        Resin Art
+      </button>
+      <button 
+        type="button" 
+        data-category="flowers"
+        class="filter-pill whitespace-nowrap px-4 py-2 rounded-full text-xs sm:text-sm font-semibold border border-purple-200 bg-white text-gray-700 hover:bg-purple-50 transition-all"
+      >
+        Flowers & Bouquets
+      </button>
+      <button 
+        type="button" 
+        data-category="personalized"
+        class="filter-pill whitespace-nowrap px-4 py-2 rounded-full text-xs sm:text-sm font-semibold border border-purple-200 bg-white text-gray-700 hover:bg-purple-50 transition-all"
+      >
+        Personalized Keepsakes
+      </button>
+      <button 
+        type="button" 
+        data-category="gift-boxes"
+        class="filter-pill whitespace-nowrap px-4 py-2 rounded-full text-xs sm:text-sm font-semibold border border-purple-200 bg-white text-gray-700 hover:bg-purple-50 transition-all"
+      >
+        Luxury Hampers
+      </button>
+      <button 
+        type="button" 
+        data-category="decor"
+        class="filter-pill whitespace-nowrap px-4 py-2 rounded-full text-xs sm:text-sm font-semibold border border-purple-200 bg-white text-gray-700 hover:bg-purple-50 transition-all"
+      >
+        Home Decor & Candles
+      </button>
+    </div>
+
+    <!-- Dynamic Product Cards Grid (Populated by app.js) -->
+    <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-7">
+      <!-- Loading skeletons -->
+      <div class="animate-pulse bg-white rounded-2xl h-96 p-4 border border-purple-100 flex flex-col justify-between">
+        <div class="bg-gray-200 rounded-xl h-56 w-full"></div>
+        <div class="space-y-2 py-3">
+          <div class="bg-gray-200 h-4 rounded w-3/4"></div>
+          <div class="bg-gray-200 h-3 rounded w-1/2"></div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ==========================================
+       CUSTOM ORDER REQUEST FORM SECTION
+  =========================================== -->
+  <section id="custom-order" class="py-16 bg-gradient-to-b from-purple-50/50 via-white to-pink-50/30">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="bg-white rounded-3xl shadow-xl border border-purple-100 overflow-hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-12">
+          
+          <!-- Left Info Column -->
+          <div class="lg:col-span-5 bg-gradient-to-br from-brand-700 to-rosebud-600 p-8 sm:p-10 text-white flex flex-col justify-between">
+            <div>
+              <span class="inline-block px-3 py-1 rounded-full text-[11px] font-bold bg-white/20 tracking-wider mb-4">
+                Bespoke Artisanal Service
+              </span>
+              <h3 class="text-2xl sm:text-3xl font-serif font-bold mb-3">
+                Have a Unique Gift Idea in Mind?
+              </h3>
+              <p class="text-sm text-purple-100 leading-relaxed mb-6">
+                Tell us your vision! Whether it's preserving your wedding bouquet in a resin clock, crafting a corporate personalized executive hamper, or custom name typography.
+              </p>
+
+              <!-- Process Steps -->
+              <div class="space-y-4 text-xs">
+                <div class="flex items-center gap-3">
+                  <span class="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center font-bold">1</span>
+                  <span>Describe your concept and required date</span>
+                </div>
+                <div class="flex items-center gap-3">
+                  <span class="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center font-bold">2</span>
+                  <span>Our artisan reviews details & gives exact quote</span>
+                </div>
+                <div class="flex items-center gap-3">
+                  <span class="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center font-bold">3</span>
+                  <span>Photo & video approval before final dispatch</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-8 pt-6 border-t border-white/20">
+              <p class="text-xs text-purple-200 mb-2">Prefer instant chat?</p>
+              <a 
+                href="https://wa.me/8801712345678" 
+                target="_blank" 
+                rel="noopener"
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white text-purple-900 font-semibold text-xs shadow hover:bg-purple-50 transition-all"
+              >
+                <span>Chat on WhatsApp Directly</span>
+                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Form Column -->
+          <div class="lg:col-span-7 p-8 sm:p-10">
+            <h4 class="text-xl font-bold text-gray-900 mb-1">Request a Custom Creation</h4>
+            <p class="text-xs text-gray-500 mb-6">We respond via Phone or WhatsApp within 1-2 hours.</p>
+
+            <form id="custom-order-form" class="space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-semibold text-gray-700 mb-1">Your Full Name *</label>
+                  <input 
+                    type="text" 
+                    name="name" 
+                    required 
+                    placeholder="e.g. Farhana Ahmed"
+                    class="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-purple-500 focus:outline-none text-xs sm:text-sm"
+                  />
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-gray-700 mb-1">Phone / WhatsApp *</label>
+                  <input 
+                    type="tel" 
+                    name="phone" 
+                    required 
+                    placeholder="017XXXXXXXX"
+                    class="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-purple-500 focus:outline-none text-xs sm:text-sm"
+                  />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-semibold text-gray-700 mb-1">Gift Category</label>
+                  <select 
+                    name="gift_type" 
+                    class="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-purple-500 focus:outline-none text-xs sm:text-sm bg-white"
+                  >
+                    <option value="Resin Keepsake">Resin Keepsake / Letter Lamp</option>
+                    <option value="Wedding Flowers Preservation">Wedding Floral Bouquet Preservation</option>
+                    <option value="Acrylic Music Plaque">Acrylic Spotify Song Plaque</option>
+                    <option value="Luxury Custom Hamper">Custom Gift Hamper Box</option>
+                    <option value="Corporate Bulk Gifts">Corporate Gifting & Bulk Order</option>
+                    <option value="Other">Other Artistic Request</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-gray-700 mb-1">Target Budget (BDT)</label>
+                  <select 
+                    name="budget" 
+                    class="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-purple-500 focus:outline-none text-xs sm:text-sm bg-white"
+                  >
+                    <option value="৳1,000 - ৳2,000">৳1,000 - ৳2,000</option>
+                    <option value="৳2,000 - ৳3,500">৳2,000 - ৳3,500</option>
+                    <option value="৳3,500 - ৳5,000">৳3,500 - ৳5,000</option>
+                    <option value="৳5,000+ (Grand Luxury)">৳5,000+ (Grand Luxury)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-gray-700 mb-1">Needed By Date (Optional)</label>
+                <input 
+                  type="date" 
+                  name="deadline"
+                  class="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-purple-500 focus:outline-none text-xs sm:text-sm"
+                />
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-gray-700 mb-1">Describe Your Idea & Personalization Text *</label>
+                <textarea 
+                  name="details" 
+                  rows="3" 
+                  required 
+                  placeholder="Tell us desired colors, initials, anniversary dates, or custom photo instructions..."
+                  class="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-purple-500 focus:outline-none text-xs sm:text-sm resize-none"
+                ></textarea>
+              </div>
+
+              <button 
+                type="submit" 
+                class="w-full py-3.5 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-xl shadow-md transition-all text-xs sm:text-sm"
+              >
+                Send Custom Order Request
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       WHY CHOOSE FLOWRIS
+  =========================================== -->
+  <section id="why-us" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <span class="text-xs font-bold uppercase tracking-widest text-purple-600">The Flowris Promise</span>
+      <h2 class="text-3xl font-serif font-bold text-gray-900 mt-1">Handmade With Uncompromising Care</h2>
+      <p class="text-sm text-gray-500 mt-2">Every piece is hand-poured, hand-pressed, and inspected with devotion in our Dhaka studio.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      
+      <!-- Feature 1 -->
+      <div class="p-6 rounded-2xl bg-white border border-purple-50 shadow-soft">
+        <div class="w-12 h-12 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center text-2xl mb-4">
+          🤲
+        </div>
+        <h4 class="font-bold text-base text-gray-900 mb-2">100% Handcrafted</h4>
+        <p class="text-xs text-gray-500 leading-relaxed">
+          Zero mass-produced plastics. Every bloom is hand-selected and carefully embedded in ultra-clear epoxy resin.
+        </p>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="p-6 rounded-2xl bg-white border border-purple-50 shadow-soft">
+        <div class="w-12 h-12 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center text-2xl mb-4">
+          🌿
+        </div>
+        <h4 class="font-bold text-base text-gray-900 mb-2">Everlasting Botanicals</h4>
+        <p class="text-xs text-gray-500 leading-relaxed">
+          Our preserved natural roses and dried botanicals retain their radiant colors for 3+ years without water or sun.
+        </p>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="p-6 rounded-2xl bg-white border border-purple-50 shadow-soft">
+        <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-2xl mb-4">
+          📦
+        </div>
+        <h4 class="font-bold text-base text-gray-900 mb-2">Shockproof Packaging</h4>
+        <p class="text-xs text-gray-500 leading-relaxed">
+          Every fragile item is cushioned in multi-layer bubble wrap, luxury rigid cardboard, and gift-ready wrapping.
+        </p>
+      </div>
+
+      <!-- Feature 4 -->
+      <div class="p-6 rounded-2xl bg-white border border-purple-50 shadow-soft">
+        <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-2xl mb-4">
+          🇧🇩
+        </div>
+        <h4 class="font-bold text-base text-gray-900 mb-2">All 64 Districts Delivery</h4>
+        <p class="text-xs text-gray-500 leading-relaxed">
+          Express 24-48 hour delivery inside Dhaka, and reliable door-to-door courier across all divisional districts.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       CUSTOMER TESTIMONIALS
+  =========================================== -->
+  <section id="reviews" class="py-16 bg-purple-50/40 border-y border-purple-100/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-xs font-bold uppercase tracking-widest text-purple-600">Loved by 1,200+ Gift Givers</span>
+        <h2 class="text-3xl font-serif font-bold text-gray-900 mt-1">Real Stories, Real Smiles</h2>
+        <div class="flex items-center justify-center gap-1 text-amber-400 mt-2 text-sm">
+          ★★★★★ <span class="text-gray-500 text-xs font-medium ml-1">4.9 Average rating across Facebook & Google Reviews</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Review 1 -->
+        <div class="bg-white p-6 rounded-2xl border border-purple-100 shadow-soft flex flex-col justify-between">
+          <div>
+            <div class="flex text-amber-400 text-sm mb-3">★★★★★</div>
+            <p class="text-xs sm:text-sm text-gray-600 italic leading-relaxed mb-4">
+              "I ordered the Eternal Resin Letter Lamp for my fiancé's birthday with our initials. The warm golden light and preserved pink flowers look so magical in person! Packaging was super safe."
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-4 border-t border-purple-50">
+            <div class="w-9 h-9 rounded-full bg-purple-100 text-purple-700 font-bold flex items-center justify-center text-xs">
+              NA
+            </div>
+            <div>
+              <h5 class="text-xs font-bold text-gray-900">Nabila Anjum</h5>
+              <p class="text-[10px] text-gray-400">Dhanmondi, Dhaka • Verified Buyer</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="bg-white p-6 rounded-2xl border border-purple-100 shadow-soft flex flex-col justify-between">
+          <div>
+            <div class="flex text-amber-400 text-sm mb-3">★★★★★</div>
+            <p class="text-xs sm:text-sm text-gray-600 italic leading-relaxed mb-4">
+              "The custom Spotify plaque arrived in Chittagong within 3 days! The printing clarity on the acrylic is 10/10 and the Spotify barcode scanned instantly on phone camera. Highly recommend Flowris!"
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-4 border-t border-purple-50">
+            <div class="w-9 h-9 rounded-full bg-pink-100 text-pink-700 font-bold flex items-center justify-center text-xs">
+              TR
+            </div>
+            <div>
+              <h5 class="text-xs font-bold text-gray-900">Tanvir Rahman</h5>
+              <p class="text-[10px] text-gray-400">GEC Circle, Chittagong • Verified Buyer</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="bg-white p-6 rounded-2xl border border-purple-100 shadow-soft flex flex-col justify-between">
+          <div>
+            <div class="flex text-amber-400 text-sm mb-3">★★★★★</div>
+            <p class="text-xs sm:text-sm text-gray-600 italic leading-relaxed mb-4">
+              "We ordered the Grand Celebration Nikkah Gift Box for my sister's wedding. Everything from the calligraphy vow card to the scented candle was beyond premium. Worth every single taka!"
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-4 border-t border-purple-50">
+            <div class="w-9 h-9 rounded-full bg-emerald-100 text-emerald-700 font-bold flex items-center justify-center text-xs">
+              SM
+            </div>
+            <div>
+              <h5 class="text-xs font-bold text-gray-900">Samira Mehzabeen</h5>
+              <p class="text-[10px] text-gray-400">Uttara, Dhaka • Verified Buyer</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       INSTAGRAM STUDIO GALLERY (#FlowrisMoments)
+  =========================================== -->
+  <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+      <div>
+        <span class="text-xs font-bold uppercase tracking-widest text-purple-600">Studio Sneak Peeks</span>
+        <h2 class="text-3xl font-serif font-bold text-gray-900 mt-1">#FlowrisMoments</h2>
+      </div>
+      <a 
+        href="https://instagram.com" 
+        target="_blank" 
+        rel="noopener"
+        class="text-xs font-semibold text-purple-700 hover:text-purple-900 inline-flex items-center gap-1"
+      >
+        <span>Follow us on Instagram @FlowrisGifts</span>
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="relative group rounded-2xl overflow-hidden aspect-square bg-purple-50">
+        <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=600&q=80" alt="Resin Lamp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+        <div class="absolute inset-0 bg-purple-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-semibold">
+          Artisanal Pours ✨
+        </div>
+      </div>
+      <div class="relative group rounded-2xl overflow-hidden aspect-square bg-purple-50">
+        <img src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=600&q=80" alt="Flower Bouquet" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+        <div class="absolute inset-0 bg-purple-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-semibold">
+          Everlasting Flora 🌸
+        </div>
+      </div>
+      <div class="relative group rounded-2xl overflow-hidden aspect-square bg-purple-50">
+        <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=80" alt="Gift Hamper" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+        <div class="absolute inset-0 bg-purple-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-semibold">
+          Luxury Keepsakes 🎁
+        </div>
+      </div>
+      <div class="relative group rounded-2xl overflow-hidden aspect-square bg-purple-50">
+        <img src="https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=600&q=80" alt="Soy Candle" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+        <div class="absolute inset-0 bg-purple-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-semibold">
+          Aromatic Serenity 🕯️
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       FREQUENTLY ASKED QUESTIONS (FAQ)
+  =========================================== -->
+  <section id="faq" class="py-16 bg-white border-t border-purple-100/60">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-12">
+        <span class="text-xs font-bold uppercase tracking-widest text-purple-600">Got Questions?</span>
+        <h2 class="text-3xl font-serif font-bold text-gray-900 mt-1">Frequently Asked Questions</h2>
+        <p class="text-sm text-gray-500 mt-2">Everything you need to know about deliveries, customizations, and payments.</p>
+      </div>
+
+      <div class="space-y-4">
+        
+        <!-- FAQ 1 -->
+        <details class="group bg-purple-50/40 p-5 rounded-2xl border border-purple-100 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
+          <summary class="flex items-center justify-between font-semibold text-gray-900 text-sm sm:text-base">
+            <span>How long does delivery take inside and outside Dhaka?</span>
+            <span class="ml-4 flex-shrink-0 text-purple-600 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="mt-3 text-xs sm:text-sm text-gray-600 leading-relaxed">
+            Inside Dhaka city, orders are typically delivered within 24 to 48 hours. For deliveries outside Dhaka (all 64 districts), parcels take 3 to 4 business days via Steadfast / Pathao / Sundarban courier services.
+          </p>
+        </details>
+
+        <!-- FAQ 2 -->
+        <details class="group bg-purple-50/40 p-5 rounded-2xl border border-purple-100 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
+          <summary class="flex items-center justify-between font-semibold text-gray-900 text-sm sm:text-base">
+            <span>How does Cash on Delivery (COD) and bKash payment work?</span>
+            <span class="ml-4 flex-shrink-0 text-purple-600 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="mt-3 text-xs sm:text-sm text-gray-600 leading-relaxed">
+            You can pay comfortably via Cash on Delivery upon receiving your package. For personalized orders (such as custom name engravings or photo prints), we may request a small advance booking fee of ৳200 via bKash / Nagad Send Money to confirm personalization materials.
+          </p>
+        </details>
+
+        <!-- FAQ 3 -->
+        <details class="group bg-purple-50/40 p-5 rounded-2xl border border-purple-100 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
+          <summary class="flex items-center justify-between font-semibold text-gray-900 text-sm sm:text-base">
+            <span>Can you send the gift directly to the recipient with a handwritten note?</span>
+            <span class="ml-4 flex-shrink-0 text-purple-600 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="mt-3 text-xs sm:text-sm text-gray-600 leading-relaxed">
+            Yes, absolutely! We love surprise gifts. Simply enter the recipient's delivery address and phone number during checkout, and write your secret message in the "Gift Note" box. We will hand-write your note on luxury calligraphy cardstock without attaching any invoice.
+          </p>
+        </details>
+
+        <!-- FAQ 4 -->
+        <details class="group bg-purple-50/40 p-5 rounded-2xl border border-purple-100 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
+          <summary class="flex items-center justify-between font-semibold text-gray-900 text-sm sm:text-base">
+            <span>How long do preserved botanical flowers and resin art last?</span>
+            <span class="ml-4 flex-shrink-0 text-purple-600 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="mt-3 text-xs sm:text-sm text-gray-600 leading-relaxed">
+            Epoxy resin keepsakes last a lifetime! Our flowers are dehydrated using Japanese botanical preservation techniques and sealed with anti-UV resin, protecting them against fading, humidity, and dust.
+          </p>
+        </details>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       FOOTER
+  =========================================== -->
+  <footer class="bg-gray-950 text-gray-300 pt-16 pb-12 border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-gray-800">
+        
+        <!-- Brand Info -->
+        <div class="lg:col-span-2">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-2xl">🌸</span>
+            <span class="font-serif text-2xl font-bold text-white tracking-wide">Flowris</span>
+          </div>
+          <p class="text-xs sm:text-sm text-gray-400 leading-relaxed max-w-sm mb-6">
+            Handcrafted gifts, made with eternal love in Dhaka. Preserving cherished memories into botanical resin keepsakes, custom song plaques, and luxury curated hampers.
+          </p>
+          <div class="flex items-center gap-3">
+            <a href="https://wa.me/8801712345678" target="_blank" rel="noopener" class="w-9 h-9 rounded-full bg-gray-800 hover:bg-emerald-600 text-white flex items-center justify-center transition-colors">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener" class="w-9 h-9 rounded-full bg-gray-800 hover:bg-pink-600 text-white flex items-center justify-center transition-colors">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener" class="w-9 h-9 rounded-full bg-gray-800 hover:bg-blue-600 text-white flex items-center justify-center transition-colors">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 15.6 5H18V0h-3.808C10.596 0 9 1.583 9 4.615V8z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Collections Links -->
+        <div>
+          <h4 class="text-white font-semibold text-sm mb-4">Gift Collections</h4>
+          <ul class="space-y-2 text-xs text-gray-400">
+            <li><a href="#shop" onclick="filterByCategory('resin-art')" class="hover:text-purple-400 transition-colors">Resin Letter Lamps</a></li>
+            <li><a href="#shop" onclick="filterByCategory('flowers')" class="hover:text-purple-400 transition-colors">Preserved Rose Bouquets</a></li>
+            <li><a href="#shop" onclick="filterByCategory('personalized')" class="hover:text-purple-400 transition-colors">Acrylic Spotify Plaques</a></li>
+            <li><a href="#shop" onclick="filterByCategory('gift-boxes')" class="hover:text-purple-400 transition-colors">Luxury Wedding Hampers</a></li>
+            <li><a href="#shop" onclick="filterByCategory('decor')" class="hover:text-purple-400 transition-colors">Scented Soy Wax Candles</a></li>
+          </ul>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4 class="text-white font-semibold text-sm mb-4">Customer Care</h4>
+          <ul class="space-y-2 text-xs text-gray-400">
+            <li><a href="#custom-order" class="hover:text-purple-400 transition-colors">Custom Order Inquiries</a></li>
+            <li><a href="#faq" class="hover:text-purple-400 transition-colors">Shipping Rates & Policy</a></li>
+            <li><a href="#faq" class="hover:text-purple-400 transition-colors">bKash Payment Guide</a></li>
+            <li><a href="#why-us" class="hover:text-purple-400 transition-colors">Packaging & Fragile Safety</a></li>
+            <li><a href="#reviews" class="hover:text-purple-400 transition-colors">Customer Reviews</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Studio -->
+        <div>
+          <h4 class="text-white font-semibold text-sm mb-4">Artisanal Studio</h4>
+          <ul class="space-y-2.5 text-xs text-gray-400">
+            <li class="flex items-start gap-2">
+              <span class="text-purple-400">📍</span>
+              <span>Dhanmondi, Dhaka 1209, Bangladesh</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-purple-400">📞</span>
+              <span>+880 1712-345678</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-purple-400">💬</span>
+              <span>WhatsApp: 01712-345678</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-purple-400">✉️</span>
+              <span>hello@flowrisgifts.com</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Bottom Row: Payment Badges & Copyright -->
+      <div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+        <div>
+          © 2026 Flowris Gifts. 100% Client-Side & Static Architecture. Designed with Love.
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-1 rounded bg-gray-900 text-gray-400 text-[10px] font-mono border border-gray-800">bKash</span>
+          <span class="px-2.5 py-1 rounded bg-gray-900 text-gray-400 text-[10px] font-mono border border-gray-800">Nagad</span>
+          <span class="px-2.5 py-1 rounded bg-gray-900 text-gray-400 text-[10px] font-mono border border-gray-800">Rocket</span>
+          <span class="px-2.5 py-1 rounded bg-gray-900 text-gray-400 text-[10px] font-mono border border-gray-800">Cash on Delivery</span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       SLIDE-OVER CART DRAWER
+  =========================================== -->
+  <div id="cart-drawer" class="drawer-backdrop fixed inset-0 z-50 bg-black/50 backdrop-blur-sm" onclick="closeCartDrawer()">
+    <div class="drawer-panel fixed inset-y-0 right-0 w-full max-w-md bg-white shadow-2xl flex flex-col justify-between" onclick="event.stopPropagation()">
+      
+      <!-- Drawer Header -->
+      <div class="p-5 border-b border-purple-100 flex items-center justify-between bg-purple-50/40">
+        <div class="flex items-center gap-2">
+          <span class="text-lg">🛍️</span>
+          <h4 class="font-bold text-gray-900 text-base font-serif">Shopping Bag</h4>
+          <span class="cart-badge-count hidden px-2 py-0.5 rounded-full bg-purple-600 text-white text-[11px] font-bold">0</span>
+        </div>
+        <button onclick="closeCartDrawer()" class="p-1 rounded-lg text-gray-400 hover:text-gray-700 hover:bg-white transition-colors">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Free Delivery Progress Bar -->
+      <div class="px-5 py-3 bg-purple-100/50 border-b border-purple-100 text-xs">
+        <p id="free-shipping-msg" class="text-purple-900 text-center font-medium mb-1.5 leading-snug">
+          Add ৳1,500 for FREE Delivery in Dhaka
+        </p>
+        <div class="w-full bg-purple-200/80 rounded-full h-1.5 overflow-hidden">
+          <div id="free-shipping-progress" class="bg-gradient-to-r from-purple-600 to-pink-500 h-1.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <!-- Drawer Scrollable Content -->
+      <div class="flex-1 overflow-y-auto p-5">
+        
+        <!-- Empty State -->
+        <div id="cart-empty-state" class="py-16 text-center">
+          <div class="w-16 h-16 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center text-3xl mx-auto mb-3">
+            🛒
+          </div>
+          <h5 class="text-base font-bold text-gray-800 mb-1">Your cart is empty</h5>
+          <p class="text-xs text-gray-500 max-w-xs mx-auto mb-5">
+            Looks like you haven't added any handcrafted gifts yet.
+          </p>
+          <button 
+            onclick="closeCartDrawer(); location.href='#shop';" 
+            class="px-5 py-2.5 bg-purple-600 text-white rounded-full text-xs font-semibold shadow hover:bg-purple-700 transition-all"
+          >
+            Start Shopping
+          </button>
+        </div>
+
+        <!-- Populated Cart Items -->
+        <div id="cart-items-container" class="space-y-1"></div>
+
+      </div>
+
+      <!-- Drawer Footer & Summary -->
+      <div id="cart-footer-section" class="p-5 border-t border-purple-100 bg-gray-50/60 hidden">
+        
+        <!-- Promo Code Input -->
+        <div class="flex gap-2 mb-4">
+          <input 
+            type="text" 
+            id="promo-code-input" 
+            placeholder="Coupon code (e.g. FLOWRISLOVE)" 
+            class="flex-1 px-3 py-2 rounded-xl border border-purple-200 text-xs uppercase font-medium focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white"
+          />
+          <button 
+            type="button" 
+            onclick="applyPromoCode()"
+            class="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold rounded-xl shadow-sm transition-all"
+          >
+            Apply
+          </button>
+        </div>
+
+        <!-- Calculations -->
+        <div class="space-y-1.5 text-xs text-gray-600 pb-3 border-b border-purple-100">
+          <div class="flex justify-between">
+            <span>Subtotal</span>
+            <span id="cart-subtotal" class="font-semibold text-gray-900 font-serif">৳0</span>
+          </div>
+          <div id="cart-discount-row" class="flex justify-between text-emerald-600 hidden">
+            <span>Coupon Discount <small id="cart-applied-promo-tag"></small></span>
+            <span id="cart-discount-amount" class="font-semibold font-serif">-৳0</span>
+          </div>
+          <div class="flex justify-between text-gray-500 text-[11px]">
+            <span>Shipping</span>
+            <span>Calculated at checkout</span>
+          </div>
+        </div>
+
+        <!-- Total -->
+        <div class="flex justify-between items-baseline pt-3 mb-4">
+          <span class="text-sm font-bold text-gray-900">Total</span>
+          <span id="cart-total" class="text-xl font-bold font-serif text-purple-700">৳0</span>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="space-y-2">
+          <button 
+            type="button" 
+            onclick="openCheckoutModal()" 
+            class="w-full py-3.5 gradient-btn text-white rounded-xl font-semibold text-sm shadow-md transition-all flex items-center justify-center gap-2"
+          >
+            <span>Proceed to Checkout</span>
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </button>
+
+          <button 
+            type="button" 
+            onclick="checkoutDirectViaWhatsApp()" 
+            class="w-full py-2.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 rounded-xl font-medium text-xs transition-all flex items-center justify-center gap-1.5"
+          >
+            <span>💬 Quick Order via WhatsApp</span>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==========================================
+       SLIDE-OVER WISHLIST DRAWER
+  =========================================== -->
+  <div id="wishlist-drawer" class="drawer-backdrop fixed inset-0 z-50 bg-black/50 backdrop-blur-sm" onclick="closeWishlistDrawer()">
+    <div class="drawer-panel fixed inset-y-0 right-0 w-full max-w-md bg-white shadow-2xl flex flex-col justify-between" onclick="event.stopPropagation()">
+      
+      <!-- Drawer Header -->
+      <div class="p-5 border-b border-pink-100 flex items-center justify-between bg-pink-50/40">
+        <div class="flex items-center gap-2">
+          <span class="text-lg">❤️</span>
+          <h4 class="font-bold text-gray-900 text-base font-serif">Saved Wishlist</h4>
+          <span class="wishlist-badge-count hidden px-2 py-0.5 rounded-full bg-pink-600 text-white text-[11px] font-bold">0</span>
+        </div>
+        <button onclick="closeWishlistDrawer()" class="p-1 rounded-lg text-gray-400 hover:text-gray-700 hover:bg-white transition-colors">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Drawer Content -->
+      <div class="flex-1 overflow-y-auto p-5">
+        <div id="wishlist-empty-state" class="py-16 text-center">
+          <div class="w-16 h-16 rounded-full bg-pink-50 text-pink-500 flex items-center justify-center text-3xl mx-auto mb-3">
+            ❤️
+          </div>
+          <h5 class="text-base font-bold text-gray-800 mb-1">Your wishlist is empty</h5>
+          <p class="text-xs text-gray-500 max-w-xs mx-auto mb-5">
+            Click the heart icon on any handcrafted piece to save it for later.
+          </p>
+          <button 
+            onclick="closeWishlistDrawer(); location.href='#shop';" 
+            class="px-5 py-2.5 bg-pink-600 text-white rounded-full text-xs font-semibold shadow hover:bg-pink-700 transition-all"
+          >
+            Explore Gifts
+          </button>
+        </div>
+
+        <div id="wishlist-items-container" class="space-y-1"></div>
+      </div>
+
+      <div class="p-4 border-t border-purple-50 text-center">
+        <button 
+          onclick="closeWishlistDrawer()" 
+          class="w-full py-2.5 border border-purple-200 text-purple-700 font-medium rounded-xl text-xs hover:bg-purple-50"
+        >
+          Back to Browsing
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==========================================
+       PRODUCT DETAIL / QUICK VIEW MODAL
+  =========================================== -->
+  <div id="product-modal" class="modal-overlay fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 overflow-y-auto" onclick="closeProductModal()">
+    <div class="modal-container bg-white rounded-3xl max-w-3xl w-full shadow-2xl overflow-hidden relative my-auto" onclick="event.stopPropagation()">
+      
+      <!-- Close button -->
+      <button 
+        type="button" 
+        onclick="closeProductModal()"
+        class="absolute top-4 right-4 z-20 w-9 h-9 rounded-full bg-white/90 backdrop-blur-md shadow-md text-gray-500 hover:text-gray-900 flex items-center justify-center transition-all"
+      >
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+
+      <div class="grid grid-cols-1 md:grid-cols-2">
+        
+        <!-- Gallery Preview -->
+        <div class="p-6 bg-purple-50/40 flex flex-col justify-between">
+          <div class="relative w-full pt-[100%] rounded-2xl overflow-hidden bg-white shadow-sm mb-3">
+            <img id="modal-img-main" src="" alt="Product" class="absolute inset-0 w-full h-full object-cover" />
+          </div>
+          <!-- Thumbnails Row -->
+          <div id="modal-thumbnails" class="flex gap-2 justify-center"></div>
+        </div>
+
+        <!-- Product Details & Actions -->
+        <div class="p-6 sm:p-8 flex flex-col justify-between max-h-[85vh] overflow-y-auto">
+          <div>
+            <!-- Category & Discount -->
+            <div class="flex items-center justify-between mb-2">
+              <span id="modal-category" class="text-xs uppercase font-bold tracking-wider text-purple-600"></span>
+              <span id="modal-discount-badge" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-500 text-white"></span>
+            </div>
+
+            <!-- Title -->
+            <h3 id="modal-title" class="text-xl sm:text-2xl font-serif font-bold text-gray-900 mb-2 leading-snug"></h3>
+
+            <!-- Price -->
+            <div class="flex items-baseline gap-2 mb-3">
+              <span id="modal-price" class="text-2xl font-bold font-serif text-purple-700"></span>
+              <span id="modal-original-price" class="text-sm text-gray-400 line-through"></span>
+            </div>
+
+            <!-- Rating -->
+            <div class="flex items-center gap-1.5 text-xs text-amber-500 font-semibold mb-4">
+              <span>★</span>
+              <span id="modal-rating-score"></span>
+              <span id="modal-rating-count" class="text-gray-400 font-normal"></span>
+            </div>
+
+            <!-- Description -->
+            <p id="modal-description" class="text-xs text-gray-600 leading-relaxed mb-4"></p>
+
+            <!-- Specs Grid -->
+            <div class="bg-purple-50/50 p-3 rounded-xl space-y-1 text-[11px] mb-5 border border-purple-100/60">
+              <div><strong class="text-gray-700">Materials:</strong> <span id="modal-materials" class="text-gray-600"></span></div>
+              <div><strong class="text-gray-700">Dimensions:</strong> <span id="modal-dimensions" class="text-gray-600"></span></div>
+              <div><strong class="text-gray-700">Dispatch:</strong> <span class="text-emerald-700 font-medium">Ready within 24-48 hours</span></div>
+            </div>
+
+            <!-- Customization Input (Dynamic) -->
+            <div id="modal-customization-section" class="mb-5 hidden">
+              <label id="modal-custom-label" class="block text-xs font-bold text-purple-900 mb-1.5">
+                Personalization Details:
+              </label>
+              <input 
+                type="text" 
+                id="modal-custom-text" 
+                class="w-full px-3.5 py-2.5 rounded-xl border border-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-500 text-xs"
+              />
+              <p class="text-[10px] text-gray-400 mt-1">Our artisan will customize your item before pouring/assembly.</p>
+            </div>
+          </div>
+
+          <!-- Quantity & Purchase Buttons -->
+          <div>
+            <div class="flex items-center gap-3 mb-3">
+              <span class="text-xs font-semibold text-gray-700">Quantity:</span>
+              <div class="inline-flex items-center rounded-xl border border-purple-200 bg-white">
+                <button 
+                  type="button" 
+                  onclick="const el = document.getElementById('modal-qty-input'); el.value = Math.max(1, parseInt(el.value || 1) - 1);" 
+                  class="w-8 h-8 flex items-center justify-center text-gray-600 hover:text-purple-700 font-bold"
+                >-</button>
+                <input 
+                  type="number" 
+                  id="modal-qty-input" 
+                  value="1" 
+                  min="1" 
+                  readonly 
+                  class="w-8 text-center text-xs font-bold text-gray-900 focus:outline-none bg-transparent"
+                />
+                <button 
+                  type="button" 
+                  onclick="const el = document.getElementById('modal-qty-input'); el.value = parseInt(el.value || 1) + 1;" 
+                  class="w-8 h-8 flex items-center justify-center text-gray-600 hover:text-purple-700 font-bold"
+                >+</button>
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-2.5">
+              <button 
+                type="button" 
+                onclick="modalAddToCart()"
+                class="flex-1 py-3 gradient-btn text-white font-semibold rounded-xl text-xs sm:text-sm shadow-md transition-all flex items-center justify-center gap-2"
+              >
+                <span>Add to Bag</span>
+              </button>
+              <button 
+                type="button" 
+                onclick="modalBuyViaWhatsApp()"
+                class="py-3 px-4 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold rounded-xl text-xs sm:text-sm shadow-md transition-all flex items-center justify-center gap-1.5"
+                title="Order directly on WhatsApp"
+              >
+                <span>Order via WhatsApp</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==========================================
+       SERVERLESS CHECKOUT MODAL
+  =========================================== -->
+  <div id="checkout-modal" class="modal-overlay fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 overflow-y-auto" onclick="closeCheckoutModal()">
+    <div id="checkout-modal-content" class="modal-container bg-white rounded-3xl max-w-2xl w-full shadow-2xl overflow-hidden relative my-auto" onclick="event.stopPropagation()">
+      
+      <!-- Modal Header -->
+      <div class="p-5 sm:p-6 border-b border-purple-100 flex items-center justify-between bg-purple-50/50">
+        <div>
+          <span class="text-xs uppercase font-bold tracking-wider text-purple-600">Safe Checkout</span>
+          <h3 class="text-xl font-bold font-serif text-gray-900">Complete Your Gift Order</h3>
+        </div>
+        <button onclick="closeCheckoutModal()" class="p-1 rounded-lg text-gray-400 hover:text-gray-700 hover:bg-white transition-colors">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Checkout Form -->
+      <form id="checkout-form" class="p-5 sm:p-6 space-y-5 max-h-[80vh] overflow-y-auto">
+        
+        <!-- Step 1: Shipping Information -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-gray-500 mb-3 flex items-center gap-1.5">
+            <span class="w-5 h-5 rounded-full bg-purple-600 text-white text-[10px] flex items-center justify-center">1</span>
+            Delivery & Recipient Details
+          </h4>
+
+          <div class="space-y-3">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-semibold text-gray-700 mb-1">Full Name *</label>
+                <input 
+                  type="text" 
+                  id="cust-name" 
+                  required 
+                  placeholder="e.g., Ayesha Siddiqua" 
+                  class="w-full px-3.5 py-2.5 rounded-xl border border-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-500 text-xs sm:text-sm"
+                />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-gray-700 mb-1">Phone Number (Required) *</label>
+                <input 
+                  type="tel" 
+                  id="cust-phone" 
+                  required 
+                  placeholder="01XXXXXXXXX" 
+                  class="w-full px-3.5 py-2.5 rounded-xl border border-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-500 text-xs sm:text-sm"
+                />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-semibold text-gray-700 mb-1">Alternative Phone (Optional)</label>
+                <input 
+                  type="tel" 
+                  id="cust-alt-phone" 
+                  placeholder="For courier backup" 
+                  class="w-full px-3.5 py-2.5 rounded-xl border border-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-500 text-xs sm:text-sm"
+                />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-gray-700 mb-1">District / City *</label>
+                <select 
+                  id="cust-district" 
+                  class="w-full px-3.5 py-2.5 rounded-xl border border-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-500 text-xs sm:text-sm bg-white"
+                >
+                  <option value="Dhaka">Dhaka</option>
+                  <option value="Chittagong">Chittagong</option>
+                  <option value="Sylhet">Sylhet</option>
+                  <option value="Rajshahi">Rajshahi</option>
+                  <option value="Khulna">Khulna</option>
+                  <option value="Barisal">Barisal</option>
+                  <option value="Rangpur">Rangpur</option>
+                  <option value="Mymensingh">Mymensingh</option>
+                  <option value="Comilla">Comilla</option>
+                  <option value="Gazipur">Gazipur</option>
+                  <option value="Narayanganj">Narayanganj</option>
+                  <option value="Other District (BD)">Other District</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Shipping Zone Selection -->
+            <div>
+              <label class="block text-xs font-semibold text-gray-700 mb-1.5">Shipping Zone *</label>
+              <div class="grid grid-cols-2 gap-3">
+                <label class="relative flex items-center p-3 rounded-xl border border-purple-200 bg-purple-50/30 cursor-pointer hover:bg-purple-50 transition-all">
+                  <input 
+                    type="radio" 
+                    name="shipping-zone" 
+                    value="inside-dhaka" 
+                    checked 
+                    onchange="setShippingZone('inside-dhaka')"
+                    class="text-purple-600 focus:ring-purple-500"
+                  />
+                  <span class="ml-2.5 text-xs font-semibold text-gray-800">
+                    Inside Dhaka
+                    <span class="block text-[10px] text-purple-600 font-normal">৳80 (Free above ৳1,500)</span>
+                  </span>
+                </label>
+                <label class="relative flex items-center p-3 rounded-xl border border-purple-200 bg-purple-50/30 cursor-pointer hover:bg-purple-50 transition-all">
+                  <input 
+                    type="radio" 
+                    name="shipping-zone" 
+                    value="outside-dhaka" 
+                    onchange="setShippingZone('outside-dhaka')"
+                    class="text-purple-600 focus:ring-purple-500"
+                  />
+                  <span class="ml-2.5 text-xs font-semibold text-gray-800">
+                    Outside Dhaka
+                    <span class="block text-[10px] text-purple-600 font-normal">৳150 (All 64 districts)</span>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Street Address -->
+            <div>
+              <label class="block text-xs font-semibold text-gray-700 mb-1">Complete Street / Area Address *</label>
+              <textarea 
+                id="cust-address" 
+                rows="2" 
+                required 
+                placeholder="House #, Road #, Sector/Area, Thana" 
+                class="w-full px-3.5 py-2.5 rounded-xl border border-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-500 text-xs sm:text-sm resize-none"
+              ></textarea>
+            </div>
+
+            <!-- Gift Card Note / Special Instructions -->
+            <div>
+              <label class="block text-xs font-semibold text-gray-700 mb-1">Handwritten Gift Card Message (Optional)</label>
+              <textarea 
+                id="cust-notes" 
+                rows="2" 
+                placeholder="Enter a secret note to include inside the gift box..." 
+                class="w-full px-3.5 py-2.5 rounded-xl border border-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-500 text-xs sm:text-sm resize-none"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2: Payment Method -->
+        <div class="pt-4 border-t border-purple-100">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-gray-500 mb-3 flex items-center gap-1.5">
+            <span class="w-5 h-5 rounded-full bg-purple-600 text-white text-[10px] flex items-center justify-center">2</span>
+            Payment Method
+          </h4>
+
+          <div class="grid grid-cols-2 gap-3 mb-3">
+            <label class="flex items-center p-3 rounded-xl border border-purple-200 bg-white cursor-pointer hover:bg-purple-50 transition-all">
+              <input 
+                type="radio" 
+                name="payment-method" 
+                value="cod" 
+                checked 
+                onchange="setPaymentMethod('cod')"
+                class="text-purple-600 focus:ring-purple-500"
+              />
+              <span class="ml-2.5 text-xs font-semibold text-gray-800">
+                Cash on Delivery
+                <span class="block text-[10px] text-gray-500 font-normal">Pay when you receive</span>
+              </span>
+            </label>
+            <label class="flex items-center p-3 rounded-xl border border-purple-200 bg-white cursor-pointer hover:bg-purple-50 transition-all">
+              <input 
+                type="radio" 
+                name="payment-method" 
+                value="bkash" 
+                onchange="setPaymentMethod('bkash')"
+                class="text-purple-600 focus:ring-purple-500"
+              />
+              <span class="ml-2.5 text-xs font-semibold text-gray-800">
+                bKash / Nagad
+                <span class="block text-[10px] text-purple-600 font-normal">Send Money Guide</span>
+              </span>
+            </label>
+          </div>
+
+          <!-- bKash Instructions Box -->
+          <div id="checkout-bkash-instructions" class="hidden bg-pink-50/70 border border-pink-200 rounded-xl p-4 text-xs space-y-2 mb-3">
+            <div class="font-bold text-pink-900 flex items-center gap-1.5">
+              <span>📱</span> bKash / Nagad Send-Money Guide:
+            </div>
+            <p class="text-pink-900">
+              1. Open bKash or Nagad App > Select <strong>Send Money</strong><br>
+              2. Enter Number: <strong class="bg-white px-2 py-0.5 rounded border border-pink-300 font-mono text-sm">01712-345678</strong> (Personal)<br>
+              3. Enter Reference: <strong>FLOWRIS</strong><br>
+              4. Paste the 8-digit Transaction ID (TrxID) below for instant verification:
+            </p>
+            <input 
+              type="text" 
+              id="cust-trxid" 
+              placeholder="e.g. 9J28DA10K (Optional if paying COD)" 
+              class="w-full px-3 py-2 rounded-lg border border-pink-300 bg-white text-xs font-mono"
+            />
+          </div>
+        </div>
+
+        <!-- Step 3: Order Summary -->
+        <div class="pt-4 border-t border-purple-100 bg-purple-50/50 -mx-5 -mb-5 sm:-mx-6 sm:-mb-6 p-5 sm:p-6">
+          <h5 class="text-xs font-bold text-gray-700 uppercase mb-2">Order Breakdown</h5>
+          
+          <div id="checkout-items-preview" class="max-h-28 overflow-y-auto mb-3 pr-1"></div>
+
+          <div class="space-y-1 text-xs text-gray-600 pb-3 border-b border-purple-200/70">
+            <div class="flex justify-between">
+              <span>Items Subtotal:</span>
+              <span id="checkout-subtotal" class="font-serif font-semibold text-gray-900">৳0</span>
+            </div>
+            <div id="checkout-discount-row" class="flex justify-between text-emerald-600 hidden">
+              <span>Promo Discount:</span>
+              <span id="checkout-discount" class="font-serif font-semibold">-৳0</span>
+            </div>
+            <div class="flex justify-between">
+              <span>Shipping Fee:</span>
+              <span id="checkout-shipping" class="font-serif font-semibold text-gray-900">৳80</span>
+            </div>
+          </div>
+
+          <div class="flex justify-between items-baseline pt-3 mb-4">
+            <span class="text-sm font-bold text-gray-900">Grand Total:</span>
+            <span id="checkout-grand-total" class="text-2xl font-bold font-serif text-purple-800">৳0</span>
+          </div>
+
+          <button 
+            type="submit" 
+            id="place-order-btn"
+            class="w-full py-4 gradient-btn text-white font-bold rounded-2xl shadow-xl text-sm transition-all flex items-center justify-center gap-2"
+          >
+            <span>Confirm & Place Order</span>
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+  <!-- ==========================================
+       FLOATING WHATSAPP BUTTON (ALWAYS ON)
+  =========================================== -->
+  <a 
+    href="https://wa.me/8801712345678?text=Hello%20Flowris!%20I%20have%20an%20inquiry%20about%20your%20handcrafted%20gifts%20🌸" 
+    target="_blank" 
+    rel="noopener"
+    class="fixed bottom-6 right-6 z-40 bg-[#25D366] hover:bg-[#20ba5a] text-white p-3.5 sm:p-4 rounded-full shadow-2xl whatsapp-glow flex items-center gap-2 group transition-all duration-300 hover:scale-105"
+    title="Chat with us on WhatsApp"
+    aria-label="Chat with us on WhatsApp"
+  >
+    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+    </svg>
+    <span class="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-500 ease-in-out text-xs font-bold">
+      Chat With Us
+    </span>
+  </a>
+
+  <!-- ==========================================
+       MOBILE FLOATING CART PILL
+  =========================================== -->
+  <div id="mobile-floating-cart" class="fixed bottom-5 inset-x-4 z-30 lg:hidden hidden">
+    <button 
+      type="button" 
+      onclick="openCartDrawer()"
+      class="w-full py-3.5 px-5 bg-gray-900 text-white rounded-2xl shadow-2xl flex items-center justify-between font-medium text-xs border border-purple-500/30"
+    >
+      <div class="flex items-center gap-2">
+        <span class="text-base">🛍️</span>
+        <span id="mobile-cart-count" class="font-bold">0 items</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span>View Bag:</span>
+        <span id="mobile-cart-total" class="font-serif font-bold text-purple-300 text-sm">৳0</span>
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      </div>
+    </button>
+  </div>
+
+  <!-- Inline Category Quick Filter Helper -->
+  <script>
+    function filterByCategory(catSlug) {
+      const pill = document.querySelector(`.filter-pill[data-category="${catSlug}"]`);
+      if (pill) {
+        pill.click();
+      }
+      const shopEl = document.getElementById('shop');
+      if (shopEl) {
+        shopEl.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  </script>
+
+  <!-- Flowris Main Application Logic -->
+  <script src="js/app.js"></script>
+</body>
+</html>
