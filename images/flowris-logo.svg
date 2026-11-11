@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" width="100%" height="100%">
+  <defs>
+    <linearGradient id="flowrisGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7C3AED" />
+      <stop offset="50%" stop-color="#9333EA" />
+      <stop offset="100%" stop-color="#EC4899" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#D97706" />
+    </linearGradient>
+    <filter id="softShadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#7C3AED" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <!-- Icon Emblem -->
+  <g transform="translate(8, 8)" filter="url(#softShadow)">
+    <!-- Rounded squircle badge -->
+    <rect x="0" y="0" width="64" height="64" rx="20" fill="url(#flowrisGrad)" />
+    
+    <!-- Botanical Flower Illustration -->
+    <!-- Center seed core -->
+    <circle cx="32" cy="32" r="4.5" fill="#FFFFFF" />
+    <circle cx="32" cy="32" r="2.5" fill="url(#goldGrad)" />
+    
+    <!-- Petals -->
+    <path d="M32 17 C35 22, 35 27, 32 32 C29 27, 29 22, 32 17 Z" fill="#FFFFFF" opacity="0.95" />
+    <path d="M32 47 C35 42, 35 37, 32 32 C29 37, 29 42, 32 47 Z" fill="#FFFFFF" opacity="0.95" />
+    <path d="M17 32 C22 35, 27 35, 32 32 C27 29, 22 29, 17 32 Z" fill="#FFFFFF" opacity="0.95" />
+    <path d="M47 32 C42 35, 37 35, 32 32 C37 29, 42 29, 47 32 Z" fill="#FFFFFF" opacity="0.95" />
+    
+    <!-- Diagonal delicate petals -->
+    <path d="M21.4 21.4 C26.5 23.5, 29 27.5, 32 32 C27.5 29, 23.5 26.5, 21.4 21.4 Z" fill="#FDF2F8" opacity="0.8" />
+    <path d="M42.6 42.6 C37.5 40.5, 35 36.5, 32 32 C36.5 35, 40.5 37.5, 42.6 42.6 Z" fill="#FDF2F8" opacity="0.8" />
+    <path d="M42.6 21.4 C40.5 26.5, 36.5 29, 32 32 C35 27.5, 37.5 23.5, 42.6 21.4 Z" fill="#FDF2F8" opacity="0.8" />
+    <path d="M21.4 42.6 C23.5 37.5, 27.5 35, 32 32 C29 36.5, 26.5 40.5, 21.4 42.6 Z" fill="#FDF2F8" opacity="0.8" />
+
+    <!-- Sparkle accent -->
+    <path d="M49 13 L50 16 L53 17 L50 18 L49 21 L48 18 L45 17 L48 16 Z" fill="#FEF08A" />
+  </g>
+
+  <!-- Brand Typography -->
+  <!-- Main wordmark "Flowris" -->
+  <text x="86" y="44" font-family="'Playfair Display', Georgia, serif" font-size="34" font-weight="700" fill="#111827" letter-spacing="-0.5">Flowris</text>
+  
+  <!-- Little heart or dot on the wordmark -->
+  <circle cx="204" cy="24" r="3" fill="#EC4899" />
+
+  <!-- Subtitle Tagline -->
+  <text x="88" y="59" font-family="'Plus Jakarta Sans', Inter, sans-serif" font-size="9.5" font-weight="600" fill="#7C3AED" letter-spacing="2.8">HANDCRAFTED GIFTS • DHAKA</text>
+</svg>

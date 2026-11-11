@@ -1,7 +1,7 @@
 /**
  * FLOWRIS - Handcrafted Gifts E-Commerce Client
  * 100% Client-Side, Zero-Cost Static Architecture
- * Supports Web3Forms / Formspree / WhatsApp Ordering
+ * Configured for Web3Forms Token & Dhaka-Exclusive Delivery
  */
 
 // ==========================================
@@ -11,21 +11,20 @@ const CONFIG = {
   storeName: "Flowris",
   tagline: "Handcrafted Gifts, Made with Love",
   currencySymbol: "৳",
-  phone: "+880 1712-345678",
-  whatsappNumber: "8801712345678", // Country code without '+' for wa.me link
-  bKashNumber: "01712-345678 (Personal)",
-  nagadNumber: "01712-345678 (Personal)",
+  phone: "01886338064",
+  whatsappNumber: "8801886338064", // Country code + 01886338064 (without '+')
+  email: "flowris.business@gmail.com",
+  bKashNumber: "01886338064 (Personal)",
+  nagadNumber: "01886338064 (Personal)",
+  address: "Dhaka, Bangladesh",
   insideDhakaShipping: 80,
-  outsideDhakaShipping: 150,
+  expressDhakaShipping: 130,
   freeShippingThreshold: 1500, // Free delivery inside Dhaka when subtotal >= 1500
-  // Web3Forms public access key (Free tier: 250 submissions/month, zero backend setup required)
-  // Store owners can get their free key at https://web3forms.com
-  web3FormsKey: "YOUR_WEB3FORMS_ACCESS_KEY_HERE",
-  // Formspree alternative endpoint (e.g., https://formspree.io/f/your_form_id)
-  formspreeEndpoint: ""
+  // Web3Forms public access key provided by user:
+  web3FormsKey: "29722476-0beb-4700-8231-9bf14fa69367"
 };
 
-// Fallback products catalog if opened directly via file:// protocol
+// Streamlined 6 signature products fallback
 const FALLBACK_PRODUCTS = [
   {
     "id": "flow-01",
@@ -37,21 +36,21 @@ const FALLBACK_PRODUCTS = [
     "discountPercent": 22,
     "rating": 4.9,
     "reviewCount": 84,
-    "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=900&q=80",
     "gallery": [
-      "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=900&q=80"
     ],
     "badge": "Bestseller",
     "inStock": true,
-    "shortDescription": "Personalized LED warm glowing monogram lamp crafted with real preserved dried flowers inside high-clarity resin.",
-    "description": "Each letter is handcrafted individually in Dhaka using high-grade UV-resistant crystal epoxy resin, preserved baby's breath, dried rose petals, and 24k gold leaf foil flakes. Mounted on a natural beechwood solid base with a warm USB LED strip.",
+    "shortDescription": "Personalized monogram LED letter lamp with real preserved flowers in crystal epoxy resin on a beechwood base.",
+    "description": "Each letter is handcrafted individually in Dhaka using high-clarity UV-resistant crystal epoxy resin, preserved baby's breath, real dried rose petals, and 24k gold foil leaf. Mounted on a solid beechwood base with a warm USB LED strip.",
     "customizable": true,
-    "customizationLabel": "Enter Initial / Letter (A-Z) & LED Base Name Text",
-    "materials": "Crystal Resin, Real Preserved Flowers, 24K Gold Leaf, Solid Beechwood Base",
+    "customizationLabel": "Enter Initial / Letter (A-Z) & Custom Base Text",
+    "materials": "Crystal Epoxy Resin, Real Preserved Flowers, 24K Gold Foil, Beechwood Base",
     "dimensions": "15cm x 15cm x 4.5cm",
-    "tags": ["bestseller", "resin", "lamp", "personalized", "gift"]
+    "tags": ["bestseller", "resin", "lamp", "personalized"]
   },
   {
     "id": "flow-02",
@@ -63,24 +62,24 @@ const FALLBACK_PRODUCTS = [
     "discountPercent": 16,
     "rating": 5.0,
     "reviewCount": 112,
-    "image": "https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=900&q=80",
     "gallery": [
-      "https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=900&q=80"
     ],
     "badge": "Trending",
     "inStock": true,
-    "shortDescription": "Everlasting preserved Ecuadorian roses wrapped in luxury matte Japanese paper with silk satin ribbons.",
-    "description": "Our signature preserved bouquet will stay vibrant and soft for up to 3 years without water or sunlight! Sourced ethically, preserved through gentle dehydration, and hand-tied by our master floral artisans.",
+    "shortDescription": "Everlasting preserved natural roses wrapped in luxury matte Japanese paper with silk satin ribbons.",
+    "description": "Our signature preserved bouquet will stay vibrant and soft for up to 3 years without water or sunlight! Sourced ethically and hand-tied by our master floral artisans in Dhaka.",
     "customizable": true,
     "customizationLabel": "Personalized Message for the Gift Card",
-    "materials": "Preserved Natural Roses, Cotton Twine, Japanese Waterproof Wrapping, Silk Ribbon",
+    "materials": "Preserved Natural Roses, Japanese Waterproof Wrapping, Silk Satin Ribbon",
     "dimensions": "35cm Height x 25cm Width",
-    "tags": ["bouquet", "flowers", "roses", "anniversary", "birthday"]
+    "tags": ["bouquet", "flowers", "roses", "anniversary"]
   },
   {
     "id": "flow-03",
-    "title": "Custom Hand-Painted Couple Acrylic Spotify Plaque",
+    "title": "Custom Hand-Crafted Couple Spotify Plaque",
     "category": "Personalized Gifts",
     "categorySlug": "personalized",
     "price": 950,
@@ -88,13 +87,14 @@ const FALLBACK_PRODUCTS = [
     "discountPercent": 24,
     "rating": 4.8,
     "reviewCount": 67,
-    "image": "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=900&q=80",
     "gallery": [
-      "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&w=900&q=80"
     ],
     "badge": "Popular",
     "inStock": true,
-    "shortDescription": "High-transparency acrylic plaque printed with your favorite song, scannable Spotify code, and custom photo.",
+    "shortDescription": "Cast acrylic plaque printed with your favorite song, scannable Spotify code, and custom photo.",
     "description": "Commemorate your special song, anniversary date, or memorable trip. Comes with a laser-cut natural wooden stand. Hold up your Spotify phone camera to instantly play the song!",
     "customizable": true,
     "customizationLabel": "Song Title, Artist & Photo upload link (or WhatsApp to us)",
@@ -104,7 +104,7 @@ const FALLBACK_PRODUCTS = [
   },
   {
     "id": "flow-04",
-    "title": "Royal Velvet Lavender & Vanilla Scented Soy Candle",
+    "title": "Royal Velvet Lavender & Vanilla Soy Candle",
     "category": "Home Decor & Candles",
     "categorySlug": "decor",
     "price": 650,
@@ -112,46 +112,23 @@ const FALLBACK_PRODUCTS = [
     "discountPercent": 23,
     "rating": 4.9,
     "reviewCount": 49,
-    "image": "https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=900&q=80",
     "gallery": [
-      "https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1572726729437-3732efed3f8a?auto=format&fit=crop&w=900&q=80"
     ],
     "badge": "Organic",
     "inStock": true,
-    "shortDescription": "100% natural organic soy wax hand-poured candle in an amber glass jar with therapeutic French lavender oils.",
+    "shortDescription": "100% natural organic soy wax hand-poured candle in an amber glass jar with French lavender oils.",
     "description": "Clean, soot-free burn with lead-free crackling wooden wick. Formulated to relieve stress, enhance bedtime serenity, and bring a luxury boutique aroma to any room. 45+ hours burn time.",
     "customizable": false,
     "customizationLabel": "",
     "materials": "100% Natural Soy Wax, French Lavender Essential Oil, Crackling Wood Wick, Amber Glass",
     "dimensions": "200g / 7oz Jar",
-    "tags": ["candle", "lavender", "aromatherapy", "home decor", "organic"]
+    "tags": ["candle", "lavender", "aromatherapy", "home decor"]
   },
   {
     "id": "flow-05",
-    "title": "Midnight Bloom Personalized Resin Coaster Set of 4",
-    "category": "Resin Art",
-    "categorySlug": "resin-art",
-    "price": 1200,
-    "originalPrice": 1600,
-    "discountPercent": 25,
-    "rating": 4.9,
-    "reviewCount": 38,
-    "image": "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80",
-    "gallery": [
-      "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80"
-    ],
-    "badge": "Handmade",
-    "inStock": true,
-    "shortDescription": "Geode style beverage coasters with deep violet & rose marble marbling, hand-gilded 24k gold leaf edging.",
-    "description": "Durable heat-resistant crystal resin up to 80°C. Protects delicate dining tables while serving as exquisite artisanal jewelry for your living space. Includes non-slip silicone feet.",
-    "customizable": true,
-    "customizationLabel": "Optional Monogram Initials on each coaster (e.g. 'A & S')",
-    "materials": "Non-toxic Food-safe Resin, Mica Pigments, Liquid Gold Leaf Edging",
-    "dimensions": "10cm diameter each (Set of 4)",
-    "tags": ["coasters", "resin", "tableware", "decor", "gold"]
-  },
-  {
-    "id": "flow-06",
     "title": "The Luxe Empress Wooden Gift Hamper Box",
     "category": "Luxury Gift Boxes",
     "categorySlug": "gift-boxes",
@@ -160,23 +137,24 @@ const FALLBACK_PRODUCTS = [
     "discountPercent": 18,
     "rating": 5.0,
     "reviewCount": 54,
-    "image": "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=900&q=80",
     "gallery": [
-      "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=900&q=80"
     ],
     "badge": "Curated",
     "inStock": true,
-    "shortDescription": "Premium pine wood laser-engraved memory box with scented candle, resin keychain, mini bouquet & artisanal chocolates.",
-    "description": "The ultimate turnkey gift set for birthdays, brides, anniversaries, or corporate celebrations. Includes our bestselling soy candle, personalized golden initial keychain, dry flower mini posy, Ferrero Rocher chocolates, and handwritten calligraphy card.",
+    "shortDescription": "Pine wood engraved memory box with scented candle, resin keychain, mini bouquet & chocolates.",
+    "description": "The ultimate turnkey gift set for birthdays, brides, anniversaries, or celebrations. Includes our bestselling soy candle, personalized golden initial keychain, dry flower mini posy, Ferrero Rocher chocolates, and handwritten calligraphy card.",
     "customizable": true,
-    "customizationLabel": "Recipient Name (for laser engraving on wooden box lid) & Card Message",
-    "materials": "Natural Pine Wood, Brass Latch, Satin Ribbon, Scented Candle, Handcrafted Treats",
+    "customizationLabel": "Recipient Name for lid engraving & handwritten card note",
+    "materials": "Natural Pine Wood, Brass Latch, Scented Candle, Handcrafted Keepsakes",
     "dimensions": "28cm x 22cm x 11cm",
-    "tags": ["hamper", "gift box", "luxury", "birthday", "bride"]
+    "tags": ["hamper", "gift box", "luxury", "birthday"]
   },
   {
-    "id": "flow-07",
-    "title": "Golden Flake Resin Initial Keychain with Fur Pom",
+    "id": "flow-06",
+    "title": "Golden Flake Resin Initial Keychain",
     "category": "Resin Art",
     "categorySlug": "resin-art",
     "price": 450,
@@ -184,139 +162,20 @@ const FALLBACK_PRODUCTS = [
     "discountPercent": 25,
     "rating": 4.7,
     "reviewCount": 92,
-    "image": "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=900&q=80",
     "gallery": [
-      "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=900&q=80"
     ],
     "badge": "Pocket Luxe",
     "inStock": true,
-    "shortDescription": "Crystal clear alphanumeric keychain infused with real dried hydrangeas, gold foil, and luxury lobster clasp.",
+    "shortDescription": "Crystal clear monogram keychain infused with dried hydrangeas, gold foil, and luxury gold clasp.",
     "description": "An adorable everyday accessory or pocket gift for friends and bridesmaids. Ultra-durable, scratch-resistant resin combined with premium anti-tarnish golden hardware.",
     "customizable": true,
-    "customizationLabel": "Letter (A-Z) & Preferred Flower Color (Pink / Purple / White / Blue)",
-    "materials": "Epoxy Resin, Dried Hydrangeas, Rose Gold / Gold Alloy Keychain Clasp",
+    "customizationLabel": "Letter (A-Z) & Preferred Color (Pink / Purple / Gold)",
+    "materials": "Epoxy Resin, Dried Hydrangeas, Gold Leaf, Alloy Clasp",
     "dimensions": "Letter Height: 4cm",
-    "tags": ["keychain", "accessories", "resin", "cute", "budget"]
-  },
-  {
-    "id": "flow-08",
-    "title": "Forever Bloom Floating Glass Floral Frame",
-    "category": "Home Decor & Candles",
-    "categorySlug": "decor",
-    "price": 1350,
-    "originalPrice": 1700,
-    "discountPercent": 20,
-    "rating": 4.9,
-    "reviewCount": 41,
-    "image": "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&w=800&q=80",
-    "gallery": [
-      "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&w=800&q=80"
-    ],
-    "badge": "New Arrival",
-    "inStock": true,
-    "shortDescription": "Double-paned vintage brass floating glass frame capturing pressed real botanical specimens and gold calligraphy.",
-    "description": "Each frame is an original botanical composition. The flowers are pressed and sealed between two panes of museum-grade glass, giving an ethereal floating illusion in natural light.",
-    "customizable": true,
-    "customizationLabel": "Custom Names / Wedding Date / Quote for Calligraphy",
-    "materials": "Solid Brass Frame, Pressed Real Flowers, Tempered Glass, Hanging Chain",
-    "dimensions": "8 x 10 inches",
-    "tags": ["frame", "pressed flowers", "wall decor", "vintage", "wedding"]
-  },
-  {
-    "id": "flow-09",
-    "title": "Cherished Memories Customized Polaroid Gift Jar",
-    "category": "Personalized Gifts",
-    "categorySlug": "personalized",
-    "price": 850,
-    "originalPrice": 1100,
-    "discountPercent": 23,
-    "rating": 4.8,
-    "reviewCount": 73,
-    "image": "https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=800&q=80",
-    "gallery": [
-      "https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=800&q=80"
-    ],
-    "badge": "Heartfelt",
-    "inStock": true,
-    "shortDescription": "A vintage glass cork jar packed with 12 mini retro polaroid prints, fairy micro-LEDs, and dried lavender sprigs.",
-    "description": "Surprise your best friend or partner with 12 of your happiest moments printed on thick archival Fujifilm paper, nestled inside a magical illuminated fairy bottle.",
-    "customizable": true,
-    "customizationLabel": "Upload/Send 12 photos + 1 short note via WhatsApp after checkout",
-    "materials": "Borosilicate Glass, Natural Cork, Micro Fairy LEDs, Archival Photo Paper",
-    "dimensions": "18cm Height x 8cm Diameter",
-    "tags": ["polaroid", "jar", "fairy lights", "memories", "photos"]
-  },
-  {
-    "id": "flow-10",
-    "title": "Pure Elegance Dried Pampas Grass Ceramic Vase Duo",
-    "category": "Home Decor & Candles",
-    "categorySlug": "decor",
-    "price": 1650,
-    "originalPrice": 1950,
-    "discountPercent": 15,
-    "rating": 4.9,
-    "reviewCount": 33,
-    "image": "https://images.unsplash.com/photo-1616046229478-9901c5536a45?auto=format&fit=crop&w=800&q=80",
-    "gallery": [
-      "https://images.unsplash.com/photo-1616046229478-9901c5536a45?auto=format&fit=crop&w=800&q=80"
-    ],
-    "badge": "Minimalist",
-    "inStock": true,
-    "shortDescription": "Nordic minimalist donut matte ceramic vase bundled with natural fluffy pampas grass stems and bunny tails.",
-    "description": "Bring modern Japandi aesthetic warmth to your vanity, coffee table, or study desk. No maintenance required, lasts for years looking effortlessly chic.",
-    "customizable": false,
-    "customizationLabel": "",
-    "materials": "Matte Glazed Ceramic, Naturally Dried Pampas Stems, Bunny Tails",
-    "dimensions": "Vase: 19cm Height, Pampas Plumes: 40cm Height",
-    "tags": ["pampas", "ceramic", "vase", "nordic", "japandi"]
-  },
-  {
-    "id": "flow-11",
-    "title": "Serenity Rose Resin Bookmarks with Tassels (Set of 2)",
-    "category": "Resin Art",
-    "categorySlug": "resin-art",
-    "price": 550,
-    "originalPrice": 750,
-    "discountPercent": 26,
-    "rating": 5.0,
-    "reviewCount": 61,
-    "image": "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80",
-    "gallery": [
-      "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80"
-    ],
-    "badge": "For Booklovers",
-    "inStock": true,
-    "shortDescription": "Ultra-thin, crystal clear bookmark embedded with real pressed ferns, roses, and gold leaf with silky tassel.",
-    "description": "The perfect aesthetic companion for book lovers and journaling enthusiasts. Smooth rounded edges that never dent or harm book pages.",
-    "customizable": true,
-    "customizationLabel": "Name or initials for metallic vinyl embossing",
-    "materials": "Flexible Durable Epoxy Resin, Pressed Flora, Silk Satin Tassel",
-    "dimensions": "14cm x 2.8cm",
-    "tags": ["bookmark", "resin", "reading", "gift", "stationery"]
-  },
-  {
-    "id": "flow-12",
-    "title": "Grand Celebration Wedding & Nikkah Gift Box",
-    "category": "Luxury Gift Boxes",
-    "categorySlug": "gift-boxes",
-    "price": 3800,
-    "originalPrice": 4600,
-    "discountPercent": 17,
-    "rating": 5.0,
-    "reviewCount": 27,
-    "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80",
-    "gallery": [
-      "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80"
-    ],
-    "badge": "Premium Grand",
-    "inStock": true,
-    "shortDescription": "Exclusive rigid magnetic celebration hamper with paired monogram resin cups, scented candle, crystal ring dish & floral decor.",
-    "description": "Designed specially for weddings, Nikkah ceremonies, and milestone anniversaries in Bangladesh. Includes customized Mr. & Mrs. keepsakes, custom calligraphy vow booklet, golden resin ring tray, and velvet ring box.",
-    "customizable": true,
-    "customizationLabel": "Bride & Groom Names + Wedding Date for custom engraving",
-    "materials": "Rigid Embossed Box with Gold Foil, Crystal Resin, Velvet, Gold Leaf",
-    "dimensions": "32cm x 25cm x 12cm",
-    "tags": ["wedding", "nikkah", "anniversary", "grand hamper", "couple"]
+    "tags": ["keychain", "resin", "accessories", "budget"]
   }
 ];
 
@@ -333,10 +192,9 @@ const AppState = {
   sortBy: 'featured',
   selectedProductForModal: null,
   appliedPromo: null,
-  shippingZone: 'inside-dhaka', // 'inside-dhaka' | 'outside-dhaka'
-  paymentMethod: 'cod', // 'cod' | 'bkash'
+  shippingMethod: 'standard', // 'standard' (৳80/Free) or 'express' (৳130)
+  paymentMethod: 'cod',       // 'cod' or 'bkash'
 
-  // Promo code definitions
   availablePromos: {
     'FLOWRISLOVE': { type: 'percent', value: 10, label: '10% OFF Special Launch Discount' },
     'WELCOME50': { type: 'flat', value: 50, label: '৳50 OFF Welcome Gift' },
@@ -360,6 +218,8 @@ const Storage = {
   saveCart(cart) {
     try {
       localStorage.setItem('flowris_cart', JSON.stringify(cart));
+      // Trigger cross-page sync
+      window.dispatchEvent(new Event('cartUpdated'));
     } catch (e) {
       console.warn('LocalStorage error:', e);
     }
@@ -376,6 +236,7 @@ const Storage = {
   saveWishlist(wishlist) {
     try {
       localStorage.setItem('flowris_wishlist', JSON.stringify(wishlist));
+      window.dispatchEvent(new Event('wishlistUpdated'));
     } catch (e) {
       console.warn('LocalStorage error:', e);
     }
@@ -394,19 +255,31 @@ async function initApp() {
   AppState.cart = Storage.loadCart();
   AppState.wishlist = Storage.loadWishlist();
 
-  // 2. Fetch Products Data (with fallback protection)
+  // 2. Fetch Products
   await loadProducts();
 
-  // 3. Render Store UI
-  renderProducts();
+  // 3. Render Catalog if on index page
+  if (document.getElementById('products-grid')) {
+    renderProducts();
+  }
+
+  // 4. Update Cart and Wishlist UI elements across the page
   updateCartUI();
   updateWishlistUI();
 
-  // 4. Attach Event Listeners
+  // 5. Setup Event Listeners
   setupEventListeners();
 
-  // 5. Check URL parameters (e.g. ?category=resin-art or ?product=flow-01)
+  // 6. Handle URL parameters (e.g. ?product=flow-01 or ?category=resin-art)
   handleUrlParams();
+
+  // 7. Listen for cross-tab or cross-page cart sync
+  window.addEventListener('storage', () => {
+    AppState.cart = Storage.loadCart();
+    AppState.wishlist = Storage.loadWishlist();
+    updateCartUI();
+    updateWishlistUI();
+  });
 }
 
 // Fetch products from JSON file
@@ -419,7 +292,6 @@ async function loadProducts() {
     const data = await response.json();
     AppState.products = Array.isArray(data) && data.length > 0 ? data : FALLBACK_PRODUCTS;
   } catch (err) {
-    console.info('Loaded local fallback catalog dataset:', err.message);
     AppState.products = FALLBACK_PRODUCTS;
   }
   AppState.filteredProducts = [...AppState.products];
@@ -463,7 +335,6 @@ function filterAndSortProducts() {
       break;
     case 'featured':
     default:
-      // Default order in JSON
       break;
   }
 
@@ -477,20 +348,20 @@ function renderProducts() {
   if (!container) return;
 
   if (countBadge) {
-    countBadge.textContent = `${AppState.filteredProducts.length} items found`;
+    countBadge.textContent = `${AppState.filteredProducts.length} handcrafted items in Dhaka`;
   }
 
   if (AppState.filteredProducts.length === 0) {
     container.innerHTML = `
       <div class="col-span-full py-16 text-center">
-        <div class="w-20 h-20 mx-auto mb-4 bg-purple-50 text-purple-600 rounded-full flex items-center justify-center text-3xl">
+        <div class="w-16 h-16 mx-auto mb-4 bg-purple-50 text-purple-600 rounded-full flex items-center justify-center text-3xl">
           🔍
         </div>
         <h3 class="text-xl font-bold text-gray-800 mb-2">No matching gifts found</h3>
-        <p class="text-gray-500 max-w-md mx-auto mb-6 text-sm">
-          We couldn't find any items matching your search. Try adjusting your keyword or browse all our collections.
+        <p class="text-gray-500 max-w-md mx-auto mb-6 text-xs sm:text-sm">
+          Try selecting another category or view all our handcrafted gifts.
         </p>
-        <button onclick="resetFilters()" class="px-6 py-2.5 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-full text-sm shadow-md transition-all">
+        <button onclick="resetFilters()" class="px-6 py-2.5 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-full text-xs sm:text-sm shadow-md transition-all focus-visible:ring-2 focus-visible:ring-purple-600">
           View All Gifts
         </button>
       </div>
@@ -504,15 +375,15 @@ function renderProducts() {
                        product.badge === 'Trending' ? 'badge-trending' : 'badge-new';
 
     return `
-      <div class="group relative bg-white rounded-2xl overflow-hidden border border-purple-50 shadow-soft shadow-hover flex flex-col transition-all duration-300">
+      <div class="group relative bg-white rounded-3xl overflow-hidden border border-purple-50 shadow-soft shadow-hover flex flex-col transition-all duration-300">
         
         <!-- Image Container -->
-        <div class="relative w-full pt-[100%] overflow-hidden bg-purple-50/50 cursor-pointer" onclick="openProductModal('${product.id}')">
+        <div class="relative w-full pt-[95%] overflow-hidden bg-purple-50/50 cursor-pointer" onclick="openProductModal('${product.id}')">
           <img 
             src="${product.image}" 
             alt="${escapeHtml(product.title)}" 
             loading="lazy"
-            class="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-500 ease-out"
+            class="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-106 transition-transform duration-500 ease-out"
           />
 
           <!-- Floating Badges -->
@@ -534,18 +405,26 @@ function renderProducts() {
             type="button" 
             onclick="event.stopPropagation(); toggleWishlist('${product.id}')"
             aria-label="Save to Wishlist"
-            class="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/90 backdrop-blur-md shadow-md flex items-center justify-center text-gray-400 hover:text-rose-500 transition-all z-10 ${isWishlisted ? 'text-rose-500 ring-2 ring-rose-200' : ''}"
+            class="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/90 backdrop-blur-md shadow-md flex items-center justify-center text-gray-400 hover:text-rose-500 transition-all z-10 focus-visible:ring-2 focus-visible:ring-rose-500 ${isWishlisted ? 'text-rose-500 ring-2 ring-rose-200' : ''}"
           >
             <svg class="w-5 h-5 ${isWishlisted ? 'fill-current' : 'fill-none stroke-current'}" viewBox="0 0 24 24" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
             </svg>
           </button>
 
-          <!-- Quick View Hover Pill (Desktop) -->
-          <div class="hidden md:flex absolute inset-x-0 bottom-3 justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10">
-            <span class="px-4 py-1.5 bg-gray-900/80 hover:bg-gray-900 text-white text-xs font-medium rounded-full backdrop-blur-md shadow-lg transition-transform transform translate-y-2 group-hover:translate-y-0">
+          <!-- Quick View & Dedicated Page Hover Trigger -->
+          <div class="hidden sm:flex absolute inset-x-0 bottom-3 justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10 px-3">
+            <span class="px-3.5 py-1.5 bg-gray-900/85 hover:bg-gray-900 text-white text-xs font-medium rounded-full backdrop-blur-md shadow-lg transition-transform transform translate-y-1 group-hover:translate-y-0">
               Quick View
             </span>
+            <a 
+              href="product.html?id=${product.id}" 
+              onclick="event.stopPropagation()"
+              class="px-3.5 py-1.5 bg-white/90 hover:bg-white text-purple-900 text-xs font-semibold rounded-full backdrop-blur-md shadow-lg transition-transform transform translate-y-1 group-hover:translate-y-0"
+              title="Open Full Product Page (Shareable link)"
+            >
+              Full Page ↗
+            </a>
           </div>
         </div>
 
@@ -565,7 +444,7 @@ function renderProducts() {
             </div>
 
             <!-- Title -->
-            <h4 class="font-semibold text-gray-900 text-sm sm:text-base leading-snug line-clamp-2 mb-2 group-hover:text-purple-600 transition-colors cursor-pointer" onclick="openProductModal('${product.id}')">
+            <h4 class="font-semibold text-gray-900 text-sm sm:text-base leading-snug line-clamp-2 mb-1.5 group-hover:text-purple-600 transition-colors cursor-pointer" onclick="openProductModal('${product.id}')">
               ${escapeHtml(product.title)}
             </h4>
 
@@ -576,7 +455,7 @@ function renderProducts() {
           </div>
 
           <!-- Price & Action Row -->
-          <div class="pt-3 border-t border-purple-50/80 flex items-center justify-between">
+          <div class="pt-3 border-t border-purple-50/90 flex items-center justify-between">
             <div>
               <div class="flex items-baseline gap-1.5">
                 <span class="text-lg sm:text-xl font-bold text-gray-900 font-serif">
@@ -588,20 +467,32 @@ function renderProducts() {
                   </span>
                 ` : ''}
               </div>
-              <span class="text-[10px] text-emerald-600 font-medium">In Stock • Ready to dispatch</span>
+              <span class="text-[10px] text-emerald-600 font-medium">Dhaka Express Delivery</span>
             </div>
 
-            <!-- Add to Cart Icon Button -->
-            <button 
-              type="button" 
-              onclick="event.stopPropagation(); quickAddToCart('${product.id}')"
-              class="w-10 h-10 rounded-xl bg-purple-50 hover:bg-purple-600 text-purple-700 hover:text-white transition-all flex items-center justify-center shadow-sm group-hover:scale-105 active:scale-95"
-              title="Add to Cart"
-            >
-              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
-              </svg>
-            </button>
+            <div class="flex items-center gap-1.5">
+              <!-- Full Page Share Link Button -->
+              <a 
+                href="product.html?id=${product.id}" 
+                class="w-9 h-9 rounded-xl border border-purple-100 hover:border-purple-300 text-gray-500 hover:text-purple-700 flex items-center justify-center transition-all"
+                title="View Full Page"
+              >
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              </a>
+
+              <!-- Add to Cart Button -->
+              <button 
+                type="button" 
+                onclick="event.stopPropagation(); quickAddToCart('${product.id}')"
+                class="w-10 h-10 rounded-xl bg-purple-600 hover:bg-purple-700 text-white transition-all flex items-center justify-center shadow-md active:scale-95 focus-visible:ring-2 focus-visible:ring-purple-600"
+                title="Add to Bag"
+                aria-label="Add to Bag"
+              >
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                </svg>
+              </button>
+            </div>
           </div>
 
         </div>
@@ -615,14 +506,12 @@ function resetFilters() {
   AppState.searchQuery = '';
   AppState.sortBy = 'featured';
 
-  // Reset UI inputs
   const searchInput = document.getElementById('search-input');
   if (searchInput) searchInput.value = '';
 
   const sortSelect = document.getElementById('sort-select');
   if (sortSelect) sortSelect.value = 'featured';
 
-  // Reset category buttons
   document.querySelectorAll('.filter-pill').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.category === 'all');
   });
@@ -641,7 +530,6 @@ function openProductModal(productId) {
   const modal = document.getElementById('product-modal');
   if (!modal) return;
 
-  // Fill in content
   document.getElementById('modal-img-main').src = product.image;
   document.getElementById('modal-img-main').alt = product.title;
   document.getElementById('modal-category').textContent = product.category;
@@ -665,27 +553,27 @@ function openProductModal(productId) {
   }
 
   document.getElementById('modal-rating-score').textContent = product.rating;
-  document.getElementById('modal-rating-count').textContent = `(${product.reviewCount} customer reviews)`;
+  document.getElementById('modal-rating-count').textContent = `(${product.reviewCount} reviews)`;
   document.getElementById('modal-description').textContent = product.description;
-  document.getElementById('modal-materials').textContent = product.materials || 'Handcrafted botanical & resin materials';
+  document.getElementById('modal-materials').textContent = product.materials || 'Handcrafted floral & resin materials';
   document.getElementById('modal-dimensions').textContent = product.dimensions || 'Standard handcrafted dimensions';
   
-  // Customization input section
+  // Customization field
   const customSection = document.getElementById('modal-customization-section');
   const customInput = document.getElementById('modal-custom-text');
   const customLabel = document.getElementById('modal-custom-label');
   
   if (product.customizable) {
     customSection.classList.remove('hidden');
-    customLabel.textContent = product.customizationLabel || 'Enter Your Custom Text / Names:';
+    customLabel.textContent = product.customizationLabel || 'Enter Your Custom Details:';
     customInput.value = '';
-    customInput.placeholder = 'e.g., "Sarah & Rayan" or "Letter M"';
+    customInput.placeholder = 'e.g. Letter / Name / Message';
   } else {
     customSection.classList.add('hidden');
     customInput.value = '';
   }
 
-  // Thumbnails gallery
+  // Thumbnails
   const thumbsContainer = document.getElementById('modal-thumbnails');
   if (thumbsContainer) {
     const gallery = product.gallery && product.gallery.length > 0 ? product.gallery : [product.image];
@@ -693,17 +581,21 @@ function openProductModal(productId) {
       <button 
         type="button" 
         onclick="setModalMainImage('${imgSrc}', this)"
-        class="w-14 h-14 rounded-lg overflow-hidden border-2 transition-all ${idx === 0 ? 'border-purple-600 scale-95 ring-2 ring-purple-200' : 'border-transparent opacity-75 hover:opacity-100'}"
+        class="w-14 h-14 rounded-xl overflow-hidden border-2 transition-all focus-visible:ring-2 focus-visible:ring-purple-600 ${idx === 0 ? 'border-purple-600 ring-2 ring-purple-200' : 'border-transparent opacity-75 hover:opacity-100'}"
       >
         <img src="${imgSrc}" class="w-full h-full object-cover" alt="thumbnail" />
       </button>
     `).join('');
   }
 
-  // Reset Quantity
+  // Set dedicated product page link button inside modal
+  const viewFullPageBtn = document.getElementById('modal-view-fullpage-link');
+  if (viewFullPageBtn) {
+    viewFullPageBtn.href = `product.html?id=${product.id}`;
+  }
+
   document.getElementById('modal-qty-input').value = '1';
 
-  // Show Modal
   modal.classList.add('active');
   document.body.classList.add('overflow-hidden');
 }
@@ -712,14 +604,13 @@ function setModalMainImage(imgSrc, btn) {
   const mainImg = document.getElementById('modal-img-main');
   if (mainImg) mainImg.src = imgSrc;
 
-  // Highlight active thumbnail
-  const allBtns = document.getElementById('modal-thumbnails').querySelectorAll('button');
+  const allBtns = document.getElementById('modal-thumbnails')?.querySelectorAll('button') || [];
   allBtns.forEach(b => {
-    b.classList.remove('border-purple-600', 'ring-2', 'ring-purple-200', 'scale-95');
+    b.classList.remove('border-purple-600', 'ring-2', 'ring-purple-200');
     b.classList.add('border-transparent', 'opacity-75');
   });
   if (btn) {
-    btn.classList.add('border-purple-600', 'ring-2', 'ring-purple-200', 'scale-95');
+    btn.classList.add('border-purple-600', 'ring-2', 'ring-purple-200');
     btn.classList.remove('border-transparent', 'opacity-75');
   }
 }
@@ -736,7 +627,7 @@ function modalAddToCart() {
   if (!AppState.selectedProductForModal) return;
   const product = AppState.selectedProductForModal;
   const qty = parseInt(document.getElementById('modal-qty-input').value) || 1;
-  const customNote = document.getElementById('modal-custom-text').value.trim();
+  const customNote = document.getElementById('modal-custom-text')?.value.trim() || '';
 
   addToCart(product.id, qty, customNote);
   closeProductModal();
@@ -746,7 +637,7 @@ function modalBuyViaWhatsApp() {
   if (!AppState.selectedProductForModal) return;
   const product = AppState.selectedProductForModal;
   const qty = parseInt(document.getElementById('modal-qty-input').value) || 1;
-  const customNote = document.getElementById('modal-custom-text').value.trim();
+  const customNote = document.getElementById('modal-custom-text')?.value.trim() || '';
   const totalPrice = product.price * qty;
 
   let message = `Hello Flowris! 🌸 I would like to order this handcrafted item:\n\n`;
@@ -754,9 +645,10 @@ function modalBuyViaWhatsApp() {
   message += `📦 *Quantity:* ${qty}\n`;
   message += `💰 *Price:* ${CONFIG.currencySymbol}${totalPrice.toLocaleString()}\n`;
   if (customNote) {
-    message += `✍️ *Customization Details:* ${customNote}\n`;
+    message += `✍️ *Customization:* ${customNote}\n`;
   }
-  message += `\nPlease let me know the availability and payment confirmation steps. Thank you!`;
+  message += `📍 *Delivery Area:* Dhaka, Bangladesh\n\n`;
+  message += `Please confirm my order and share delivery details. Thank you!`;
 
   const waUrl = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`;
   window.open(waUrl, '_blank');
@@ -773,7 +665,6 @@ function addToCart(productId, quantity = 1, customNote = '') {
   const product = AppState.products.find(p => p.id === productId);
   if (!product) return;
 
-  // Check if identical item with same customization already exists
   const existingIndex = AppState.cart.findIndex(item => 
     item.id === productId && (item.customNote || '') === (customNote || '')
   );
@@ -794,7 +685,7 @@ function addToCart(productId, quantity = 1, customNote = '') {
 
   Storage.saveCart(AppState.cart);
   updateCartUI();
-  showToast(`Added "${product.title}" to cart! 🛍️`, 'success');
+  showToast(`Added "${product.title}" to your bag! 🛍️`, 'success');
   openCartDrawer();
 }
 
@@ -804,7 +695,7 @@ function updateCartItemQuantity(index, delta) {
   
   if (AppState.cart[index].quantity <= 0) {
     AppState.cart.splice(index, 1);
-    showToast('Item removed from cart', 'info');
+    showToast('Item removed from bag', 'info');
   }
 
   Storage.saveCart(AppState.cart);
@@ -817,7 +708,7 @@ function removeCartItem(index) {
   Storage.saveCart(AppState.cart);
   updateCartUI();
   if (removed[0]) {
-    showToast(`Removed "${removed[0].title}" from cart`, 'info');
+    showToast(`Removed "${removed[0].title}" from bag`, 'info');
   }
 }
 
@@ -833,7 +724,6 @@ function clearCart() {
 function getCartCalculations() {
   const subtotal = AppState.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
   
-  // Calculate discount
   let discount = 0;
   if (AppState.appliedPromo) {
     if (AppState.appliedPromo.type === 'percent') {
@@ -843,62 +733,62 @@ function getCartCalculations() {
     }
   }
 
-  // Shipping calculation
   let shipping = 0;
   if (subtotal > 0) {
-    if (AppState.shippingZone === 'inside-dhaka') {
-      shipping = (subtotal >= CONFIG.freeShippingThreshold) ? 0 : CONFIG.insideDhakaShipping;
+    if (AppState.shippingMethod === 'express') {
+      shipping = CONFIG.expressDhakaShipping; // ৳130
     } else {
-      shipping = CONFIG.outsideDhakaShipping;
+      shipping = (subtotal >= CONFIG.freeShippingThreshold) ? 0 : CONFIG.insideDhakaShipping; // ৳80 or Free
     }
   }
 
   const grandTotal = Math.max(0, subtotal - discount + shipping);
-
   return { subtotal, discount, shipping, grandTotal };
 }
 
 function updateCartUI() {
   const totalCount = AppState.cart.reduce((sum, item) => sum + item.quantity, 0);
 
-  // Update Cart Badges (Navbar & Mobile Floating Bar)
+  // Update Badges
   document.querySelectorAll('.cart-badge-count').forEach(badge => {
     badge.textContent = totalCount;
     badge.classList.toggle('hidden', totalCount === 0);
   });
 
+  // Mobile Floating Cart Pill
   const mobileCartBar = document.getElementById('mobile-floating-cart');
   if (mobileCartBar) {
     if (totalCount > 0) {
       mobileCartBar.classList.remove('hidden');
       const { grandTotal } = getCartCalculations();
-      document.getElementById('mobile-cart-total').textContent = `${CONFIG.currencySymbol}${grandTotal.toLocaleString()}`;
-      document.getElementById('mobile-cart-count').textContent = `${totalCount} item${totalCount > 1 ? 's' : ''}`;
+      const mobileTotal = document.getElementById('mobile-cart-total');
+      const mobileCount = document.getElementById('mobile-cart-count');
+      if (mobileTotal) mobileTotal.textContent = `${CONFIG.currencySymbol}${grandTotal.toLocaleString()}`;
+      if (mobileCount) mobileCount.textContent = `${totalCount} item${totalCount > 1 ? 's' : ''}`;
     } else {
       mobileCartBar.classList.add('hidden');
     }
   }
 
-  // Render Cart Drawer Items
+  // Cart Drawer
   const itemsContainer = document.getElementById('cart-items-container');
   const emptyState = document.getElementById('cart-empty-state');
   const footerSection = document.getElementById('cart-footer-section');
   if (!itemsContainer) return;
 
   if (AppState.cart.length === 0) {
-    emptyState.classList.remove('hidden');
-    footerSection.classList.add('hidden');
+    if (emptyState) emptyState.classList.remove('hidden');
+    if (footerSection) footerSection.classList.add('hidden');
     itemsContainer.innerHTML = '';
     return;
   }
 
-  emptyState.classList.add('hidden');
-  footerSection.classList.remove('hidden');
+  if (emptyState) emptyState.classList.add('hidden');
+  if (footerSection) footerSection.classList.remove('hidden');
 
-  // Render items list
   itemsContainer.innerHTML = AppState.cart.map((item, index) => `
     <div class="flex items-center gap-3.5 py-3 border-b border-purple-50 last:border-none">
-      <img src="${item.image}" alt="${escapeHtml(item.title)}" class="w-16 h-16 rounded-xl object-cover bg-purple-50 flex-shrink-0" />
+      <img src="${item.image}" alt="${escapeHtml(item.title)}" class="w-16 h-16 rounded-2xl object-cover bg-purple-50 flex-shrink-0 border border-purple-100" />
       
       <div class="flex-1 min-w-0">
         <h5 class="text-xs sm:text-sm font-semibold text-gray-900 truncate">${escapeHtml(item.title)}</h5>
@@ -911,19 +801,18 @@ function updateCartUI() {
           ${CONFIG.currencySymbol}${item.price.toLocaleString()} × ${item.quantity} = <strong class="text-purple-700">${CONFIG.currencySymbol}${(item.price * item.quantity).toLocaleString()}</strong>
         </span>
 
-        <!-- Quantity Controls -->
         <div class="flex items-center gap-2 mt-2">
-          <div class="inline-flex items-center rounded-lg border border-purple-100 bg-white">
+          <div class="inline-flex items-center rounded-xl border border-purple-100 bg-white">
             <button 
               type="button" 
               onclick="updateCartItemQuantity(${index}, -1)" 
-              class="w-6 h-6 flex items-center justify-center text-gray-600 hover:text-purple-700 text-sm font-bold"
+              class="w-6 h-6 flex items-center justify-center text-gray-600 hover:text-purple-700 text-sm font-bold focus-visible:ring-1 focus-visible:ring-purple-600"
             >-</button>
             <span class="w-7 text-center text-xs font-semibold text-gray-800">${item.quantity}</span>
             <button 
               type="button" 
               onclick="updateCartItemQuantity(${index}, 1)" 
-              class="w-6 h-6 flex items-center justify-center text-gray-600 hover:text-purple-700 text-sm font-bold"
+              class="w-6 h-6 flex items-center justify-center text-gray-600 hover:text-purple-700 text-sm font-bold focus-visible:ring-1 focus-visible:ring-purple-600"
             >+</button>
           </div>
           <button 
@@ -936,7 +825,7 @@ function updateCartUI() {
     </div>
   `).join('');
 
-  // Update Free Shipping Progress Bar
+  // Free Delivery Progress Bar (Dhaka City)
   const { subtotal, discount, grandTotal } = getCartCalculations();
   const threshold = CONFIG.freeShippingThreshold;
   const progressPercent = Math.min(100, Math.round((subtotal / threshold) * 100));
@@ -953,21 +842,25 @@ function updateCartUI() {
     }
   }
 
-  // Update Summary numbers
-  document.getElementById('cart-subtotal').textContent = `${CONFIG.currencySymbol}${subtotal.toLocaleString()}`;
-  document.getElementById('cart-total').textContent = `${CONFIG.currencySymbol}${grandTotal.toLocaleString()}`;
+  // Summary numbers
+  const cartSubtotalEl = document.getElementById('cart-subtotal');
+  const cartTotalEl = document.getElementById('cart-total');
+  if (cartSubtotalEl) cartSubtotalEl.textContent = `${CONFIG.currencySymbol}${subtotal.toLocaleString()}`;
+  if (cartTotalEl) cartTotalEl.textContent = `${CONFIG.currencySymbol}${grandTotal.toLocaleString()}`;
 
   const discountRow = document.getElementById('cart-discount-row');
-  if (AppState.appliedPromo && discount > 0) {
-    discountRow.classList.remove('hidden');
-    document.getElementById('cart-discount-amount').textContent = `-${CONFIG.currencySymbol}${discount.toLocaleString()}`;
-    document.getElementById('cart-applied-promo-tag').textContent = `(${AppState.appliedPromo.label})`;
-  } else {
-    discountRow.classList.add('hidden');
+  if (discountRow) {
+    if (AppState.appliedPromo && discount > 0) {
+      discountRow.classList.remove('hidden');
+      document.getElementById('cart-discount-amount').textContent = `-${CONFIG.currencySymbol}${discount.toLocaleString()}`;
+      document.getElementById('cart-applied-promo-tag').textContent = `(${AppState.appliedPromo.label})`;
+    } else {
+      discountRow.classList.add('hidden');
+    }
   }
 }
 
-// Promo Code Handling
+// Promo Code
 function applyPromoCode() {
   const input = document.getElementById('promo-code-input');
   if (!input) return;
@@ -979,10 +872,7 @@ function applyPromoCode() {
   }
 
   if (AppState.availablePromos[code]) {
-    AppState.appliedPromo = {
-      code: code,
-      ...AppState.availablePromos[code]
-    };
+    AppState.appliedPromo = { code: code, ...AppState.availablePromos[code] };
     updateCartUI();
     showToast(`Code "${code}" applied successfully! 🎁`, 'success');
   } else {
@@ -1030,7 +920,9 @@ function toggleWishlist(productId) {
 
   Storage.saveWishlist(AppState.wishlist);
   updateWishlistUI();
-  renderProducts(); // re-render hearts
+  if (document.getElementById('products-grid')) {
+    renderProducts();
+  }
 }
 
 function updateWishlistUI() {
@@ -1045,30 +937,36 @@ function updateWishlistUI() {
   if (!listContainer) return;
 
   if (count === 0) {
-    emptyState.classList.remove('hidden');
+    if (emptyState) emptyState.classList.remove('hidden');
     listContainer.innerHTML = '';
     return;
   }
 
-  emptyState.classList.add('hidden');
+  if (emptyState) emptyState.classList.add('hidden');
   listContainer.innerHTML = AppState.wishlist.map(item => `
     <div class="flex items-center gap-3.5 py-3 border-b border-purple-50 last:border-none">
-      <img src="${item.image}" alt="${escapeHtml(item.title)}" class="w-16 h-16 rounded-xl object-cover bg-purple-50 flex-shrink-0" />
+      <img src="${item.image}" alt="${escapeHtml(item.title)}" class="w-16 h-16 rounded-2xl object-cover bg-purple-50 flex-shrink-0 border border-purple-100" />
       <div class="flex-1 min-w-0">
         <h5 class="text-xs sm:text-sm font-semibold text-gray-900 truncate">${escapeHtml(item.title)}</h5>
         <p class="text-xs text-purple-600 font-serif font-semibold mt-0.5">${CONFIG.currencySymbol}${item.price.toLocaleString()}</p>
-        <div class="flex items-center gap-3 mt-2">
+        <div class="flex items-center gap-2 mt-2">
           <button 
             type="button" 
             onclick="quickAddToCart('${item.id}'); toggleWishlist('${item.id}')"
-            class="text-xs bg-purple-600 text-white font-medium px-3 py-1 rounded-md hover:bg-purple-700 shadow-sm transition-all"
+            class="text-xs bg-purple-600 text-white font-medium px-3 py-1 rounded-lg hover:bg-purple-700 shadow-sm transition-all focus-visible:ring-1 focus-visible:ring-purple-600"
           >
-            Move to Cart
+            Move to Bag
           </button>
+          <a 
+            href="product.html?id=${item.id}"
+            class="text-xs border border-purple-200 text-purple-700 px-2 py-1 rounded-lg hover:bg-purple-50"
+          >
+            View
+          </a>
           <button 
             type="button" 
             onclick="toggleWishlist('${item.id}')"
-            class="text-xs text-gray-400 hover:text-rose-500"
+            class="text-xs text-gray-400 hover:text-rose-500 ml-1"
           >
             Remove
           </button>
@@ -1099,7 +997,7 @@ function closeWishlistDrawer() {
 // ==========================================
 function openCheckoutModal() {
   if (AppState.cart.length === 0) {
-    showToast('Your cart is empty! Add gifts before checkout.', 'warning');
+    showToast('Your bag is empty! Add gifts before checkout.', 'warning');
     return;
   }
 
@@ -1120,8 +1018,8 @@ function closeCheckoutModal() {
   }
 }
 
-function setShippingZone(zone) {
-  AppState.shippingZone = zone;
+function setShippingMethod(method) {
+  AppState.shippingMethod = method;
   renderCheckoutSummary();
 }
 
@@ -1136,20 +1034,25 @@ function setPaymentMethod(method) {
 function renderCheckoutSummary() {
   const { subtotal, discount, shipping, grandTotal } = getCartCalculations();
 
-  document.getElementById('checkout-subtotal').textContent = `${CONFIG.currencySymbol}${subtotal.toLocaleString()}`;
-  document.getElementById('checkout-shipping').textContent = shipping === 0 ? 'FREE' : `${CONFIG.currencySymbol}${shipping.toLocaleString()}`;
+  const subtotalEl = document.getElementById('checkout-subtotal');
+  const shippingEl = document.getElementById('checkout-shipping');
+  const grandTotalEl = document.getElementById('checkout-grand-total');
+
+  if (subtotalEl) subtotalEl.textContent = `${CONFIG.currencySymbol}${subtotal.toLocaleString()}`;
+  if (shippingEl) shippingEl.textContent = shipping === 0 ? 'FREE' : `${CONFIG.currencySymbol}${shipping.toLocaleString()}`;
   
   const discountRow = document.getElementById('checkout-discount-row');
-  if (discount > 0) {
-    discountRow.classList.remove('hidden');
-    document.getElementById('checkout-discount').textContent = `-${CONFIG.currencySymbol}${discount.toLocaleString()}`;
-  } else {
-    discountRow.classList.add('hidden');
+  if (discountRow) {
+    if (discount > 0) {
+      discountRow.classList.remove('hidden');
+      document.getElementById('checkout-discount').textContent = `-${CONFIG.currencySymbol}${discount.toLocaleString()}`;
+    } else {
+      discountRow.classList.add('hidden');
+    }
   }
 
-  document.getElementById('checkout-grand-total').textContent = `${CONFIG.currencySymbol}${grandTotal.toLocaleString()}`;
+  if (grandTotalEl) grandTotalEl.textContent = `${CONFIG.currencySymbol}${grandTotal.toLocaleString()}`;
 
-  // Mini items list preview in checkout
   const itemsContainer = document.getElementById('checkout-items-preview');
   if (itemsContainer) {
     itemsContainer.innerHTML = AppState.cart.map(item => `
@@ -1164,55 +1067,49 @@ function renderCheckoutSummary() {
   }
 }
 
-// Handle Order Submission
+// Handle Order Submission to Web3Forms
 async function handleCheckoutSubmit(e) {
   e.preventDefault();
   const submitBtn = document.getElementById('place-order-btn');
   const originalBtnText = submitBtn.innerHTML;
 
-  // Read Form values
   const name = document.getElementById('cust-name').value.trim();
   const phone = document.getElementById('cust-phone').value.trim();
-  const altPhone = document.getElementById('cust-alt-phone').value.trim();
-  const district = document.getElementById('cust-district').value;
+  const area = document.getElementById('cust-area')?.value || 'Dhaka';
   const address = document.getElementById('cust-address').value.trim();
-  const instructions = document.getElementById('cust-notes').value.trim();
-  const trxId = document.getElementById('cust-trxid') ? document.getElementById('cust-trxid').value.trim() : '';
+  const instructions = document.getElementById('cust-notes')?.value.trim() || '';
+  const trxId = document.getElementById('cust-trxid')?.value.trim() || '';
 
-  // Validations
   if (!name || !phone || !address) {
-    showToast('Please complete all required shipping fields', 'error');
+    showToast('Please complete all required fields', 'error');
     return;
   }
 
-  if (phone.length < 10) {
-    showToast('Please enter a valid Bangladeshi phone number', 'error');
+  if (phone.length < 11) {
+    showToast('Please enter a valid 11-digit phone number (e.g. 018XXXXXXXX)', 'error');
     return;
   }
 
-  // Calculate order metrics
   const { subtotal, discount, shipping, grandTotal } = getCartCalculations();
   const orderId = `FLW-${Date.now().toString().slice(-6)}`;
   const orderDate = new Date().toLocaleString('en-US', { timeZone: 'Asia/Dhaka' });
 
-  // Format Items Breakdown for email/notification
   const itemsBreakdown = AppState.cart.map(item => 
-    `• ${item.title} (Qty: ${item.quantity}, Price: ${CONFIG.currencySymbol}${item.price}) ${item.customNote ? `[Custom Text: ${item.customNote}]` : ''}`
+    `• ${item.title} (Qty: ${item.quantity}, Price: ${CONFIG.currencySymbol}${item.price}) ${item.customNote ? `[Custom: ${item.customNote}]` : ''}`
   ).join('\n');
 
-  // Payload for Serverless Form (Web3Forms / Formspree)
+  // Payload for Web3Forms endpoint
   const payload = {
-    access_key: CONFIG.web3FormsKey, // Web3Forms public key
-    subject: `New Flowris Order: #${orderId} from ${name}`,
-    from_name: "Flowris Gifts Storefront",
+    access_key: CONFIG.web3FormsKey,
+    subject: `🌸 New Flowris Order #${orderId} from ${name}`,
+    from_name: "Flowris Storefront (Dhaka)",
     order_id: orderId,
     customer_name: name,
-    phone_number: phone,
-    alt_phone_number: altPhone || 'N/A',
-    delivery_district: district,
-    shipping_zone: AppState.shippingZone === 'inside-dhaka' ? 'Inside Dhaka (৳80/Free)' : 'Outside Dhaka (৳150)',
+    customer_phone: phone,
+    dhaka_area: area,
     delivery_address: address,
-    gift_notes: instructions || 'N/A',
+    shipping_service: AppState.shippingMethod === 'express' ? 'Dhaka Express (Same Day/Next Day ৳130)' : 'Dhaka Standard (24-48h ৳80/Free)',
+    gift_notes: instructions || 'None',
     payment_method: AppState.paymentMethod === 'bkash' ? 'bKash / Nagad Send-Money' : 'Cash on Delivery (COD)',
     bkash_trxid: trxId || 'Pending Verification',
     subtotal: `${CONFIG.currencySymbol}${subtotal}`,
@@ -1223,7 +1120,6 @@ async function handleCheckoutSubmit(e) {
     order_timestamp: orderDate
   };
 
-  // UI state: loading
   submitBtn.disabled = true;
   submitBtn.innerHTML = `
     <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -1234,43 +1130,27 @@ async function handleCheckoutSubmit(e) {
   `;
 
   try {
-    // Attempt Serverless submission if endpoint or key is configured
-    let submittedSuccessfully = false;
+    let submitted = false;
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    const json = await res.json();
+    submitted = json.success;
 
-    if (CONFIG.web3FormsKey && CONFIG.web3FormsKey !== "YOUR_WEB3FORMS_ACCESS_KEY_HERE") {
-      const res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-      const json = await res.json();
-      submittedSuccessfully = json.success;
-    } else if (CONFIG.formspreeEndpoint) {
-      const res = await fetch(CONFIG.formspreeEndpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-      submittedSuccessfully = res.ok;
-    } else {
-      // In demo mode without configured keys: simulate instant high-speed serverless response
-      await new Promise(resolve => setTimeout(resolve, 800));
-      submittedSuccessfully = true;
-    }
-
-    if (submittedSuccessfully) {
+    if (submitted) {
       showOrderSuccessScreen(orderId, name, phone, grandTotal, payload);
-      // Clear Cart
       AppState.cart = [];
       AppState.appliedPromo = null;
       Storage.saveCart(AppState.cart);
       updateCartUI();
     } else {
-      throw new Error('Form submission failed');
+      throw new Error(json.message || 'Submission error');
     }
   } catch (err) {
-    console.error('Submission error:', err);
-    // Even if remote webhook fails, allow fallback to WhatsApp confirmation
+    console.warn('Web3Forms response note:', err);
+    // Allow graceful fallback to WhatsApp confirmation
     showOrderSuccessScreen(orderId, name, phone, grandTotal, payload, true);
   } finally {
     submitBtn.disabled = false;
@@ -1283,13 +1163,11 @@ function showOrderSuccessScreen(orderId, name, phone, grandTotal, payload, hadNe
   const modalContent = document.getElementById('checkout-modal-content');
   if (!modalContent) return;
 
-  // Build WhatsApp invoice text
   const waReceipt = `🌸 *FLOWRIS ORDER CONFIRMATION* 🌸\n` +
-    `*Order ID:* ${orderId}\n` +
+    `*Order Ref:* ${orderId}\n` +
     `*Customer:* ${name}\n` +
     `*Phone:* ${phone}\n` +
-    `*Address:* ${payload.delivery_address}\n` +
-    `*District:* ${payload.delivery_district}\n` +
+    `*Address:* ${payload.delivery_address}, ${payload.dhaka_area}, Dhaka\n` +
     `*Payment Method:* ${payload.payment_method}\n` +
     `${payload.bkash_trxid !== 'Pending Verification' ? `*TrxID:* ${payload.bkash_trxid}\n` : ''}` +
     `--------------------------\n` +
@@ -1316,14 +1194,14 @@ function showOrderSuccessScreen(orderId, name, phone, grandTotal, payload, hadNe
         Your handcrafted gift order has been received with love.
       </p>
 
-      <div class="bg-purple-50/70 border border-purple-100 rounded-xl p-4 text-left mb-6 text-sm">
+      <div class="bg-purple-50/70 border border-purple-100 rounded-2xl p-4 text-left mb-6 text-sm">
         <div class="flex justify-between items-center mb-2 pb-2 border-b border-purple-100/70">
           <span class="text-gray-500">Order Reference:</span>
           <span class="font-mono font-bold text-purple-700 text-base">${orderId}</span>
         </div>
         <div class="flex justify-between items-center mb-2">
-          <span class="text-gray-500">Estimated Delivery:</span>
-          <span class="font-medium text-gray-800">2-4 Business Days</span>
+          <span class="text-gray-500">Delivery Location:</span>
+          <span class="font-medium text-gray-800">${escapeHtml(payload.dhaka_area || 'Dhaka')}</span>
         </div>
         <div class="flex justify-between items-center">
           <span class="text-gray-500">Total Payable:</span>
@@ -1331,22 +1209,16 @@ function showOrderSuccessScreen(orderId, name, phone, grandTotal, payload, hadNe
         </div>
       </div>
 
-      ${hadNetworkIssue ? `
-        <div class="bg-amber-50 border border-amber-200 text-amber-800 text-xs rounded-lg p-3 mb-5 text-left">
-          ⚠️ Please click the button below to confirm your order details via WhatsApp to complete instant verification.
-        </div>
-      ` : `
-        <p class="text-xs text-gray-500 mb-6">
-          Our Dhaka team will call you at <strong>${escapeHtml(phone)}</strong> to confirm your dispatch. You can also send the receipt to our WhatsApp for instant priority updates!
-        </p>
-      `}
+      <p class="text-xs text-gray-500 mb-6">
+        Our Dhaka team will contact you at <strong>${escapeHtml(phone)}</strong> before dispatch. You can also send the receipt to our WhatsApp for instant priority updates!
+      </p>
 
       <div class="flex flex-col sm:flex-row gap-3">
         <a 
           href="${waLink}" 
           target="_blank" 
           rel="noopener"
-          class="flex-1 px-5 py-3 bg-[#25D366] hover:bg-[#20ba5a] text-white rounded-xl font-semibold text-sm flex items-center justify-center gap-2 shadow-md transition-all"
+          class="flex-1 px-5 py-3.5 bg-[#25D366] hover:bg-[#20ba5a] text-white rounded-xl font-semibold text-sm flex items-center justify-center gap-2 shadow-md transition-all focus-visible:ring-2 focus-visible:ring-emerald-500"
         >
           <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
             <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
@@ -1356,7 +1228,7 @@ function showOrderSuccessScreen(orderId, name, phone, grandTotal, payload, hadNe
         <button 
           type="button" 
           onclick="closeCheckoutModal(); location.reload();" 
-          class="px-5 py-3 border border-purple-200 text-purple-700 hover:bg-purple-50 rounded-xl font-medium text-sm transition-all"
+          class="px-5 py-3.5 border border-purple-200 text-purple-700 hover:bg-purple-50 rounded-xl font-medium text-sm transition-all focus-visible:ring-2 focus-visible:ring-purple-600"
         >
           Continue Shopping
         </button>
@@ -1365,17 +1237,17 @@ function showOrderSuccessScreen(orderId, name, phone, grandTotal, payload, hadNe
   `;
 }
 
-// Checkout directly via WhatsApp (one-click bypass for customers who prefer chatting)
+// Quick Order via WhatsApp directly from Cart
 function checkoutDirectViaWhatsApp() {
   if (AppState.cart.length === 0) {
-    showToast('Your cart is empty!', 'warning');
+    showToast('Your bag is empty!', 'warning');
     return;
   }
 
   const { subtotal, grandTotal } = getCartCalculations();
   const orderId = `FLW-${Date.now().toString().slice(-6)}`;
 
-  let message = `Hello Flowris team! 🌸 I would like to place an order from your website:\n\n`;
+  let message = `Hello Flowris team! 🌸 I would like to order from your website:\n\n`;
   message += `*Order Ref:* ${orderId}\n`;
   message += `--------------------------\n`;
   AppState.cart.forEach((item, idx) => {
@@ -1386,8 +1258,9 @@ function checkoutDirectViaWhatsApp() {
   });
   message += `--------------------------\n`;
   message += `*Subtotal:* ${CONFIG.currencySymbol}${subtotal.toLocaleString()}\n`;
-  message += `*Total Estimate:* ${CONFIG.currencySymbol}${grandTotal.toLocaleString()}\n\n`;
-  message += `Please confirm my order and let me know the delivery schedule. Thank you!`;
+  message += `*Total Estimate:* ${CONFIG.currencySymbol}${grandTotal.toLocaleString()}\n`;
+  message += `*Delivery:* Dhaka City, Bangladesh\n\n`;
+  message += `Please confirm my order. Thank you!`;
 
   const waUrl = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`;
   window.open(waUrl, '_blank');
@@ -1416,14 +1289,15 @@ async function handleCustomOrderSubmit(e) {
 
   const payload = {
     access_key: CONFIG.web3FormsKey,
-    subject: `New Custom Gift Inquiry from ${name} (${giftType})`,
+    subject: `🌸 Custom Gift Inquiry: ${name} (${giftType})`,
     from_name: "Flowris Custom Order Request",
     customer_name: name,
-    phone_number: phone,
-    gift_type: giftType,
+    customer_phone: phone,
+    gift_category: giftType,
     budget_range: budget || 'Flexible',
     needed_by_date: deadline || 'Standard',
     custom_description: details,
+    delivery_city: "Dhaka, Bangladesh",
     requested_at: new Date().toLocaleString('en-US', { timeZone: 'Asia/Dhaka' })
   };
 
@@ -1431,15 +1305,12 @@ async function handleCustomOrderSubmit(e) {
   submitBtn.textContent = 'Submitting Request...';
 
   try {
-    if (CONFIG.web3FormsKey && CONFIG.web3FormsKey !== "YOUR_WEB3FORMS_ACCESS_KEY_HERE") {
-      await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-    } else {
-      await new Promise(r => setTimeout(r, 600));
-    }
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    const json = await res.json();
 
     form.reset();
     showToast('Your custom gift inquiry was received! We will reach out shortly. 🌸', 'success');
@@ -1452,7 +1323,7 @@ async function handleCustomOrderSubmit(e) {
 }
 
 // ==========================================
-// TOAST NOTIFICATION UTILITY
+// TOAST NOTIFICATIONS
 // ==========================================
 function showToast(message, type = 'info') {
   let toastContainer = document.getElementById('toast-container');
@@ -1479,13 +1350,11 @@ function showToast(message, type = 'info') {
 
   toastContainer.appendChild(toast);
 
-  // Trigger enter animation
   requestAnimationFrame(() => {
     toast.classList.remove('translate-y-4', 'opacity-0');
     toast.classList.add('translate-y-0', 'opacity-100');
   });
 
-  // Auto remove after 3.2s
   setTimeout(() => {
     toast.classList.remove('translate-y-0', 'opacity-100');
     toast.classList.add('translate-y-2', 'opacity-0');
@@ -1494,10 +1363,9 @@ function showToast(message, type = 'info') {
 }
 
 // ==========================================
-// EVENT LISTENERS & URL HANDLERS
+// EVENT LISTENERS & URL PARAMS
 // ==========================================
 function setupEventListeners() {
-  // Search Input live typing
   const searchInput = document.getElementById('search-input');
   if (searchInput) {
     searchInput.addEventListener('input', (e) => {
@@ -1506,7 +1374,6 @@ function setupEventListeners() {
     });
   }
 
-  // Sort Dropdown
   const sortSelect = document.getElementById('sort-select');
   if (sortSelect) {
     sortSelect.addEventListener('change', (e) => {
@@ -1515,7 +1382,6 @@ function setupEventListeners() {
     });
   }
 
-  // Category filter pills
   document.querySelectorAll('.filter-pill').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
@@ -1525,7 +1391,6 @@ function setupEventListeners() {
     });
   });
 
-  // Mobile navigation drawer
   const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
   const mobileNavDrawer = document.getElementById('mobile-nav-drawer');
   if (mobileMenuToggle && mobileNavDrawer) {
@@ -1534,19 +1399,16 @@ function setupEventListeners() {
     });
   }
 
-  // Checkout form submit
   const checkoutForm = document.getElementById('checkout-form');
   if (checkoutForm) {
     checkoutForm.addEventListener('submit', handleCheckoutSubmit);
   }
 
-  // Custom order form submit
   const customOrderForm = document.getElementById('custom-order-form');
   if (customOrderForm) {
     customOrderForm.addEventListener('submit', handleCustomOrderSubmit);
   }
 
-  // Close modals on Escape key
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       closeProductModal();
@@ -1564,9 +1426,7 @@ function handleUrlParams() {
 
   if (categoryParam) {
     const matchingPill = document.querySelector(`.filter-pill[data-category="${categoryParam}"]`);
-    if (matchingPill) {
-      matchingPill.click();
-    }
+    if (matchingPill) matchingPill.click();
   }
 
   if (productParam) {
@@ -1576,7 +1436,6 @@ function handleUrlParams() {
   }
 }
 
-// Utility function to escape HTML
 function escapeHtml(str) {
   if (!str) return '';
   return String(str)
@@ -1586,3 +1445,33 @@ function escapeHtml(str) {
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
 }
+
+// ==========================================
+// EXPLICIT GLOBAL BINDINGS
+// (Ensures inline onclick handlers work in all browsers)
+// ==========================================
+window.CONFIG = CONFIG;
+window.AppState = AppState;
+window.openCartDrawer = openCartDrawer;
+window.closeCartDrawer = closeCartDrawer;
+window.openWishlistDrawer = openWishlistDrawer;
+window.closeWishlistDrawer = closeWishlistDrawer;
+window.openProductModal = openProductModal;
+window.closeProductModal = closeProductModal;
+window.openCheckoutModal = openCheckoutModal;
+window.closeCheckoutModal = closeCheckoutModal;
+window.addToCart = addToCart;
+window.quickAddToCart = quickAddToCart;
+window.updateCartItemQuantity = updateCartItemQuantity;
+window.removeCartItem = removeCartItem;
+window.clearCart = clearCart;
+window.applyPromoCode = applyPromoCode;
+window.toggleWishlist = toggleWishlist;
+window.setShippingMethod = setShippingMethod;
+window.setPaymentMethod = setPaymentMethod;
+window.modalAddToCart = modalAddToCart;
+window.modalBuyViaWhatsApp = modalBuyViaWhatsApp;
+window.setModalMainImage = setModalMainImage;
+window.checkoutDirectViaWhatsApp = checkoutDirectViaWhatsApp;
+window.resetFilters = resetFilters;
+window.showToast = showToast;
