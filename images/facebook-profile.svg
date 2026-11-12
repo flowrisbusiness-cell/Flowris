@@ -1,81 +1,149 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800">
   <defs>
-    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <!-- Background Gradient -->
+    <linearGradient id="pBg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#FAF5FF" />
       <stop offset="50%" stop-color="#FFFFFF" />
       <stop offset="100%" stop-color="#FDF2F8" />
     </linearGradient>
-    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+
+    <!-- Border Ring Gradient -->
+    <linearGradient id="pRing" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#7C3AED" />
       <stop offset="50%" stop-color="#EC4899" />
-      <stop offset="100%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#8B5CF6" />
     </linearGradient>
-    <linearGradient id="fbStemGrad" x1="0%" y1="100%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#4C1D95" />
-      <stop offset="50%" stop-color="#7C3AED" />
-      <stop offset="100%" stop-color="#9333EA" />
+
+    <!-- Natural Wood Twig Gradient -->
+    <linearGradient id="pWood" x1="0%" y1="100%" x2="50%" y2="0%">
+      <stop offset="0%" stop-color="#4A3B32" />
+      <stop offset="40%" stop-color="#6B4F3B" />
+      <stop offset="80%" stop-color="#8B5E3C" />
+      <stop offset="100%" stop-color="#5C4033" />
     </linearGradient>
-    <linearGradient id="fbPetalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#EC4899" />
+
+    <!-- Botanical Leaf Gradient -->
+    <linearGradient id="pLeaf1" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1E3A2F" />
+      <stop offset="50%" stop-color="#2D5A46" />
+      <stop offset="100%" stop-color="#4E876A" />
+    </linearGradient>
+    <linearGradient id="pLeaf2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4E876A" />
+      <stop offset="60%" stop-color="#2D5A46" />
+      <stop offset="100%" stop-color="#1A3328" />
+    </linearGradient>
+
+    <!-- Real Velvet Rose Petals -->
+    <linearGradient id="pPetalDeep" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#831843" />
+      <stop offset="50%" stop-color="#9D174D" />
+      <stop offset="100%" stop-color="#BE185D" />
+    </linearGradient>
+    <linearGradient id="pPetalMid" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#BE185D" />
+      <stop offset="50%" stop-color="#DB2777" />
+      <stop offset="100%" stop-color="#F43F5E" />
+    </linearGradient>
+    <linearGradient id="pPetalLight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDA4AF" />
       <stop offset="50%" stop-color="#F43F5E" />
-      <stop offset="100%" stop-color="#7C3AED" />
+      <stop offset="100%" stop-color="#E11D48" />
     </linearGradient>
-    <linearGradient id="fbGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="pPetalCup" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFE4E6" />
+      <stop offset="50%" stop-color="#FB7185" />
+      <stop offset="100%" stop-color="#F43F5E" />
+    </linearGradient>
+
+    <!-- Luxury Gold Accent -->
+    <linearGradient id="pGold" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#FDE047" />
-      <stop offset="100%" stop-color="#D97706" />
+      <stop offset="50%" stop-color="#D97706" />
+      <stop offset="100%" stop-color="#92400E" />
     </linearGradient>
-    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="12" stdDeviation="20" flood-color="#7C3AED" flood-opacity="0.16"/>
+
+    <!-- Drop Shadows (standard SVG filters) -->
+    <filter id="pCenterShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#7C3AED" flood-opacity="0.12"/>
     </filter>
   </defs>
 
-  <!-- Background -->
-  <rect width="800" height="800" fill="url(#bgGrad)" />
+  <!-- Clean Canvas Background -->
+  <rect width="800" height="800" fill="url(#pBg)" />
 
-  <!-- Outer Luxurious Concentric Circle Rings -->
-  <circle cx="400" cy="400" r="370" fill="none" stroke="url(#borderGrad)" stroke-width="4" opacity="0.4" />
-  <circle cx="400" cy="400" r="350" fill="#FFFFFF" filter="url(#softGlow)" />
+  <!-- Outer Circular Decorative Framing (fits inside circular profile crop) -->
+  <circle cx="400" cy="400" r="375" fill="none" stroke="url(#pRing)" stroke-width="3" opacity="0.35" />
+  <circle cx="400" cy="400" r="350" fill="#FFFFFF" filter="url(#pCenterShadow)" />
   <circle cx="400" cy="400" r="348" fill="#FAF5FF" opacity="0.5" />
+  <circle cx="400" cy="400" r="330" fill="none" stroke="#E9D5FF" stroke-width="1.2" stroke-dasharray="6 6" opacity="0.8" />
 
-  <!-- Central Botanical Emblem: Natural Stick & Flower -->
-  <g transform="translate(400, 290) scale(3.4)">
-    <!-- Natural Stem / Twig -->
-    <path d="M-8 44 Q-2 28 2 12 Q3 5 5 -4" fill="none" stroke="url(#fbStemGrad)" stroke-width="2.6" stroke-linecap="round" />
+  <!-- REAL BOTANICAL EMBLEM: Realistic Flower on Wooden Stick Stem -->
+  <g transform="translate(400, 290) scale(4.4)">
     
-    <!-- Side twigs -->
-    <path d="M-4 32 Q-9 27 -14 28" fill="none" stroke="url(#fbStemGrad)" stroke-width="1.6" stroke-linecap="round" />
-    <path d="M0 20 Q8 18 13 21" fill="none" stroke="url(#fbStemGrad)" stroke-width="1.6" stroke-linecap="round" />
-    
-    <!-- Delicate natural leaves -->
-    <path d="M-14 28 C-16 23 -13 19 -9 21 C-9 25 -11 28 -14 28 Z" fill="#7C3AED" />
-    <path d="M13 21 C17 18 17 14 13 12 C10 15 10 19 13 21 Z" fill="#9333EA" />
+    <!-- Wooden Twig / Stem -->
+    <path d="M-8 44 C-6 32, -1 20, 4 8 C5.5 3, 6.5 -2, 7 -7" fill="none" stroke="url(#pWood)" stroke-width="3.2" stroke-linecap="round" />
+    <path d="M-7.5 43 C-5.5 32, -0.8 20.5, 4.2 8.5" fill="none" stroke="#A27B5C" stroke-width="1" stroke-linecap="round" opacity="0.75" />
 
-    <!-- Blooming Floral Head -->
-    <path d="M5 -4 C-2 -10 1 -17 7 -12 C13 -17 16 -10 9 -4 Z" fill="url(#fbPetalGrad)" />
-    <path d="M5 -4 C-2 -5 -4 1 1 4 C5 2 5 -2 5 -4 Z" fill="#F43F5E" />
-    <path d="M9 -4 C16 -5 18 1 13 4 C9 2 9 -2 9 -4 Z" fill="#EC4899" />
-    
-    <ellipse cx="7" cy="-7" rx="4" ry="5" fill="#BE185D" />
-    <circle cx="7" cy="-8" r="2.2" fill="url(#fbGoldGrad)" />
+    <!-- Side twig shoots -->
+    <path d="M-4.5 30 C-9 26, -14 27, -18 29" fill="none" stroke="url(#pWood)" stroke-width="1.8" stroke-linecap="round" />
+    <path d="M0.5 18 C6 15, 12 16, 17 20" fill="none" stroke="url(#pWood)" stroke-width="1.7" stroke-linecap="round" />
 
-    <!-- Artisan Sparkle -->
-    <path d="M22 -8 L23 -5.5 L25.5 -4.5 L23 -3.5 L22 -1 L21 -3.5 L18.5 -4.5 L21 -5.5 Z" fill="url(#fbGoldGrad)" />
+    <!-- Realistic Botanical Leaves with center veins -->
+    <!-- Left Leaf -->
+    <g transform="translate(-18, 29)">
+      <path d="M0 0 C-5 -7, -1 -15, 6 -12 C11 -9, 8 0, 0 0 Z" fill="url(#pLeaf1)" />
+      <path d="M0 0 C1 -5, 3 -9, 5 -11" fill="none" stroke="#6EE7B7" stroke-width="0.8" opacity="0.8" />
+    </g>
+
+    <!-- Right Leaf -->
+    <g transform="translate(17, 20)">
+      <path d="M0 0 C6 -5, 7 -12, 1 -14 C-4 -14, -4 -5, 0 0 Z" fill="url(#pLeaf2)" />
+      <path d="M0 0 C2 -5, 3 -9, 1 -13" fill="none" stroke="#6EE7B7" stroke-width="0.8" opacity="0.8" />
+    </g>
+
+    <!-- Stem leaf -->
+    <path d="M-1 14 C-3 10, -1 6, 2 8 C3 11, 1 13, -1 14 Z" fill="url(#pLeaf1)" opacity="0.85" />
+
+    <!-- Calyx sepals -->
+    <path d="M3 -4 C1 -8, 0 -12, 2 -14 C4 -10, 4 -7, 3 -4 Z" fill="#1E3A2F" />
+    <path d="M11 -4 C13 -8, 14 -12, 12 -14 C10 -10, 10 -7, 11 -4 Z" fill="#1E3A2F" />
+
+    <!-- Blooming Real Rose Flower Petals -->
+    <path d="M7 -6 C-3 -9, -8 -19, 1 -23 C7 -25, 10 -18, 7 -6 Z" fill="url(#pPetalDeep)" />
+    <path d="M7 -6 C17 -9, 22 -19, 13 -23 C7 -25, 4 -18, 7 -6 Z" fill="url(#pPetalDeep)" />
+
+    <path d="M-2 -11 C-6 -17, -1 -24, 7 -22 C3 -17, 2 -13, -2 -11 Z" fill="url(#pPetalMid)" />
+    <path d="M16 -11 C20 -17, 15 -24, 7 -22 C11 -17, 12 -13, 16 -11 Z" fill="url(#pPetalMid)" />
+
+    <path d="M-1 -15 C0 -21, 14 -21, 15 -15 C14 -9, 0 -9, -1 -15 Z" fill="url(#pPetalLight)" />
+    <path d="M2 -16 C3 -20.5, 11 -20.5, 12 -16 C10 -12, 4 -12, 2 -16 Z" fill="url(#pPetalCup)" />
+    <path d="M5 -17 C5.5 -19, 8.5 -19, 9 -17 C8.5 -15, 5.5 -15, 5 -17 Z" fill="#9D174D" />
+
+    <!-- Pollen Stamens in flower center -->
+    <circle cx="7" cy="-17.2" r="1.4" fill="url(#pGold)" />
+    <circle cx="5.8" cy="-16" r="0.9" fill="#FDE047" />
+    <circle cx="8.2" cy="-16.4" r="0.9" fill="#FDE047" />
+
+    <!-- Delicate Dewdrop -->
+    <circle cx="3" cy="-19.5" r="0.8" fill="#FFFFFF" opacity="0.9" />
   </g>
 
-  <!-- Typography: Flowris with Love-Heart as Dot of 'i' -->
-  <g transform="translate(400, 560)">
-    <!-- Main Wordmark centered -->
-    <text x="-95" y="0" font-family="'Playfair Display', Georgia, serif" font-size="76" font-weight="700" fill="#111827" letter-spacing="-1">Flowr</text>
+  <!-- BRAND WORDMARK: "Flowris" (CENTERED, NO LOVE CLICHÉ) -->
+  <g transform="translate(400, 565)">
+    <!-- Playfair Display Typography -->
+    <text x="-96" y="0" font-family="'Playfair Display', Georgia, serif" font-size="76" font-weight="700" fill="#111827" letter-spacing="-1">Flowr</text>
     <text x="110" y="0" font-family="'Playfair Display', Georgia, serif" font-size="76" font-weight="700" fill="#111827">&#305;</text>
     <text x="136" y="0" font-family="'Playfair Display', Georgia, serif" font-size="76" font-weight="700" fill="#111827" letter-spacing="-1">s</text>
 
-    <!-- Love Heart dot on 'i' -->
-    <g transform="translate(120, -50) scale(1.6)">
-      <path d="M0 -3 C-2 -7, -7 -6, -7 -2 C-7 2, -2 5, 0 8 C2 5, 7 2, 7 -2 C7 -6, 2 -7, 0 -3 Z" fill="url(#fbPetalGrad)" />
+    <!-- Natural Botanical Rose Petal as Dot of 'i' -->
+    <g transform="translate(122, -49) rotate(15)">
+      <path d="M0 0 C-4 -6, -2 -13, 4 -15 C8 -11, 8 -4, 0 0 Z" fill="url(#pPetalLight)" />
+      <circle cx="2.5" cy="-8" r="1.6" fill="#FDA4AF" />
     </g>
 
-    <!-- Tagline (DHAKA REMOVED) -->
-    <text x="0" y="44" text-anchor="middle" font-family="'Plus Jakarta Sans', Inter, sans-serif" font-size="19" font-weight="700" fill="#7C3AED" letter-spacing="7">HANDCRAFTED GIFTS</text>
-    <text x="0" y="74" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-size="18" font-style="italic" fill="#6B7280">Made with Love</text>
+    <!-- Subtitle: ARTISANAL GIFTS & BOTANICAL KEEPSAKES -->
+    <text x="0" y="44" text-anchor="middle" font-family="'Plus Jakarta Sans', Inter, sans-serif" font-size="18" font-weight="700" fill="#7C3AED" letter-spacing="6">HANDCRAFTED GIFTS</text>
+    <text x="0" y="72" text-anchor="middle" font-family="'Plus Jakarta Sans', Inter, sans-serif" font-size="13" font-weight="600" fill="#6B7280" letter-spacing="3.5">BOTANICAL KEEPSAKES</text>
   </g>
 </svg>

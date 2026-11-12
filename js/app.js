@@ -15,7 +15,7 @@
 // ==========================================
 const CONFIG = {
   storeName: "Flowris",
-  tagline: "Handcrafted Gifts, Made with Love",
+  tagline: "Artisanal Gifts & Botanical Keepsakes",
   currencySymbol: "৳",
   phone: "01886338064",
   whatsappNumber: "8801886338064",
@@ -201,7 +201,7 @@ const AppState = {
   paymentMethod: 'cod', // 'cod' or 'bkash'
 
   availablePromos: {
-    'FLOWRISLOVE': { type: 'percent', value: 10, label: '10% OFF Special Launch Discount' },
+    'FLOWRIS2026': { type: 'percent', value: 10, label: '10% OFF Special Launch Discount' },
     'WELCOME50': { type: 'flat', value: 50, label: '৳50 OFF Welcome Gift' },
     'EIDGIFT': { type: 'percent', value: 15, label: '15% OFF Festive Special' }
   }
