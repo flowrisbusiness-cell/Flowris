@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1640 924" width="1640" height="924">
+  <defs>
+    <linearGradient id="coverBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FAF5FF" />
+      <stop offset="45%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#FDF2F8" />
+    </linearGradient>
+    <linearGradient id="coverStem" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4C1D95" />
+      <stop offset="50%" stop-color="#7C3AED" />
+      <stop offset="100%" stop-color="#9333EA" />
+    </linearGradient>
+    <linearGradient id="coverPetal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EC4899" />
+      <stop offset="50%" stop-color="#F43F5E" />
+      <stop offset="100%" stop-color="#7C3AED" />
+    </linearGradient>
+    <linearGradient id="coverGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDE047" />
+      <stop offset="100%" stop-color="#D97706" />
+    </linearGradient>
+    <filter id="shadowBox" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="16" stdDeviation="24" flood-color="#7C3AED" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="1640" height="924" fill="url(#coverBg)" />
+
+  <!-- Ambient Luxury Glow Orbs -->
+  <circle cx="200" cy="180" r="320" fill="#F3E8FF" opacity="0.6" filter="blur(60px)" />
+  <circle cx="1480" cy="300" r="380" fill="#FCE7F3" opacity="0.6" filter="blur(80px)" />
+  <circle cx="820" cy="850" r="450" fill="#FAF5FF" opacity="0.7" filter="blur(70px)" />
+
+  <!-- Subtle Decorative Outer Border Frame -->
+  <rect x="40" y="40" width="1560" height="844" rx="36" fill="none" stroke="#F3E8FF" stroke-width="2" />
+  <rect x="52" y="52" width="1536" height="820" rx="30" fill="none" stroke="#DDD6FE" stroke-width="1" stroke-dasharray="8 8" opacity="0.6" />
+
+  <!-- Left Main Brand Showcase -->
+  <g transform="translate(140, 160)">
+    
+    <!-- Botanical Emblem: Natural Stick & Flower -->
+    <g transform="translate(0, 0)">
+      <circle cx="56" cy="56" r="54" fill="#FFFFFF" stroke="#F3E8FF" stroke-width="2" filter="url(#shadowBox)" />
+      
+      <!-- Stem / Twig -->
+      <g transform="translate(56, 56) scale(1.65)">
+        <path d="M-8 28 Q-2 14 2 2 Q3 -3 5 -10" fill="none" stroke="url(#coverStem)" stroke-width="2.6" stroke-linecap="round" />
+        <path d="M-4 18 Q-9 14 -13 15" fill="none" stroke="url(#coverStem)" stroke-width="1.6" stroke-linecap="round" />
+        <path d="M0 9 Q7 7 12 10" fill="none" stroke="url(#coverStem)" stroke-width="1.6" stroke-linecap="round" />
+        <path d="M-13 15 C-15 11 -12 7 -8 9 C-8 13 -10 15 -13 15 Z" fill="#7C3AED" />
+        <path d="M12 10 C16 7 16 3 12 1 C9 4 9 8 12 10 Z" fill="#9333EA" />
+
+        <!-- Petals -->
+        <path d="M5 -10 C-2 -16 1 -23 7 -18 C13 -23 16 -16 9 -10 Z" fill="url(#coverPetal)" />
+        <path d="M5 -10 C-2 -11 -4 -5 1 -2 C5 -4 5 -8 5 -10 Z" fill="#F43F5E" />
+        <path d="M9 -10 C16 -11 18 -5 13 -2 C9 -4 9 -8 9 -10 Z" fill="#EC4899" />
+        <ellipse cx="7" cy="-13" rx="4" ry="5" fill="#BE185D" />
+        <circle cx="7" cy="-14" r="2.2" fill="url(#coverGold)" />
+        <path d="M20 -14 L21 -11.5 L23.5 -10.5 L21 -9.5 L20 -7 L19 -9.5 L16.5 -10.5 L19 -11.5 Z" fill="url(#coverGold)" />
+      </g>
+    </g>
+
+    <!-- Main Wordmark "Flowris" with LOVE HEART as dot on 'i' -->
+    <g transform="translate(136, 75)">
+      <text x="0" y="0" font-family="'Playfair Display', Georgia, serif" font-size="82" font-weight="700" fill="#111827" letter-spacing="-1">Flowr</text>
+      <text x="228" y="0" font-family="'Playfair Display', Georgia, serif" font-size="82" font-weight="700" fill="#111827">&#305;</text>
+      <text x="257" y="0" font-family="'Playfair Display', Georgia, serif" font-size="82" font-weight="700" fill="#111827" letter-spacing="-1">s</text>
+
+      <!-- Love Heart Icon dot on 'i' -->
+      <g transform="translate(240, -56) scale(1.7)">
+        <path d="M0 -3 C-2 -7, -7 -6, -7 -2 C-7 2, -2 5, 0 8 C2 5, 7 2, 7 -2 C7 -6, 2 -7, 0 -3 Z" fill="url(#coverPetal)" />
+      </g>
+    </g>
+
+    <!-- Subtitle Tagline -->
+    <text x="140" y="125" font-family="'Plus Jakarta Sans', Inter, sans-serif" font-size="19" font-weight="700" fill="#7C3AED" letter-spacing="6">HANDCRAFTED GIFTS</text>
+
+    <!-- Headline & Motto -->
+    <text x="0" y="220" font-family="'Playfair Display', Georgia, serif" font-size="44" font-weight="600" fill="#1F2937">
+      "Handcrafted Gifts, <tspan fill="#EC4899" font-style="italic">Made with Love."</tspan>
+    </text>
+
+    <text x="0" y="275" font-family="'Plus Jakarta Sans', Inter, sans-serif" font-size="20" fill="#6B7280" font-weight="400">
+      Botanical Resin Keepsakes • Preserved Floral Bouquets • Custom Spotify Plaques • Curated Hampers
+    </text>
+
+    <!-- Category Pills Row -->
+    <g transform="translate(0, 330)">
+      <rect x="0" y="0" width="220" height="48" rx="24" fill="#FFFFFF" stroke="#E9D5FF" stroke-width="1.5" />
+      <text x="110" y="30" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="600" fill="#6B21A8">✨ Resin Art</text>
+
+      <rect x="236" y="0" width="250" height="48" rx="24" fill="#FFFFFF" stroke="#FBCFE8" stroke-width="1.5" />
+      <text x="361" y="30" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="600" fill="#9D174D">🌸 Preserved Flowers</text>
+
+      <rect x="502" y="0" width="250" height="48" rx="24" fill="#FFFFFF" stroke="#E0E7FF" stroke-width="1.5" />
+      <text x="627" y="30" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="600" fill="#3730A3">🎵 Spotify Plaques</text>
+
+      <rect x="768" y="0" width="220" height="48" rx="24" fill="#FFFFFF" stroke="#FEF3C7" stroke-width="1.5" />
+      <text x="878" y="30" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="600" fill="#92400E">🎁 Luxury Hampers</text>
+    </g>
+
+    <!-- Fast Guarantees Row (Delivery & Payment Rules) -->
+    <g transform="translate(0, 420)">
+      
+      <!-- Card 1: Delivery in 2-3 Days & 60 Tk -->
+      <g transform="translate(0, 0)">
+        <rect x="0" y="0" width="310" height="120" rx="24" fill="#FFFFFF" stroke="#F3E8FF" stroke-width="1.5" filter="url(#shadowBox)" />
+        <circle cx="48" cy="60" r="26" fill="#F5F3FF" />
+        <text x="48" y="68" text-anchor="middle" font-size="26">🚚</text>
+        <text x="92" y="50" font-family="'Plus Jakarta Sans', sans-serif" font-size="18" font-weight="700" fill="#1F2937">2-3 Days Delivery</text>
+        <text x="92" y="74" font-family="'Plus Jakarta Sans', sans-serif" font-size="15" font-weight="600" fill="#7C3AED">Flat ৳60 Delivery Charge</text>
+        <text x="92" y="96" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="500" fill="#10B981">FREE on orders > ৳2,999</text>
+      </g>
+
+      <!-- Card 2: Cash on Delivery & 30% Advance Policy -->
+      <g transform="translate(330, 0)">
+        <rect x="0" y="0" width="330" height="120" rx="24" fill="#FFFFFF" stroke="#FCE7F3" stroke-width="1.5" filter="url(#shadowBox)" />
+        <circle cx="48" cy="60" r="26" fill="#FDF2F8" />
+        <text x="48" y="68" text-anchor="middle" font-size="26">💳</text>
+        <text x="92" y="50" font-family="'Plus Jakarta Sans', sans-serif" font-size="18" font-weight="700" fill="#1F2937">Cash on Delivery</text>
+        <text x="92" y="74" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="500" fill="#4B5563">100% COD for Ready Items</text>
+        <text x="92" y="96" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="600" fill="#EC4899">30% Advance for Custom Items</text>
+      </g>
+
+      <!-- Card 3: WhatsApp Ordering Hotline -->
+      <g transform="translate(680, 0)">
+        <rect x="0" y="0" width="310" height="120" rx="24" fill="#FFFFFF" stroke="#D1FAE5" stroke-width="1.5" filter="url(#shadowBox)" />
+        <circle cx="48" cy="60" r="26" fill="#ECFDF5" />
+        <text x="48" y="68" text-anchor="middle" font-size="26">💬</text>
+        <text x="92" y="50" font-family="'Plus Jakarta Sans', sans-serif" font-size="18" font-weight="700" fill="#065F46">Order on WhatsApp</text>
+        <text x="92" y="76" font-family="'Plus Jakarta Sans', sans-serif" font-size="18" font-weight="800" fill="#047857">01886338064</text>
+        <text x="92" y="96" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="500" fill="#6B7280">Fast Response & Support</text>
+      </g>
+
+    </g>
+
+  </g>
+
+  <!-- Right Side Luxury Visual Badge / Crest -->
+  <g transform="translate(1300, 260)">
+    <circle cx="120" cy="120" r="140" fill="#FFFFFF" stroke="#E9D5FF" stroke-width="2" filter="url(#shadowBox)" />
+    <circle cx="120" cy="120" r="128" fill="#FAF5FF" opacity="0.7" />
+    
+    <text x="120" y="95" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="700" fill="#7C3AED" letter-spacing="4">PREMIUM</text>
+    <text x="120" y="132" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-size="36" font-weight="700" fill="#111827">100%</text>
+    <text x="120" y="160" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-size="17" font-style="italic" fill="#EC4899">Handcrafted</text>
+    <text x="120" y="185" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" fill="#6B7280" letter-spacing="1.5">WITH LOVE</text>
+  </g>
+</svg>

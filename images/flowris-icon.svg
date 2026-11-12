@@ -1,33 +1,42 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
   <defs>
-    <linearGradient id="flowrisIconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#7C3AED" />
-      <stop offset="50%" stop-color="#9333EA" />
-      <stop offset="100%" stop-color="#EC4899" />
+    <linearGradient id="iconStemGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4C1D95" />
+      <stop offset="50%" stop-color="#7C3AED" />
+      <stop offset="100%" stop-color="#9333EA" />
     </linearGradient>
-    <linearGradient id="goldIconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#F59E0B" />
+    <linearGradient id="iconPetalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EC4899" />
+      <stop offset="50%" stop-color="#F43F5E" />
+      <stop offset="100%" stop-color="#7C3AED" />
+    </linearGradient>
+    <linearGradient id="iconGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDE047" />
       <stop offset="100%" stop-color="#D97706" />
     </linearGradient>
   </defs>
 
-  <!-- Squircle container -->
-  <rect x="0" y="0" width="64" height="64" rx="20" fill="url(#flowrisIconGrad)" />
+  <!-- Luxurious Rounded Squircle -->
+  <rect x="0" y="0" width="64" height="64" rx="20" fill="#FAF5FF" stroke="#DDD6FE" stroke-width="1.5" />
 
-  <!-- Botanical Core & Petals -->
-  <circle cx="32" cy="32" r="4.5" fill="#FFFFFF" />
-  <circle cx="32" cy="32" r="2.5" fill="url(#goldIconGrad)" />
+  <!-- Botanical Stick Stem -->
+  <path d="M21 54 Q27 42 31 28 Q32 22 34 15" fill="none" stroke="url(#iconStemGrad)" stroke-width="2.6" stroke-linecap="round" />
+  
+  <!-- Twigs and leaves -->
+  <path d="M25 44 Q21 39 17 40" fill="none" stroke="url(#iconStemGrad)" stroke-width="1.6" stroke-linecap="round" />
+  <path d="M29 34 Q37 32 42 35" fill="none" stroke="url(#iconStemGrad)" stroke-width="1.6" stroke-linecap="round" />
+  
+  <path d="M17 40 C15 35 18 31 22 33 C22 37 20 40 17 40 Z" fill="#7C3AED" />
+  <path d="M42 35 C46 32 46 28 42 26 C39 29 39 33 42 35 Z" fill="#9333EA" />
 
-  <path d="M32 17 C35 22, 35 27, 32 32 C29 27, 29 22, 32 17 Z" fill="#FFFFFF" opacity="0.95" />
-  <path d="M32 47 C35 42, 35 37, 32 32 C29 37, 29 42, 32 47 Z" fill="#FFFFFF" opacity="0.95" />
-  <path d="M17 32 C22 35, 27 35, 32 32 C27 29, 22 29, 17 32 Z" fill="#FFFFFF" opacity="0.95" />
-  <path d="M47 32 C42 35, 37 35, 32 32 C37 29, 42 29, 47 32 Z" fill="#FFFFFF" opacity="0.95" />
+  <!-- Blooming Petals -->
+  <path d="M34 15 C27 9 30 2 36 7 C42 2 45 9 38 15 Z" fill="url(#iconPetalGrad)" />
+  <path d="M34 15 C27 14 25 20 30 23 C34 21 34 17 34 15 Z" fill="#F43F5E" />
+  <path d="M38 15 C45 14 47 20 42 23 C38 21 38 17 38 15 Z" fill="#EC4899" />
+  
+  <ellipse cx="36" cy="12" rx="3.5" ry="4.5" fill="#BE185D" />
+  <circle cx="36" cy="11" r="2" fill="url(#iconGoldGrad)" />
 
-  <path d="M21.4 21.4 C26.5 23.5, 29 27.5, 32 32 C27.5 29, 23.5 26.5, 21.4 21.4 Z" fill="#FDF2F8" opacity="0.8" />
-  <path d="M42.6 42.6 C37.5 40.5, 35 36.5, 32 32 C36.5 35, 40.5 37.5, 42.6 42.6 Z" fill="#FDF2F8" opacity="0.8" />
-  <path d="M42.6 21.4 C40.5 26.5, 36.5 29, 32 32 C35 27.5, 37.5 23.5, 42.6 21.4 Z" fill="#FDF2F8" opacity="0.8" />
-  <path d="M21.4 42.6 C23.5 37.5, 27.5 35, 32 32 C29 36.5, 26.5 40.5, 21.4 42.6 Z" fill="#FDF2F8" opacity="0.8" />
-
-  <!-- Sparkle -->
-  <path d="M49 13 L50 16 L53 17 L50 18 L49 21 L48 18 L45 17 L48 16 Z" fill="#FEF08A" />
+  <!-- Tiny Gold Sparkle -->
+  <path d="M49 12 L50 14.5 L52.5 15.5 L50 16.5 L49 19 L48 16.5 L45.5 15.5 L48 14.5 Z" fill="url(#iconGoldGrad)" />
 </svg>

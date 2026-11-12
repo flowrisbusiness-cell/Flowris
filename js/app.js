@@ -1,7 +1,13 @@
 /**
  * FLOWRIS - Handcrafted Gifts E-Commerce Client
  * 100% Client-Side, Zero-Cost Static Architecture
- * Configured for Web3Forms Token & Dhaka-Exclusive Delivery
+ * 
+ * Rules:
+ * - Free delivery if amount > 2999 BDT
+ * - Delivery charge 60 Tk
+ * - Delivery only in 2-3 days
+ * - Customized product: 30% advance via bKash/Nagad
+ * - Non-customized product: 100% Cash on Delivery (no advance needed)
  */
 
 // ==========================================
@@ -12,15 +18,15 @@ const CONFIG = {
   tagline: "Handcrafted Gifts, Made with Love",
   currencySymbol: "৳",
   phone: "01886338064",
-  whatsappNumber: "8801886338064", // Country code + 01886338064 (without '+')
+  whatsappNumber: "8801886338064",
   email: "flowris.business@gmail.com",
   bKashNumber: "01886338064 (Personal)",
   nagadNumber: "01886338064 (Personal)",
   address: "Dhaka, Bangladesh",
-  insideDhakaShipping: 80,
-  expressDhakaShipping: 130,
-  freeShippingThreshold: 1500, // Free delivery inside Dhaka when subtotal >= 1500
-  // Web3Forms public access key provided by user:
+  deliveryCharge: 60,
+  freeShippingThreshold: 2999, // Free delivery if subtotal > 2999
+  deliveryTime: "2-3 Days",
+  customAdvancePercent: 30, // 30% advance for custom items
   web3FormsKey: "29722476-0beb-4700-8231-9bf14fa69367"
 };
 
@@ -71,8 +77,8 @@ const FALLBACK_PRODUCTS = [
     "inStock": true,
     "shortDescription": "Everlasting preserved natural roses wrapped in luxury matte Japanese paper with silk satin ribbons.",
     "description": "Our signature preserved bouquet will stay vibrant and soft for up to 3 years without water or sunlight! Sourced ethically and hand-tied by our master floral artisans in Dhaka.",
-    "customizable": true,
-    "customizationLabel": "Personalized Message for the Gift Card",
+    "customizable": false,
+    "customizationLabel": "",
     "materials": "Preserved Natural Roses, Japanese Waterproof Wrapping, Silk Satin Ribbon",
     "dimensions": "35cm Height x 25cm Width",
     "tags": ["bouquet", "flowers", "roses", "anniversary"]
@@ -97,7 +103,7 @@ const FALLBACK_PRODUCTS = [
     "shortDescription": "Cast acrylic plaque printed with your favorite song, scannable Spotify code, and custom photo.",
     "description": "Commemorate your special song, anniversary date, or memorable trip. Comes with a laser-cut natural wooden stand. Hold up your Spotify phone camera to instantly play the song!",
     "customizable": true,
-    "customizationLabel": "Song Title, Artist & Photo upload link (or WhatsApp to us)",
+    "customizationLabel": "Song Title, Artist & Photo details (send via WhatsApp)",
     "materials": "3mm Clear Cast Acrylic, UV Sublimation Ink, Oakwood Stand",
     "dimensions": "20cm x 15cm (A5 size)",
     "tags": ["acrylic", "music", "spotify", "couple", "personalized"]
@@ -192,8 +198,7 @@ const AppState = {
   sortBy: 'featured',
   selectedProductForModal: null,
   appliedPromo: null,
-  shippingMethod: 'standard', // 'standard' (৳80/Free) or 'express' (৳130)
-  paymentMethod: 'cod',       // 'cod' or 'bkash'
+  paymentMethod: 'cod', // 'cod' or 'bkash'
 
   availablePromos: {
     'FLOWRISLOVE': { type: 'percent', value: 10, label: '10% OFF Special Launch Discount' },
@@ -218,7 +223,6 @@ const Storage = {
   saveCart(cart) {
     try {
       localStorage.setItem('flowris_cart', JSON.stringify(cart));
-      // Trigger cross-page sync
       window.dispatchEvent(new Event('cartUpdated'));
     } catch (e) {
       console.warn('LocalStorage error:', e);
@@ -251,29 +255,20 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 async function initApp() {
-  // 1. Load LocalStorage State
   AppState.cart = Storage.loadCart();
   AppState.wishlist = Storage.loadWishlist();
 
-  // 2. Fetch Products
   await loadProducts();
 
-  // 3. Render Catalog if on index page
   if (document.getElementById('products-grid')) {
     renderProducts();
   }
 
-  // 4. Update Cart and Wishlist UI elements across the page
   updateCartUI();
   updateWishlistUI();
-
-  // 5. Setup Event Listeners
   setupEventListeners();
-
-  // 6. Handle URL parameters (e.g. ?product=flow-01 or ?category=resin-art)
   handleUrlParams();
 
-  // 7. Listen for cross-tab or cross-page cart sync
   window.addEventListener('storage', () => {
     AppState.cart = Storage.loadCart();
     AppState.wishlist = Storage.loadWishlist();
@@ -303,12 +298,10 @@ async function loadProducts() {
 function filterAndSortProducts() {
   let list = [...AppState.products];
 
-  // Category Filter
   if (AppState.activeCategory !== 'all') {
     list = list.filter(item => item.categorySlug === AppState.activeCategory);
   }
 
-  // Search Query
   if (AppState.searchQuery.trim() !== '') {
     const q = AppState.searchQuery.toLowerCase().trim();
     list = list.filter(item => 
@@ -319,7 +312,6 @@ function filterAndSortProducts() {
     );
   }
 
-  // Sorting
   switch (AppState.sortBy) {
     case 'price-low':
       list.sort((a, b) => a.price - b.price);
@@ -348,7 +340,7 @@ function renderProducts() {
   if (!container) return;
 
   if (countBadge) {
-    countBadge.textContent = `${AppState.filteredProducts.length} handcrafted items in Dhaka`;
+    countBadge.textContent = `${AppState.filteredProducts.length} handcrafted pieces • 2-3 Days Delivery`;
   }
 
   if (AppState.filteredProducts.length === 0) {
@@ -375,19 +367,19 @@ function renderProducts() {
                        product.badge === 'Trending' ? 'badge-trending' : 'badge-new';
 
     return `
-      <div class="group relative bg-white rounded-3xl overflow-hidden border border-purple-50 shadow-soft shadow-hover flex flex-col transition-all duration-300">
+      <div class="group relative bg-white rounded-3xl overflow-hidden border border-purple-100/70 shadow-soft shadow-hover flex flex-col transition-all duration-300">
         
         <!-- Image Container -->
-        <div class="relative w-full pt-[95%] overflow-hidden bg-purple-50/50 cursor-pointer" onclick="openProductModal('${product.id}')">
+        <div class="relative w-full pt-[95%] overflow-hidden bg-purple-50/40 cursor-pointer" onclick="openProductModal('${product.id}')">
           <img 
             src="${product.image}" 
             alt="${escapeHtml(product.title)}" 
             loading="lazy"
-            class="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-106 transition-transform duration-500 ease-out"
+            class="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
           />
 
           <!-- Floating Badges -->
-          <div class="absolute top-3 left-3 flex flex-col gap-1.5 z-10 pointer-events-none">
+          <div class="absolute top-3.5 left-3.5 flex flex-col gap-1.5 z-10 pointer-events-none">
             ${product.badge ? `
               <span class="px-2.5 py-1 rounded-full text-[11px] font-bold tracking-wide shadow-sm ${badgeClass}">
                 ${product.badge}
@@ -405,25 +397,25 @@ function renderProducts() {
             type="button" 
             onclick="event.stopPropagation(); toggleWishlist('${product.id}')"
             aria-label="Save to Wishlist"
-            class="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/90 backdrop-blur-md shadow-md flex items-center justify-center text-gray-400 hover:text-rose-500 transition-all z-10 focus-visible:ring-2 focus-visible:ring-rose-500 ${isWishlisted ? 'text-rose-500 ring-2 ring-rose-200' : ''}"
+            class="absolute top-3.5 right-3.5 w-9 h-9 rounded-full bg-white/95 backdrop-blur-md shadow-md flex items-center justify-center text-gray-400 hover:text-rose-500 transition-all z-10 focus-visible:ring-2 focus-visible:ring-rose-500 ${isWishlisted ? 'text-rose-500 ring-2 ring-rose-200' : ''}"
           >
             <svg class="w-5 h-5 ${isWishlisted ? 'fill-current' : 'fill-none stroke-current'}" viewBox="0 0 24 24" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
             </svg>
           </button>
 
-          <!-- Quick View & Dedicated Page Hover Trigger -->
-          <div class="hidden sm:flex absolute inset-x-0 bottom-3 justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10 px-3">
+          <!-- Quick View & Shareable Full Page Trigger -->
+          <div class="hidden sm:flex absolute inset-x-0 bottom-3.5 justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10 px-3">
             <span class="px-3.5 py-1.5 bg-gray-900/85 hover:bg-gray-900 text-white text-xs font-medium rounded-full backdrop-blur-md shadow-lg transition-transform transform translate-y-1 group-hover:translate-y-0">
               Quick View
             </span>
             <a 
               href="product.html?id=${product.id}" 
               onclick="event.stopPropagation()"
-              class="px-3.5 py-1.5 bg-white/90 hover:bg-white text-purple-900 text-xs font-semibold rounded-full backdrop-blur-md shadow-lg transition-transform transform translate-y-1 group-hover:translate-y-0"
-              title="Open Full Product Page (Shareable link)"
+              class="px-3.5 py-1.5 bg-white/95 hover:bg-white text-purple-900 text-xs font-semibold rounded-full backdrop-blur-md shadow-lg transition-transform transform translate-y-1 group-hover:translate-y-0"
+              title="Open Shareable Page (for Facebook post)"
             >
-              Full Page ↗
+              Share Page ↗
             </a>
           </div>
         </div>
@@ -431,9 +423,8 @@ function renderProducts() {
         <!-- Product Details -->
         <div class="p-4 sm:p-5 flex-1 flex flex-col justify-between">
           <div>
-            <!-- Category & Rating -->
             <div class="flex items-center justify-between text-xs text-gray-500 mb-1.5">
-              <span class="font-medium text-purple-600 tracking-wider uppercase text-[11px]">${product.category}</span>
+              <span class="font-semibold text-purple-600 tracking-wider uppercase text-[10px] sm:text-[11px]">${product.category}</span>
               <div class="flex items-center gap-1 text-amber-500 font-semibold">
                 <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20">
                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
@@ -449,13 +440,26 @@ function renderProducts() {
             </h4>
 
             <!-- Short description -->
-            <p class="text-gray-500 text-xs line-clamp-2 mb-3 leading-relaxed">
+            <p class="text-gray-500 text-xs line-clamp-2 mb-2 leading-relaxed">
               ${escapeHtml(product.shortDescription)}
             </p>
+
+            <!-- Policy Badge: Custom 30% vs Full COD -->
+            <div class="mb-3">
+              ${product.customizable ? `
+                <span class="inline-flex items-center gap-1 text-[10px] font-semibold text-purple-700 bg-purple-50 px-2 py-0.5 rounded-md border border-purple-100">
+                  🎨 Custom Piece (30% Advance)
+                </span>
+              ` : `
+                <span class="inline-flex items-center gap-1 text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-100">
+                  ⚡ 100% Cash on Delivery
+                </span>
+              `}
+            </div>
           </div>
 
           <!-- Price & Action Row -->
-          <div class="pt-3 border-t border-purple-50/90 flex items-center justify-between">
+          <div class="pt-3 border-t border-purple-50 flex items-center justify-between">
             <div>
               <div class="flex items-baseline gap-1.5">
                 <span class="text-lg sm:text-xl font-bold text-gray-900 font-serif">
@@ -467,20 +471,18 @@ function renderProducts() {
                   </span>
                 ` : ''}
               </div>
-              <span class="text-[10px] text-emerald-600 font-medium">Dhaka Express Delivery</span>
+              <span class="text-[10px] text-gray-400 font-medium">🚚 2-3 Days Delivery (৳60)</span>
             </div>
 
             <div class="flex items-center gap-1.5">
-              <!-- Full Page Share Link Button -->
               <a 
                 href="product.html?id=${product.id}" 
-                class="w-9 h-9 rounded-xl border border-purple-100 hover:border-purple-300 text-gray-500 hover:text-purple-700 flex items-center justify-center transition-all"
+                class="w-9 h-9 rounded-xl border border-purple-100 hover:border-purple-300 text-gray-500 hover:text-purple-700 flex items-center justify-center transition-all focus-visible:ring-2 focus-visible:ring-purple-600"
                 title="View Full Page"
               >
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
               </a>
 
-              <!-- Add to Cart Button -->
               <button 
                 type="button" 
                 onclick="event.stopPropagation(); quickAddToCart('${product.id}')"
@@ -553,9 +555,9 @@ function openProductModal(productId) {
   }
 
   document.getElementById('modal-rating-score').textContent = product.rating;
-  document.getElementById('modal-rating-count').textContent = `(${product.reviewCount} reviews)`;
+  document.getElementById('modal-rating-count').textContent = `(${product.reviewCount} customer reviews)`;
   document.getElementById('modal-description').textContent = product.description;
-  document.getElementById('modal-materials').textContent = product.materials || 'Handcrafted floral & resin materials';
+  document.getElementById('modal-materials').textContent = product.materials || 'Handcrafted botanical & resin materials';
   document.getElementById('modal-dimensions').textContent = product.dimensions || 'Standard handcrafted dimensions';
   
   // Customization field
@@ -565,9 +567,9 @@ function openProductModal(productId) {
   
   if (product.customizable) {
     customSection.classList.remove('hidden');
-    customLabel.textContent = product.customizationLabel || 'Enter Your Custom Details:';
+    customLabel.textContent = (product.customizationLabel || 'Enter Your Custom Details:') + ' (Requires 30% bKash Advance)';
     customInput.value = '';
-    customInput.placeholder = 'e.g. Letter / Name / Message';
+    customInput.placeholder = 'e.g. Letter / Name / Date';
   } else {
     customSection.classList.add('hidden');
     customInput.value = '';
@@ -588,7 +590,7 @@ function openProductModal(productId) {
     `).join('');
   }
 
-  // Set dedicated product page link button inside modal
+  // Link to dedicated product page
   const viewFullPageBtn = document.getElementById('modal-view-fullpage-link');
   if (viewFullPageBtn) {
     viewFullPageBtn.href = `product.html?id=${product.id}`;
@@ -646,9 +648,12 @@ function modalBuyViaWhatsApp() {
   message += `💰 *Price:* ${CONFIG.currencySymbol}${totalPrice.toLocaleString()}\n`;
   if (customNote) {
     message += `✍️ *Customization:* ${customNote}\n`;
+    message += `⚠️ *Note:* Ready to pay 30% advance via bKash\n`;
+  } else {
+    message += `⚡ *Payment:* Cash on Delivery\n`;
   }
-  message += `📍 *Delivery Area:* Dhaka, Bangladesh\n\n`;
-  message += `Please confirm my order and share delivery details. Thank you!`;
+  message += `🚚 *Delivery:* In 2-3 Days (৳60 delivery charge)\n\n`;
+  message += `Please confirm availability. Thank you!`;
 
   const waUrl = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`;
   window.open(waUrl, '_blank');
@@ -665,6 +670,8 @@ function addToCart(productId, quantity = 1, customNote = '') {
   const product = AppState.products.find(p => p.id === productId);
   if (!product) return;
 
+  const isCustom = Boolean(product.customizable || (customNote && customNote.trim() !== ''));
+
   const existingIndex = AppState.cart.findIndex(item => 
     item.id === productId && (item.customNote || '') === (customNote || '')
   );
@@ -679,13 +686,14 @@ function addToCart(productId, quantity = 1, customNote = '') {
       image: product.image,
       category: product.category,
       quantity: quantity,
-      customNote: customNote
+      customNote: customNote,
+      customizable: isCustom
     });
   }
 
   Storage.saveCart(AppState.cart);
   updateCartUI();
-  showToast(`Added "${product.title}" to your bag! 🛍️`, 'success');
+  showToast(`Added "${product.title}" to bag! 🛍️`, 'success');
   openCartDrawer();
 }
 
@@ -721,6 +729,7 @@ function clearCart() {
   showToast('Cart cleared', 'info');
 }
 
+// Order Calculations (Free shipping > 2999, ৳60 delivery, 30% advance on custom items)
 function getCartCalculations() {
   const subtotal = AppState.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
   
@@ -733,17 +742,28 @@ function getCartCalculations() {
     }
   }
 
+  // Delivery: Free if subtotal > 2999 BDT, otherwise ৳60
   let shipping = 0;
   if (subtotal > 0) {
-    if (AppState.shippingMethod === 'express') {
-      shipping = CONFIG.expressDhakaShipping; // ৳130
-    } else {
-      shipping = (subtotal >= CONFIG.freeShippingThreshold) ? 0 : CONFIG.insideDhakaShipping; // ৳80 or Free
-    }
+    shipping = (subtotal > CONFIG.freeShippingThreshold) ? 0 : CONFIG.deliveryCharge;
   }
 
   const grandTotal = Math.max(0, subtotal - discount + shipping);
-  return { subtotal, discount, shipping, grandTotal };
+
+  // Check if any customized item exists in cart
+  const hasCustomized = AppState.cart.some(item => 
+    Boolean(item.customizable || (item.customNote && item.customNote.trim() !== ''))
+  );
+
+  let advancePayable = 0;
+  let codPayable = grandTotal;
+
+  if (hasCustomized && grandTotal > 0) {
+    advancePayable = Math.round((grandTotal * CONFIG.customAdvancePercent) / 100);
+    codPayable = grandTotal - advancePayable;
+  }
+
+  return { subtotal, discount, shipping, grandTotal, hasCustomized, advancePayable, codPayable };
 }
 
 function updateCartUI() {
@@ -797,9 +817,12 @@ function updateCartUI() {
             ✍️ Custom: "${escapeHtml(item.customNote)}"
           </p>
         ` : ''}
-        <span class="text-xs text-gray-500 font-serif">
+        ${item.customizable ? `
+          <span class="inline-block text-[10px] text-amber-700 bg-amber-50 px-1.5 py-0.2 rounded font-medium mt-0.5">30% Advance Item</span>
+        ` : ''}
+        <div class="text-xs text-gray-500 font-serif mt-0.5">
           ${CONFIG.currencySymbol}${item.price.toLocaleString()} × ${item.quantity} = <strong class="text-purple-700">${CONFIG.currencySymbol}${(item.price * item.quantity).toLocaleString()}</strong>
-        </span>
+        </div>
 
         <div class="flex items-center gap-2 mt-2">
           <div class="inline-flex items-center rounded-xl border border-purple-100 bg-white">
@@ -825,20 +848,20 @@ function updateCartUI() {
     </div>
   `).join('');
 
-  // Free Delivery Progress Bar (Dhaka City)
-  const { subtotal, discount, grandTotal } = getCartCalculations();
-  const threshold = CONFIG.freeShippingThreshold;
+  // Free Delivery Progress Bar (Goal: > 2999 BDT)
+  const { subtotal, discount, shipping, grandTotal, hasCustomized, advancePayable, codPayable } = getCartCalculations();
+  const threshold = CONFIG.freeShippingThreshold; // 2999
   const progressPercent = Math.min(100, Math.round((subtotal / threshold) * 100));
   const shippingProgressBar = document.getElementById('free-shipping-progress');
   const shippingMsg = document.getElementById('free-shipping-msg');
 
   if (shippingProgressBar && shippingMsg) {
     shippingProgressBar.style.width = `${progressPercent}%`;
-    if (subtotal >= threshold) {
-      shippingMsg.innerHTML = `🎉 <strong>Congratulations!</strong> You unlocked <strong>FREE Delivery</strong> in Dhaka!`;
+    if (subtotal > threshold) {
+      shippingMsg.innerHTML = `🎉 <strong>Congratulations!</strong> You unlocked <strong>FREE Delivery</strong> (2-3 Days)!`;
     } else {
-      const remaining = threshold - subtotal;
-      shippingMsg.innerHTML = `Add <strong>${CONFIG.currencySymbol}${remaining.toLocaleString()}</strong> more for <strong>FREE Delivery</strong> in Dhaka`;
+      const remaining = threshold - subtotal + 1;
+      shippingMsg.innerHTML = `Add <strong>${CONFIG.currencySymbol}${remaining.toLocaleString()}</strong> more for <strong>FREE Delivery</strong> (Order > ৳2,999)`;
     }
   }
 
@@ -856,6 +879,38 @@ function updateCartUI() {
       document.getElementById('cart-applied-promo-tag').textContent = `(${AppState.appliedPromo.label})`;
     } else {
       discountRow.classList.add('hidden');
+    }
+  }
+
+  // Advance Payment Banner in Cart
+  let customAdvanceNotice = document.getElementById('cart-custom-advance-notice');
+  if (!customAdvanceNotice && footerSection) {
+    customAdvanceNotice = document.createElement('div');
+    customAdvanceNotice.id = 'cart-custom-advance-notice';
+    footerSection.insertBefore(customAdvanceNotice, footerSection.firstChild);
+  }
+
+  if (customAdvanceNotice) {
+    if (hasCustomized) {
+      customAdvanceNotice.className = 'mb-3.5 p-3 rounded-xl bg-purple-50 border border-purple-200 text-xs text-purple-900';
+      customAdvanceNotice.innerHTML = `
+        <div class="font-bold flex items-center gap-1.5 mb-1">
+          <span>🎨</span> Custom Item: 30% Advance Required
+        </div>
+        <p class="text-[11px] text-purple-700 leading-snug">
+          Advance: <strong>${CONFIG.currencySymbol}${advancePayable.toLocaleString()}</strong> via bKash/Nagad. Remaining <strong>${CONFIG.currencySymbol}${codPayable.toLocaleString()}</strong> on Cash on Delivery!
+        </p>
+      `;
+    } else {
+      customAdvanceNotice.className = 'mb-3.5 p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-900';
+      customAdvanceNotice.innerHTML = `
+        <div class="font-bold flex items-center gap-1.5">
+          <span>⚡</span> 100% Cash on Delivery
+        </div>
+        <p class="text-[11px] text-emerald-700 mt-0.5">
+          No advance payment needed for ready-made gifts. Pay when delivered!
+        </p>
+      `;
     }
   }
 }
@@ -913,7 +968,8 @@ function toggleWishlist(productId) {
       title: product.title,
       price: product.price,
       image: product.image,
-      category: product.category
+      category: product.category,
+      customizable: product.customizable
     });
     showToast(`Saved "${product.title}" to wishlist! ❤️`, 'success');
   }
@@ -1018,11 +1074,6 @@ function closeCheckoutModal() {
   }
 }
 
-function setShippingMethod(method) {
-  AppState.shippingMethod = method;
-  renderCheckoutSummary();
-}
-
 function setPaymentMethod(method) {
   AppState.paymentMethod = method;
   const bkashBox = document.getElementById('checkout-bkash-instructions');
@@ -1032,7 +1083,7 @@ function setPaymentMethod(method) {
 }
 
 function renderCheckoutSummary() {
-  const { subtotal, discount, shipping, grandTotal } = getCartCalculations();
+  const { subtotal, discount, shipping, grandTotal, hasCustomized, advancePayable, codPayable } = getCartCalculations();
 
   const subtotalEl = document.getElementById('checkout-subtotal');
   const shippingEl = document.getElementById('checkout-shipping');
@@ -1053,17 +1104,91 @@ function renderCheckoutSummary() {
 
   if (grandTotalEl) grandTotalEl.textContent = `${CONFIG.currencySymbol}${grandTotal.toLocaleString()}`;
 
+  // Mini items list preview
   const itemsContainer = document.getElementById('checkout-items-preview');
   if (itemsContainer) {
     itemsContainer.innerHTML = AppState.cart.map(item => `
-      <div class="flex items-center justify-between text-xs py-1 border-b border-purple-50 last:border-none">
+      <div class="flex items-center justify-between text-xs py-1.5 border-b border-purple-50 last:border-none">
         <span class="truncate max-w-[200px] text-gray-700 font-medium">
           ${item.quantity}× ${escapeHtml(item.title)}
           ${item.customNote ? `<br><small class="text-purple-600 font-normal">Custom: ${escapeHtml(item.customNote)}</small>` : ''}
+          ${item.customizable ? `<br><small class="text-amber-600 font-semibold">(30% advance)</small>` : ''}
         </span>
         <span class="font-serif text-gray-900 font-semibold">${CONFIG.currencySymbol}${(item.price * item.quantity).toLocaleString()}</span>
       </div>
     `).join('');
+  }
+
+  // Update Policy Callout inside Checkout Modal
+  let checkoutPolicyEl = document.getElementById('checkout-policy-callout');
+  if (!checkoutPolicyEl) {
+    const parentContainer = document.getElementById('checkout-form');
+    checkoutPolicyEl = document.createElement('div');
+    checkoutPolicyEl.id = 'checkout-policy-callout';
+    if (parentContainer && parentContainer.firstChild) {
+      parentContainer.insertBefore(checkoutPolicyEl, parentContainer.firstChild);
+    }
+  }
+
+  if (checkoutPolicyEl) {
+    if (hasCustomized) {
+      checkoutPolicyEl.className = 'p-3.5 rounded-2xl bg-purple-50 border border-purple-200 text-xs text-purple-900 mb-2';
+      checkoutPolicyEl.innerHTML = `
+        <div class="font-bold flex items-center gap-1.5 mb-1">
+          <span>🎨</span> Customized Gift Order (30% Advance Required)
+        </div>
+        <p class="text-[11px] text-purple-700 leading-relaxed">
+          Because personalized items are crafted uniquely for you, a <strong>30% advance (${CONFIG.currencySymbol}${advancePayable.toLocaleString()})</strong> is required via bKash/Nagad to start artisan crafting. The remaining <strong>70% (${CONFIG.currencySymbol}${codPayable.toLocaleString()})</strong> is paid on delivery in 2-3 days.
+        </p>
+      `;
+      // Auto open bKash box to guide the user
+      const bkashRadio = document.querySelector('input[name="payment-method"][value="bkash"]');
+      if (bkashRadio) bkashRadio.checked = true;
+      setPaymentMethod('bkash');
+    } else {
+      checkoutPolicyEl.className = 'p-3.5 rounded-2xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-900 mb-2';
+      checkoutPolicyEl.innerHTML = `
+        <div class="font-bold flex items-center gap-1.5">
+          <span>⚡</span> 100% Cash on Delivery
+        </div>
+        <p class="text-[11px] text-emerald-700 mt-0.5 leading-relaxed">
+          Ready-to-deliver handcrafted gifts. No advance needed! Pay full <strong>${CONFIG.currencySymbol}${grandTotal.toLocaleString()}</strong> upon arrival in 2-3 days.
+        </p>
+      `;
+    }
+  }
+
+  // Update Advance vs COD Breakdown Display
+  let advanceBreakdownEl = document.getElementById('checkout-advance-breakdown');
+  if (!advanceBreakdownEl) {
+    const totalBox = document.getElementById('checkout-grand-total')?.parentElement;
+    if (totalBox) {
+      advanceBreakdownEl = document.createElement('div');
+      advanceBreakdownEl.id = 'checkout-advance-breakdown';
+      advanceBreakdownEl.className = 'text-xs text-gray-500 pt-1 pb-2';
+      totalBox.parentElement.insertBefore(advanceBreakdownEl, totalBox.nextSibling);
+    }
+  }
+
+  if (advanceBreakdownEl) {
+    if (hasCustomized) {
+      advanceBreakdownEl.innerHTML = `
+        <div class="flex justify-between font-semibold text-purple-700 text-xs pt-1">
+          <span>• 30% Advance to Pay Now:</span>
+          <span>${CONFIG.currencySymbol}${advancePayable.toLocaleString()}</span>
+        </div>
+        <div class="flex justify-between text-gray-600 text-xs">
+          <span>• Remaining Cash on Delivery:</span>
+          <span>${CONFIG.currencySymbol}${codPayable.toLocaleString()}</span>
+        </div>
+      `;
+    } else {
+      advanceBreakdownEl.innerHTML = `
+        <div class="text-right text-[11px] text-emerald-600 font-semibold">
+          ✓ Full Cash on Delivery upon 2-3 days arrival
+        </div>
+      `;
+    }
   }
 }
 
@@ -1090,7 +1215,7 @@ async function handleCheckoutSubmit(e) {
     return;
   }
 
-  const { subtotal, discount, shipping, grandTotal } = getCartCalculations();
+  const { subtotal, discount, shipping, grandTotal, hasCustomized, advancePayable, codPayable } = getCartCalculations();
   const orderId = `FLW-${Date.now().toString().slice(-6)}`;
   const orderDate = new Date().toLocaleString('en-US', { timeZone: 'Asia/Dhaka' });
 
@@ -1098,7 +1223,6 @@ async function handleCheckoutSubmit(e) {
     `• ${item.title} (Qty: ${item.quantity}, Price: ${CONFIG.currencySymbol}${item.price}) ${item.customNote ? `[Custom: ${item.customNote}]` : ''}`
   ).join('\n');
 
-  // Payload for Web3Forms endpoint
   const payload = {
     access_key: CONFIG.web3FormsKey,
     subject: `🌸 New Flowris Order #${orderId} from ${name}`,
@@ -1108,13 +1232,15 @@ async function handleCheckoutSubmit(e) {
     customer_phone: phone,
     dhaka_area: area,
     delivery_address: address,
-    shipping_service: AppState.shippingMethod === 'express' ? 'Dhaka Express (Same Day/Next Day ৳130)' : 'Dhaka Standard (24-48h ৳80/Free)',
-    gift_notes: instructions || 'None',
+    delivery_timeline: "2-3 Days",
+    delivery_fee: `${CONFIG.currencySymbol}${shipping}`,
+    customization_status: hasCustomized ? "Personalized Items (30% Advance Required)" : "Ready Items (100% Cash on Delivery)",
+    advance_amount_30pct: hasCustomized ? `${CONFIG.currencySymbol}${advancePayable}` : 'N/A',
+    cod_remaining_amount: `${CONFIG.currencySymbol}${codPayable}`,
     payment_method: AppState.paymentMethod === 'bkash' ? 'bKash / Nagad Send-Money' : 'Cash on Delivery (COD)',
     bkash_trxid: trxId || 'Pending Verification',
     subtotal: `${CONFIG.currencySymbol}${subtotal}`,
     discount: `${CONFIG.currencySymbol}${discount}`,
-    shipping_fee: `${CONFIG.currencySymbol}${shipping}`,
     grand_total: `${CONFIG.currencySymbol}${grandTotal}`,
     ordered_items: itemsBreakdown,
     order_timestamp: orderDate
@@ -1140,7 +1266,7 @@ async function handleCheckoutSubmit(e) {
     submitted = json.success;
 
     if (submitted) {
-      showOrderSuccessScreen(orderId, name, phone, grandTotal, payload);
+      showOrderSuccessScreen(orderId, name, phone, grandTotal, payload, hasCustomized, advancePayable, codPayable);
       AppState.cart = [];
       AppState.appliedPromo = null;
       Storage.saveCart(AppState.cart);
@@ -1149,9 +1275,7 @@ async function handleCheckoutSubmit(e) {
       throw new Error(json.message || 'Submission error');
     }
   } catch (err) {
-    console.warn('Web3Forms response note:', err);
-    // Allow graceful fallback to WhatsApp confirmation
-    showOrderSuccessScreen(orderId, name, phone, grandTotal, payload, true);
+    showOrderSuccessScreen(orderId, name, phone, grandTotal, payload, hasCustomized, advancePayable, codPayable, true);
   } finally {
     submitBtn.disabled = false;
     submitBtn.innerHTML = originalBtnText;
@@ -1159,7 +1283,7 @@ async function handleCheckoutSubmit(e) {
 }
 
 // Display Order Confirmation View
-function showOrderSuccessScreen(orderId, name, phone, grandTotal, payload, hadNetworkIssue = false) {
+function showOrderSuccessScreen(orderId, name, phone, grandTotal, payload, hasCustomized, advancePayable, codPayable, hadNetworkIssue = false) {
   const modalContent = document.getElementById('checkout-modal-content');
   if (!modalContent) return;
 
@@ -1167,17 +1291,15 @@ function showOrderSuccessScreen(orderId, name, phone, grandTotal, payload, hadNe
     `*Order Ref:* ${orderId}\n` +
     `*Customer:* ${name}\n` +
     `*Phone:* ${phone}\n` +
-    `*Address:* ${payload.delivery_address}, ${payload.dhaka_area}, Dhaka\n` +
-    `*Payment Method:* ${payload.payment_method}\n` +
-    `${payload.bkash_trxid !== 'Pending Verification' ? `*TrxID:* ${payload.bkash_trxid}\n` : ''}` +
+    `*Address:* ${payload.delivery_address}, ${payload.dhaka_area}\n` +
+    `*Delivery:* 2-3 Days (Fee: ${payload.delivery_fee})\n` +
     `--------------------------\n` +
     `*Items:*\n${payload.ordered_items}\n` +
     `--------------------------\n` +
-    `*Subtotal:* ${payload.subtotal}\n` +
-    `*Delivery Fee:* ${payload.shipping_fee}\n` +
-    `*Discount:* ${payload.discount}\n` +
-    `*TOTAL PAYABLE:* ${payload.grand_total}\n\n` +
-    `Thank you! Looking forward to receiving this handcrafted gift. ✨`;
+    `*TOTAL:* ${payload.grand_total}\n` +
+    (hasCustomized ? `*30% Advance via bKash:* ${CONFIG.currencySymbol}${advancePayable}\n*Remaining COD:* ${CONFIG.currencySymbol}${codPayable}\n` : `*Payment:* 100% Cash on Delivery\n`) +
+    `${payload.bkash_trxid !== 'Pending Verification' ? `*TrxID:* ${payload.bkash_trxid}\n` : ''}` +
+    `\nThank you! Looking forward to receiving this handcrafted gift. ✨`;
 
   const waLink = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(waReceipt)}`;
 
@@ -1191,7 +1313,7 @@ function showOrderSuccessScreen(orderId, name, phone, grandTotal, payload, hadNe
 
       <h3 class="text-2xl font-bold text-gray-900 font-serif mb-1">Thank You, ${escapeHtml(name)}!</h3>
       <p class="text-sm text-gray-600 mb-4">
-        Your handcrafted gift order has been received with love.
+        Your handcrafted order is confirmed. Delivery in <strong>2-3 days</strong>.
       </p>
 
       <div class="bg-purple-50/70 border border-purple-100 rounded-2xl p-4 text-left mb-6 text-sm">
@@ -1200,17 +1322,27 @@ function showOrderSuccessScreen(orderId, name, phone, grandTotal, payload, hadNe
           <span class="font-mono font-bold text-purple-700 text-base">${orderId}</span>
         </div>
         <div class="flex justify-between items-center mb-2">
-          <span class="text-gray-500">Delivery Location:</span>
-          <span class="font-medium text-gray-800">${escapeHtml(payload.dhaka_area || 'Dhaka')}</span>
+          <span class="text-gray-500">Delivery Time:</span>
+          <span class="font-medium text-gray-800">2-3 Days</span>
         </div>
-        <div class="flex justify-between items-center">
+        <div class="flex justify-between items-center mb-2">
           <span class="text-gray-500">Total Payable:</span>
           <span class="font-bold text-purple-900 text-base font-serif">${CONFIG.currencySymbol}${grandTotal.toLocaleString()}</span>
         </div>
+        ${hasCustomized ? `
+          <div class="pt-2 border-t border-purple-100/70 text-xs text-purple-800">
+            <strong>⚠️ 30% Advance:</strong> ${CONFIG.currencySymbol}${advancePayable.toLocaleString()} via bKash 01886338064<br>
+            <strong>Remaining COD:</strong> ${CONFIG.currencySymbol}${codPayable.toLocaleString()} upon arrival
+          </div>
+        ` : `
+          <div class="pt-2 border-t border-purple-100/70 text-xs text-emerald-700 font-medium">
+            ✓ 100% Cash on Delivery upon 2-3 days arrival
+          </div>
+        `}
       </div>
 
       <p class="text-xs text-gray-500 mb-6">
-        Our Dhaka team will contact you at <strong>${escapeHtml(phone)}</strong> before dispatch. You can also send the receipt to our WhatsApp for instant priority updates!
+        Our team will contact you at <strong>${escapeHtml(phone)}</strong> before dispatch. You can also send this receipt to WhatsApp for instant confirmation!
       </p>
 
       <div class="flex flex-col sm:flex-row gap-3">
@@ -1223,7 +1355,7 @@ function showOrderSuccessScreen(orderId, name, phone, grandTotal, payload, hadNe
           <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
             <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
           </svg>
-          Confirm via WhatsApp
+          Confirm on WhatsApp
         </a>
         <button 
           type="button" 
@@ -1244,7 +1376,7 @@ function checkoutDirectViaWhatsApp() {
     return;
   }
 
-  const { subtotal, grandTotal } = getCartCalculations();
+  const { subtotal, grandTotal, hasCustomized, advancePayable, codPayable } = getCartCalculations();
   const orderId = `FLW-${Date.now().toString().slice(-6)}`;
 
   let message = `Hello Flowris team! 🌸 I would like to order from your website:\n\n`;
@@ -1258,9 +1390,15 @@ function checkoutDirectViaWhatsApp() {
   });
   message += `--------------------------\n`;
   message += `*Subtotal:* ${CONFIG.currencySymbol}${subtotal.toLocaleString()}\n`;
+  message += `*Delivery Fee:* ${CONFIG.currencySymbol}${grandTotal - subtotal >= 0 ? grandTotal - subtotal : 0} (2-3 Days)\n`;
   message += `*Total Estimate:* ${CONFIG.currencySymbol}${grandTotal.toLocaleString()}\n`;
-  message += `*Delivery:* Dhaka City, Bangladesh\n\n`;
-  message += `Please confirm my order. Thank you!`;
+  if (hasCustomized) {
+    message += `*30% Advance (bKash):* ${CONFIG.currencySymbol}${advancePayable.toLocaleString()}\n`;
+    message += `*Remaining COD:* ${CONFIG.currencySymbol}${codPayable.toLocaleString()}\n`;
+  } else {
+    message += `*Payment:* 100% Cash on Delivery\n`;
+  }
+  message += `\nPlease confirm my order. Thank you!`;
 
   const waUrl = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`;
   window.open(waUrl, '_blank');
@@ -1295,9 +1433,8 @@ async function handleCustomOrderSubmit(e) {
     customer_phone: phone,
     gift_category: giftType,
     budget_range: budget || 'Flexible',
-    needed_by_date: deadline || 'Standard',
+    needed_by_date: deadline || '2-3 Days',
     custom_description: details,
-    delivery_city: "Dhaka, Bangladesh",
     requested_at: new Date().toLocaleString('en-US', { timeZone: 'Asia/Dhaka' })
   };
 
@@ -1305,12 +1442,11 @@ async function handleCustomOrderSubmit(e) {
   submitBtn.textContent = 'Submitting Request...';
 
   try {
-    const res = await fetch('https://api.web3forms.com/submit', {
+    await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
     });
-    const json = await res.json();
 
     form.reset();
     showToast('Your custom gift inquiry was received! We will reach out shortly. 🌸', 'success');
@@ -1446,10 +1582,7 @@ function escapeHtml(str) {
     .replace(/'/g, '&#039;');
 }
 
-// ==========================================
-// EXPLICIT GLOBAL BINDINGS
-// (Ensures inline onclick handlers work in all browsers)
-// ==========================================
+// Global window bindings
 window.CONFIG = CONFIG;
 window.AppState = AppState;
 window.openCartDrawer = openCartDrawer;
@@ -1467,7 +1600,6 @@ window.removeCartItem = removeCartItem;
 window.clearCart = clearCart;
 window.applyPromoCode = applyPromoCode;
 window.toggleWishlist = toggleWishlist;
-window.setShippingMethod = setShippingMethod;
 window.setPaymentMethod = setPaymentMethod;
 window.modalAddToCart = modalAddToCart;
 window.modalBuyViaWhatsApp = modalBuyViaWhatsApp;
@@ -1475,3 +1607,4 @@ window.setModalMainImage = setModalMainImage;
 window.checkoutDirectViaWhatsApp = checkoutDirectViaWhatsApp;
 window.resetFilters = resetFilters;
 window.showToast = showToast;
+window.getCartCalculations = getCartCalculations;

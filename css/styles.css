@@ -1,4 +1,4 @@
-/* Flowris Custom Stylesheet */
+/* Flowris Custom Luxury Stylesheet */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
@@ -6,13 +6,14 @@
   --color-primary-hover: #6D28D9;
   --color-secondary: #EC4899;
   --color-accent: #8B5CF6;
+  --color-gold: #D97706;
   --color-surface: #FFFFFF;
-  --color-bg: #FAFAFA;
+  --color-bg: #FCFBF7;
 }
 
 body {
   font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  background-color: #FAFAFA;
+  background-color: #FCFBF7;
   color: #1F2937;
   overflow-x: hidden;
   scroll-behavior: smooth;
@@ -23,7 +24,7 @@ body {
 }
 
 /* ==========================================
-   FOCUS & ACCESSIBILITY STYLES (User Req #10)
+   FOCUS & ACCESSIBILITY STYLES
 ========================================== */
 :focus-visible {
   outline: 2px solid #7C3AED !important;
@@ -43,23 +44,23 @@ textarea:focus-visible {
 
 /* Glassmorphism Classes */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.90);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
 .glass-nav {
   background: rgba(255, 255, 255, 0.94);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(238, 242, 246, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(243, 232, 255, 0.7);
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(243, 232, 255, 0.7);
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(243, 232, 255, 0.8);
 }
 
 /* Custom Scrollbar */
@@ -68,61 +69,62 @@ textarea:focus-visible {
   height: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #F3F4F6;
+  background: #F8F7F2;
 }
 ::-webkit-scrollbar-thumb {
-  background: #C4B5FD;
+  background: #DDD6FE;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #8B5CF6;
+  background: #A78BFA;
 }
 
-/* Gradient accents */
+/* Luxury Gradient accents */
 .gradient-text {
-  background: linear-gradient(135deg, #7C3AED 0%, #EC4899 100%);
+  background: linear-gradient(135deg, #6D28D9 0%, #BE185D 50%, #7C3AED 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .gradient-gold-text {
-  background: linear-gradient(135deg, #D97706 0%, #F59E0B 100%);
+  background: linear-gradient(135deg, #B45309 0%, #D97706 50%, #F59E0B 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .gradient-btn {
-  background: linear-gradient(135deg, #7C3AED 0%, #9333EA 50%, #EC4899 100%);
+  background: linear-gradient(135deg, #7C3AED 0%, #9333EA 50%, #BE185D 100%);
   background-size: 200% auto;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px -2px rgba(124, 58, 237, 0.25);
 }
 
 .gradient-btn:hover {
   background-position: right center;
-  box-shadow: 0 10px 25px -5px rgba(124, 58, 237, 0.35);
+  box-shadow: 0 10px 25px -4px rgba(124, 58, 237, 0.4);
   transform: translateY(-1px);
 }
 
 .gradient-btn:active {
   transform: translateY(0);
-  box-shadow: 0 4px 12px -2px rgba(124, 58, 237, 0.25);
+  box-shadow: 0 4px 10px -2px rgba(124, 58, 237, 0.2);
 }
 
 /* Soft Box Shadows */
 .shadow-soft {
-  box-shadow: 0 4px 20px -2px rgba(124, 58, 237, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 6px 24px -2px rgba(124, 58, 237, 0.07), 0 2px 8px -1px rgba(0, 0, 0, 0.03);
 }
 
 .shadow-hover {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .shadow-hover:hover {
   transform: translateY(-4px);
-  box-shadow: 0 20px 25px -5px rgba(124, 58, 237, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 20px 30px -6px rgba(124, 58, 237, 0.12), 0 8px 12px -4px rgba(0, 0, 0, 0.04);
 }
 
 /* ==========================================
-   DRAWER & MODAL TRANSITIONS (FIXED!)
+   DRAWER & MODAL TRANSITIONS
 ========================================== */
 .drawer-backdrop {
   opacity: 0;
@@ -142,7 +144,6 @@ textarea:focus-visible {
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Crucial Fix: Drawer panel slides in when parent backdrop has active class! */
 .drawer-backdrop.active .drawer-panel,
 .drawer-panel.active {
   transform: translateX(0) !important;
@@ -173,7 +174,7 @@ textarea:focus-visible {
   transform: scale(1) translateY(0);
 }
 
-/* Pulse animation for live badge */
+/* Soft pulse animation */
 @keyframes softPulse {
   0%, 100% {
     transform: scale(1);
@@ -208,7 +209,7 @@ textarea:focus-visible {
 .filter-pill.active {
   background: #7C3AED;
   color: #FFFFFF;
-  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25);
+  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.28);
 }
 
 /* WhatsApp floating button glow */
@@ -216,7 +217,6 @@ textarea:focus-visible {
   box-shadow: 0 8px 24px -4px rgba(37, 211, 102, 0.45);
 }
 
-/* Line clamp helpers */
 .line-clamp-1 {
   display: -webkit-box;
   -webkit-line-clamp: 1;
